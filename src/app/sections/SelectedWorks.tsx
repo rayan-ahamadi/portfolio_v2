@@ -40,7 +40,7 @@ export default function SelectedWorks() {
                             alt={project.title}
                             width={800}
                             height={600}
-                            className="mb-4 h-auto object-cover"
+                            className="mb-4 h-auto w-200 object-cover"
                         />
                         <div className="flex flex-col gap-3">
                             <h3 className="mt-4 text-3xl  font-semibold font-primary text-secondary uppercase">{project.title}</h3>
