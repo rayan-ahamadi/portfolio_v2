@@ -10,21 +10,21 @@ export default function SelectedWorks() {
         {
             title: "Bloop",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            imageUrl: "/images/Bloop.png",
+            imageUrl: "/images/bloop.webp",
         },
         {
             title: "Café Ronron",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            imageUrl: "/images/cafe_ronron.png",
+            imageUrl: "/images/cafe_ronron.webp",
         },
         {
             title: "CBM Blog",
             description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-            imageUrl: "/images/cbm_blog.png",
+            imageUrl: "/images/cbm_blog.webp",
         },
     ]
 
-    return <section className="relative overflow-hidden bg-primary min-h-screen h-auto">
+    return <section id="works" className="relative overflow-hidden bg-primary min-h-screen h-auto">
 
         <Container className="grid grid-cols-12 gap-6">
             <h2 className="col-span-8 uppercase font-primary text-secondary font-bold text-9xl">Selected Works</h2>
@@ -36,7 +36,7 @@ export default function SelectedWorks() {
                 {projects.map((project, index) => (
                     <div key={index} className={`col-span-6 ${index % 2 === 0 ? 'col-start-1' : 'col-start-5'}`}>
                         <Image
-                            src={project.imageUrl}
+                            src={project.imageUrl + `?${new Date().getTime()}`}
                             alt={project.title}
                             width={800}
                             height={600}

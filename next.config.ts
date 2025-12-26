@@ -2,6 +2,13 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
+  images: {
+    localPatterns: [
+      {
+        pathname: "/images/**",
+      },
+    ],
+  },
   webpack(config) {
     const fileLoaderRule = config.module.rules.find((rule) =>
       rule.test?.test?.(".svg")
