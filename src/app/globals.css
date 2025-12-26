@@ -42,11 +42,13 @@
   }
 
   #noise-white {
-    background: url("/images/noise_white.webp") repeat;
+    background: url("/images/noise_white.png") repeat;
+    mix-blend-mode: multiply;
   }
 
   #noise-black {
-    background: url("/images/noise_black.webp") repeat;
+    background: url("/images/noise_black.png") repeat;
+    mix-blend-mode: screen;
     opacity: 0;
   }
 }
