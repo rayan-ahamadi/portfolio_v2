@@ -9,7 +9,7 @@ export default function Hero() {
                 <h2 className="text-5xl font-primary">Creative developer focused on <span className="font-accent text-accent text-[68px] mix-blend-darken">motion</span> and <span className="font-accent text-accent text-[68px] mix-blend-darken">structure</span></h2>
                 <h1 className="text-[318px] font-primary font-black text-accent uppercase leading-[0.70] mix-blend-darken">Rayan.dev</h1>
             </div>
-            <div className="col-start-2 col-end-11 text-[176px] font-primary font-extralight leading-[0.70] mix-blend-darken z-10 grid grid-cols-10 grid-rows-3 grid-flow-row gap-17 pb-20 uppercase">
+            <div className="col-start-2 col-end-11 text-[176px] font-primary font-extralight leading-[0.70] mix-blend-darken z-10 grid grid-cols-10 grid-rows-3 grid-flow-row gap-17 pb-20 my-32 uppercase">
                 <p className="inline w-max col-start-1 col-end-3">
                     <span className="font-accent normal-case text-accent text-[176px]">Design</span> First
                 </p>
