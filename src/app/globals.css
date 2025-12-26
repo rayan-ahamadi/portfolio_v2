@@ -33,6 +33,9 @@
   .font-accent {
     font-family: var(--font-pinyon);
   }
+  .bg-accent {
+    background-color: var(--color-accent);
+  }
 
   .noise {
     position: fixed;
