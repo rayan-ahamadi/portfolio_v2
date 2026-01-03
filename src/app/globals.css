@@ -12,6 +12,17 @@
   --foreground: #171717; */
 }
 
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  background-image: url("/images/noise.png");
+  opacity: 0.03;
+  /* mix-blend-mode: soft-light; */
+}
+
 @layer utilities {
   .text-primary {
     color: var(--color-primary);
@@ -38,21 +49,15 @@
     background-color: var(--color-accent);
   }
 
-  .noise {
-    position: fixed;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-  }
-
-  #noise-white {
-    background: url("/images/noise_white.png") repeat;
-    mix-blend-mode: multiply;
+  /* #noise-white {
+    background-image: url("/images/noise_white.png");
+    opacity: 0.04;
+    mix-blend-mode: soft-light;
   }
 
   #noise-black {
-    background: url("/images/noise_black.png") repeat;
-    mix-blend-mode: screen;
-    opacity: 0;
-  }
+    background-image: url("/images/noise_black.png");
+    opacity: 0.03;
+    mix-blend-mode: multiply;
+  } */
 }

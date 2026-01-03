@@ -3,7 +3,7 @@ import "./globals.css";
 import { Barlow_Condensed, Pinyon_Script } from "next/font/google";
 
 export const metadata = {
-  title: "Rayan Ahamadi — Creative Developer",
+  title: "Rayan Ahamadi - Creative Developer",
   description: "Creative frontend developer portfolio",
 };
 
@@ -29,7 +29,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="fr" className={`${barlow.variable} ${pinyon.variable} font-primary`}>
-      <body className="antialiased">
+      <body className="">
         {children}
       </body>
     </html>

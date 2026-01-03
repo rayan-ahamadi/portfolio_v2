@@ -2,7 +2,7 @@ import Container from "@/components/layout/Container";
 import Link from "next/link";
 
 export default function Header() {
-    return <header className="fixed top-0 w-full z-50">
+    return <header className="fixed top-0 w-full z-[60]">
         <Container className="grid grid-cols-12 gap-6 ">
             <div className="col-span-12 flex justify-between items-center py-7 uppercase">
                 <Link href="/">

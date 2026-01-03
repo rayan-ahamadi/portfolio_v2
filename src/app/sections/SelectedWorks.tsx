@@ -29,17 +29,17 @@ export default function SelectedWorks() {
         },
     ]
 
-    return <section id="works" className="relative overflow-hidden bg-primary min-h-screen h-auto">
+    return <section id="works" className="relative overflow-hidden min-h-screen h-auto bg-primary">
 
         <Container className="grid grid-cols-12 gap-6">
             <h2 className="col-span-8 uppercase font-primary text-secondary font-bold text-9xl">Selected Works</h2>
             <div className="grid grid-cols-10 grid-rows-3 grid-flow-row col-start-2 col-end-11 gap-20 my-32">
-                <div id="ellipse-div" className="absolute inset-0 pointer-events-none h-screen w-screen top-0 left-0">
+                <div id="ellipse-div" className="absolute inset-0 pointer-events-none h-screen w-screen top-0 left-0 ">
                     <Ellipse1 className="absolute top-1/4 left-[55vw] select-none" />
                     <Ellipse2 className="absolute top-4/6 right-[55vw] select-none" />
                 </div>
                 {projects.map((project, index) => (
-                    <div key={index} className={`col-span-6 ${index % 2 === 0 ? 'col-start-1' : 'col-start-5'}`}>
+                    <div key={index} className={`z-55 col-span-6 ${index % 2 === 0 ? 'col-start-1' : 'col-start-5'}`}>
                         <Link href={project.link} className="hover:opacity-70 transition-opacity duration-300">
                             <Image
                                 src={project.imageUrl + `?${new Date().getTime()}`}

@@ -8,9 +8,6 @@ import Footer from "@/sections/Footer";
 export default function Home() {
   return (
     <div>
-      <div className="noise" id="noise-white"></div>
-      <div className="noise" id="noise-black"></div>
-
       <main className="relative z-10">
         <Header />
         <Hero />
@@ -18,7 +15,6 @@ export default function Home() {
         <About />
         <Footer />
       </main>
-
     </div>
   );
 }

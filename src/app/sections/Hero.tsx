@@ -2,9 +2,14 @@ import Container from "@/components/layout/Container";
 import FleurHero from "@/assets/vector/Fleur_Hero.svg";
 
 export default function Hero() {
-    return <section className="bg-primary min-h-screen h-auto">
+    return <section className="relative min-h-screen h-auto bg-primary">
+        <FleurHero className="absolute
+    left-1/2 top-[40%]
+    -translate-x-1/2 -translate-y-1/2
+    w-128.25 h-auto
+    pointer-events-none select-none
+    " />
         <Container className="grid grid-cols-12 gap-6">
-            <FleurHero className="absolute top-26 h-auto pointer-events-none select-none z-0 w-128.25 left-[33vw]" />
             <div className="col-span-12 flex flex-col justify-end items-start min-h-screen py-7 tracking-tight">
                 <h2 className="text-5xl font-primary">Creative developer focused on <span className="font-accent text-accent text-[68px] mix-blend-darken">motion</span> and <span className="font-accent text-accent text-[68px] mix-blend-darken">structure</span></h2>
                 <h1 className="text-[318px] font-primary font-black text-accent uppercase leading-[0.70] mix-blend-darken">Rayan.dev</h1>
