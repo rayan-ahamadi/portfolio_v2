@@ -42,7 +42,9 @@ export default function ProjectRonronPage() {
                         {/* Description content for Bloop project */}
                         <h3 className="font-semibold mb-7 text-4xl uppercase">Description</h3>
                         <p className="font-light text-3xl normal-case leading-10">
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                            Café Ronron is a personal experimental project based on a fictional cat café concept.
+                            The goal of this project is to explore motion design and user experience through animation, using GSAP as a core tool.
+                            Rather than focusing on completeness, the project acts as a creative playground where ideas, transitions, and visual rhythm are continuously tested and refined.
                         </p>
                     </ProjectLayout.Description>
                     <ProjectLayout.Bento>

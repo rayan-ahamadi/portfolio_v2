@@ -7,7 +7,7 @@ export default function About() {
             <h2 className="col-span-8 text-primary font-primary font-bold uppercase text-9xl">About Me</h2>
             <div className="col-start-3 col-span-7 py-28 z-50">
                 <p className="font-primary text-primary font-regular leading-14 tracking-tight text-5xl uppercase">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                    Creative developer based in Aix-en-Provence,France, currently in a work-study program. I design and build interactive interfaces with a strong attention to motion, structure, and visual identity, aiming to create meaningful and expressive digital experiences.
                 </p>
             </div>
             <div className="col-start-8 col-span-3 relative bottom-75 z-0">

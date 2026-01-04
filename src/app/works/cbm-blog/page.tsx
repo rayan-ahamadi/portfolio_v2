@@ -42,7 +42,9 @@ export default function ProjectCBMBlogPage() {
                         {/* Description content for Bloop project */}
                         <h3 className="font-semibold mb-7 text-4xl uppercase">Description</h3>
                         <p className="font-light text-3xl normal-case leading-10">
-                            Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.
+                            CBM Blog is a static website dedicated to superhero movies and TV series.
+                            Built using only HTML and CSS, this project was my first complete front-end experience during my studies.
+                            It focuses on layout and content structure and represents an important milestone in my understanding of the fundamentals of the web.
                         </p>
                     </ProjectLayout.Description>
                     <ProjectLayout.Bento>
