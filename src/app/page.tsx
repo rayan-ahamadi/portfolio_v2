@@ -8,7 +8,7 @@ import Footer from "@/sections/Footer";
 export default function Home() {
   return (
     <div>
-      <main className="relative z-10">
+      <main className="relative z-10 overflow-hidden">
         <Header />
         <Hero />
         <SelectedWorks />
