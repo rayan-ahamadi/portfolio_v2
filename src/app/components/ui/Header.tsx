@@ -5,7 +5,7 @@ export default function Header() {
     return <header className="fixed top-0 w-full z-[60]">
         <Container className="grid grid-cols-12 gap-6 ">
             <div className="col-span-12 flex justify-between items-center py-7 uppercase">
-                <Link href="/" className="flex items-baseline gap-6">
+                <Link href="/" className="flex items-baseline gap-6" id="logo">
                     <span className="font-black font-primary text-accent text-4xl mix-blend-multiply">Rayan.dev</span>
                     <span className="font-medium font-primary text-secondary text-2xl normal-case mix-blend-multiply">Creative Developer</span>
                 </Link>
@@ -14,6 +14,7 @@ export default function Header() {
                         <Link href="#works" className="underlined-text"><li>Projects</li></Link>
                         <Link href="#about" className="underlined-text"><li>About</li></Link>
                         <Link href="#contact" className="underlined-text"><li>Contact</li></Link>
+                        <Link href="" className="underlined-text"><li>Resume</li></Link>
                     </ul>
                 </nav>
             </div>

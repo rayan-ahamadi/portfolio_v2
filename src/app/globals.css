@@ -49,24 +49,6 @@ body::after {
     background-color: var(--color-accent);
   }
 
-  .underlined-text::after {
-    content: "";
-    display: block;
-    width: 0%;
-    height: 2px;
-    background-color: var(--color-secondary);
-    transition: width 0.3s ease-in-out;
-  }
-
-  .underlined-text-white::after {
-    content: "";
-    display: block;
-    width: 0%;
-    height: 2px;
-    background-color: var(--color-primary);
-    transition: width 0.3s ease-in-out;
-  }
-
   /* #noise-white {
     background-image: url("/images/noise_white.png");
     opacity: 0.04;
@@ -78,6 +60,24 @@ body::after {
     opacity: 0.03;
     mix-blend-mode: multiply;
   } */
+}
+
+.underlined-text::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  background-color: var(--color-secondary);
+  transition: width 0.3s ease-in-out;
+}
+
+.underlined-text-white::after {
+  content: "";
+  display: block;
+  width: 0%;
+  height: 2px;
+  background-color: var(--color-primary);
+  transition: width 0.3s ease-in-out;
 }
 
 .underlined-text:hover::after,
