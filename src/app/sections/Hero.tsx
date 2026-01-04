@@ -4,7 +4,7 @@ import FleurHero from "@/assets/vector/Fleur_Hero.svg";
 export default function Hero() {
     return <section className="relative min-h-screen h-auto bg-primary">
         <FleurHero className="absolute
-    left-1/2 top-[48%] md:top-[40%]
+    left-1/2 top-[42%] md:top-[40%]
     -translate-x-1/2 -translate-y-1/2
     w-84 md:w-128.25 h-auto
     pointer-events-none select-none

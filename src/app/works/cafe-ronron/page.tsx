@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation"
 import Header from "@/components/ui/Header"
 
 import { Playfair_Display, Poppins } from "next/font/google"
+import { claytonia } from "@/../lib/fonts"
 
 
 const playfair = Playfair_Display({
@@ -96,7 +97,7 @@ export default function ProjectRonronPage() {
 
                             <BentoItem colSpan={1} mdColSpan={3} lgColSpan={7}>
                                 <div className="flex flex-col justify-center h-full">
-                                    <h3 className="font-black text-3xl uppercase">Claytonia</h3>
+                                    <h3 className={`text-3xl ${claytonia.className}`}>Claytonia</h3>
                                     <p className={`${playfair.className} font-light text-2xl`}>Playfair Display</p>
                                     <p className={`${poppins.className} font-light text-2xl`}>Poppins</p>
                                 </div>

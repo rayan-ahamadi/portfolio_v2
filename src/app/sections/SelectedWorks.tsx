@@ -48,8 +48,8 @@ export default function SelectedWorks() {
                         />
                     </Link>
                     <div className="flex flex-col gap-3">
-                        <h3 className="mt-4 text-3xl  font-semibold font-primary text-secondary uppercase">{project.title}</h3>
-                        <p className="text-2xl font-light font-primary text-secondary uppercase leading-7">{project.description}</p>
+                        <h3 className="mt-4 text-xl md:text-2xl lg:text-3xl  font-semibold font-primary text-secondary uppercase">{project.title}</h3>
+                        <p className="text-lg md:text-xl lg:text-2xl font-light font-primary text-secondary uppercase leading-7">{project.description}</p>
                     </div>
                 </div>
             ))}
