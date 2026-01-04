@@ -11,9 +11,9 @@ export default function Header() {
                 </Link>
                 <nav>
                     <ul className="font-semibold font-primary text-secondary text-lg flex gap-6">
-                        <Link href="#works"><li>Projects</li></Link>
-                        <Link href="#about"><li>About</li></Link>
-                        <Link href="#contact"><li>Contact</li></Link>
+                        <Link href="#works" className="underlined-text"><li>Projects</li></Link>
+                        <Link href="#about" className="underlined-text"><li>About</li></Link>
+                        <Link href="#contact" className="underlined-text"><li>Contact</li></Link>
                     </ul>
                 </nav>
             </div>

@@ -12,8 +12,8 @@ export default function Hero() {
             </Link>
 
             <ul className="col-start-1 col-span-2 text-5xl font-primary font-regular flex flex-col gap-3 mt-24 normal-case text-primary w-max">
-                <li><Link href=""><span>Github</span></Link></li>
-                <li><Link href=""><span>Linkedin</span></Link></li>
+                <li><Link href="" className="underlined-text-white"><span>Github</span></Link></li>
+                <li><Link href="" className="underlined-text-white"><span>Linkedin</span></Link></li>
             </ul>
         </Container>
     </section>;
