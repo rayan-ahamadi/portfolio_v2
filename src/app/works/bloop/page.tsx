@@ -25,10 +25,10 @@ export default function ProjectBloopPage() {
                     <ProjectLayout.Hero>
                         {/* Hero content for Bloop project */}
                         <div className="mb-15">
-                            <h1 className=" text-7xl md:text-8xl lg:text-9xl font-bold uppercase mb-9">Bloop</h1>
+                            <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold uppercase mb-9">Bloop</h1>
                             <div className="">
-                                <h2 className="text-3xl font-light uppercase mb-3">In collaboration with :</h2>
-                                <h2 className="text-4xl font-bold uppercase">
+                                <h2 className="text-xl md:text-2xl lg:text-3xl font-light uppercase mb-3">In collaboration with :</h2>
+                                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold uppercase">
                                     <Link href="https://fr.linkedin.com/in/lucie-cottrelle">Lucie Cottrelle • </Link>
                                     <Link href="https://github.com/AdlenSouci">Adlen Souci • </Link>
                                     <Link href="https://github.com/charefs13">Mohamed saadi</Link>
@@ -41,21 +41,25 @@ export default function ProjectBloopPage() {
                                 alt="Bloop Project Preview"
                                 width={960}
                                 height={680}
-                                className="rounded-lg h-auto object-cover z-[55]"
+                                className="rounded-lg h-auto object-cover z-[55] flex-1"
                             />
+                            <div className="flex justify-between w-full">
+                                <p>At : La Plateforme and Ynov</p>
+                                <p>Role : Full-Stack Developer</p>
+                            </div>
                         </div>
                     </ProjectLayout.Hero>
                     <ProjectLayout.Description>
                         {/* Description content for Bloop project */}
-                        <h3 className="font-semibold mb-7 text-4xl uppercase">Description</h3>
-                        <p className="font-light text-2xl lg:text-3xl normal-case leading-normal md:leading-10">
+                        <h3 className="font-semibold mb-7 text-2xl md:text-3xl lg:text-4xl uppercase">Description</h3>
+                        <p className="font-light text-xl md:text-2xl lg:text-3xl normal-case leading-normal md:leading-10">
                             Bloop is a fictional social media platform inspired by Twitter, designed around a bold neo-brutalist visual language. Developed as a collaborative project with three other creatives, it explores interface structure, typography, and interaction patterns within a contemporary social network context. The project is still evolving, with ongoing experimentation around usability, visual identity, and front-end implementation.
                         </p>
                     </ProjectLayout.Description>
                     <ProjectLayout.Bento>
                         {/* Bento content for Bloop project */}
                         <BentoGrid>
-                            <BentoItem colSpan={8} rowSpan={2}>
+                            <BentoItem colSpan={1} mdColSpan={4} lgColSpan={8} rowSpan={2}>
                                 <div className="flex justify-center items-center h-full">
                                     <Image
                                         src="/images/projects/Bloop/BloopImage1.png"
@@ -67,7 +71,7 @@ export default function ProjectBloopPage() {
 
                             </BentoItem>
 
-                            <BentoItem colSpan={4} rowSpan={2}>
+                            <BentoItem colSpan={1} mdColSpan={2} lgColSpan={4} rowSpan={2}>
                                 <div className="flex justify-center items-center h-full">
                                     <Image
                                         src="/images/projects/Bloop/BloopImage2.png"
@@ -79,14 +83,14 @@ export default function ProjectBloopPage() {
                                 </div>
                             </BentoItem>
 
-                            <BentoItem colSpan={7}>
+                            <BentoItem colSpan={1} mdColSpan={3} lgColSpan={7}>
                                 <div className="flex flex-col justify-center h-full">
                                     <h3 className="font-black text-3xl uppercase">Proxima Nova Condensed</h3>
                                     <p className="font-light text-2xl ">Lorem Ipsum Dolor Sit Amet.</p>
                                 </div>
                             </BentoItem>
 
-                            <BentoItem colSpan={5}>
+                            <BentoItem colSpan={1} mdColSpan={3} lgColSpan={5}>
                                 <div className="flex flex-wrap justify-center items-center gap-6 h-full">
                                     <div className="flex flex-col items-center">
                                         <div className="bg-[#FF4DAB] rounded-lg w-16 h-16 mb-3"></div>
@@ -103,22 +107,22 @@ export default function ProjectBloopPage() {
                                 </div>
                             </BentoItem>
 
-                            <BentoItem colSpan={6} bgColorClass="bg-[#FF99CF]">
+                            <BentoItem colSpan={1} mdColSpan={3} lgColSpan={6} bgColorClass="bg-[#FF99CF]">
                                 <div className="flex flex-col justify-center h-full">
-                                    <h3 className="text-3xl font-semibold uppercase">Intent :</h3>
-                                    <p className="text-2xl font-light normal case">
+                                    <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold uppercase">Intent :</h3>
+                                    <p className="text-lg md:text-xl lg:text-2xl font-light normal case">
                                         Create a social network without social pressure.
                                     </p>
                                 </div>
                             </BentoItem>
 
-                            <BentoItem colSpan={6}>
+                            <BentoItem colSpan={1} mdColSpan={3} lgColSpan={6}>
                                 <div className="flex flex-col justify-center h-full">
-                                    <h3 className="text-3xl font-semibold uppercase">Stack :</h3>
-                                    <p className="text-2xl font-light normal-case leading-7">
+                                    <h3 className="text-xl md:text-2xl lg:text-3xl font-semibold uppercase">Stack :</h3>
+                                    <p className="text-lg md:text-xl lg:text-2xl font-light normal-case leading-7">
                                         Figma - NextJS - TypeScript - TailwindCSS
                                     </p>
-                                    <p className="text-2xl font-light normal-case leading-7">
+                                    <p className="text-lg md:text-xl lg:text-2xl font-light normal-case leading-7">
                                         Symfony - ExpressJS - PostgreSQL - Socket.IO - Docker
                                     </p>
                                 </div>
