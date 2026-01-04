@@ -1,12 +1,56 @@
+"use client";
+
 import Container from "@/components/layout/Container";
 import Image from "next/image";
 import Ellipse1 from "@/assets/vector/ellipse1.svg";
 import Ellipse2 from "@/assets/vector/ellipse2.svg";
 import Link from "next/link";
 
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+gsap.registerPlugin(ScrollTrigger);
 
 export default function SelectedWorks() {
+    const sectionRef = useRef<HTMLElement>(null);
+    const ellipseDivRef = useRef<HTMLDivElement>(null);
+
+    useGSAP(() => {
+        if (!sectionRef.current || !ellipseDivRef.current) return;
+
+        const section = sectionRef.current;
+        const ellipseDiv = ellipseDivRef.current;
+        const ellipse1 = ellipseDiv.querySelector('svg:nth-child(1)') as SVGSVGElement;
+        const ellipse2 = ellipseDiv.querySelector('svg:nth-child(2)') as SVGSVGElement;
+
+        const stickyEllipses = gsap.timeline({
+            scrollTrigger: {
+                trigger: section,
+                start: "top top",
+                end: "bottom bottom",
+                scrub: true,
+                pin: ellipseDiv,
+                pinSpacing: false,
+            }
+        });
+
+        stickyEllipses
+            .to(ellipse1, {
+                y: 100,
+                x: -100,
+                scale: 0.8,
+                ease: "power1.out",
+            }, 0)
+            .to(ellipse2, {
+                y: -500,
+                x: 100,
+                scale: 0.8,
+                ease: "power1.out",
+            }, 0);
+    }, [])
+
 
     const projects = [
         {
@@ -29,8 +73,8 @@ export default function SelectedWorks() {
         },
     ]
 
-    return <section id="works" className="relative overflow-hidden min-h-screen h-auto bg-primary">
-        <div id="ellipse-div" className="absolute inset-0 pointer-events-none h-screen w-screen top-0 left-0 ">
+    return <section id="works" className="relative overflow-hidden min-h-screen h-auto bg-primary" ref={sectionRef}>
+        <div id="ellipse-div" className="absolute inset-0 pointer-events-none h-screen w-screen top-0 left-0" ref={ellipseDivRef}>
             <Ellipse1 className="absolute top-1/4 left-[55vw] select-none" />
             <Ellipse2 className="absolute top-4/6 right-[55vw] select-none" />
         </div>
