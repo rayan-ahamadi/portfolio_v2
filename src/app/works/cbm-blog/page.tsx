@@ -13,20 +13,18 @@ export default function ProjectCBMBlogPage() {
     const router = useRouter()
     return (
         <div>
-            <div className="noise" id="noise-white"></div>
-
             <main className="relative z-10">
                 <Header />
 
                 <LeftArrow
                     onClick={() => router.back()}
-                    className="fixed cursor-pointer bottom-10 left-20 w-10 h-10 hover:opacity-70 transition-opacity duration-300"
+                    className="fixed cursor-pointer bottom-10 left-5 md:left-20 w-10 h-10 hover:opacity-70 transition-opacity duration-300"
                 />
-                <ProjectLayout className="grid grid-cols-12 gap-6">
+                <ProjectLayout className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6">
                     <ProjectLayout.Hero>
                         {/* Hero content for Bloop project */}
                         <div className="mb-15">
-                            <h1 className="text-9xl font-bold uppercase mb-9">CBM Blog</h1>
+                            <h1 className="text-7xl md:text-8xl lg:text-9xl  font-bold uppercase mb-9">CBM Blog</h1>
                         </div>
                         <div className="rounded-lg flex flex-col justify-center items-center overflow-hidden p-8 bg-[#96a2d0] h-max">
                             <Image
@@ -41,7 +39,7 @@ export default function ProjectCBMBlogPage() {
                     <ProjectLayout.Description>
                         {/* Description content for Bloop project */}
                         <h3 className="font-semibold mb-7 text-4xl uppercase">Description</h3>
-                        <p className="font-light text-3xl normal-case leading-10">
+                        <p className="font-light text-2xl lg:text-3xl normal-case leading-normal md:leading-10">
                             CBM Blog is a static website dedicated to superhero movies and TV series.
                             Built using only HTML and CSS, this project was my first complete front-end experience during my studies.
                             It focuses on layout and content structure and represents an important milestone in my understanding of the fundamentals of the web.
@@ -57,7 +55,7 @@ export default function ProjectCBMBlogPage() {
                                         alt="Bloop Bento Preview"
                                         width={541}
                                         height={385}
-                                        className="rounded-lg h-auto object-cover"
+                                        className="rounded-lg h-auto object-cover z-[55]"
                                     /></div>
 
                             </BentoItem>
@@ -69,7 +67,7 @@ export default function ProjectCBMBlogPage() {
                                         alt="Bloop Bento Preview"
                                         width={203}
                                         height={442}
-                                        className="rounded-lg h-auto object-cover"
+                                        className="rounded-lg h-auto object-cover z-[55]"
                                     />
                                 </div>
                             </BentoItem>
@@ -84,16 +82,16 @@ export default function ProjectCBMBlogPage() {
                             <BentoItem colSpan={5}>
                                 <div className="flex flex-wrap justify-center items-center gap-6 h-full">
                                     <div className="flex flex-col items-center">
-                                        <div className="bg-[#FF4DAB] rounded-lg w-16 h-16 mb-3"></div>
-                                        <p className="font-regular text-lg">#FF4DAB</p>
+                                        <div className="bg-[#A42A2A] rounded-lg w-16 h-16 mb-3"></div>
+                                        <p className="font-regular text-lg">#A42A2A</p>
                                     </div>
                                     <div className="flex flex-col items-center">
-                                        <div className="bg-[#000000] rounded-lg w-16 h-16 mb-3"></div>
-                                        <p className="font-regular text-lg">#000000</p>
+                                        <div className="bg-[#151A2F] rounded-lg w-16 h-16 mb-3"></div>
+                                        <p className="font-regular text-lg">#151A2F</p>
                                     </div>
                                     <div className="flex flex-col items-center">
-                                        <div className="bg-[#A8FFC7] rounded-lg w-16 h-16 mb-3"></div>
-                                        <p className="font-regular text-lg">#A8FFC7</p>
+                                        <div className="bg-[#35A7D9] rounded-lg w-16 h-16 mb-3"></div>
+                                        <p className="font-regular text-lg">#35A7D9</p>
                                     </div>
                                 </div>
                             </BentoItem>
@@ -102,7 +100,7 @@ export default function ProjectCBMBlogPage() {
                                 <div className="flex flex-col justify-center h-full">
                                     <h3 className="text-3xl font-semibold uppercase">Intent :</h3>
                                     <p className="text-2xl font-light normal case">
-                                        Create a social network without social pressure.
+                                        Create a static blog to share my passion for superhero movies and series.
                                     </p>
                                 </div>
                             </BentoItem>
@@ -111,10 +109,7 @@ export default function ProjectCBMBlogPage() {
                                 <div className="flex flex-col justify-center h-full">
                                     <h3 className="text-3xl font-semibold uppercase">Stack :</h3>
                                     <p className="text-2xl font-light normal-case leading-7">
-                                        Figma - NextJS - TypeScript - TailwindCSS
-                                    </p>
-                                    <p className="text-2xl font-light normal-case leading-7">
-                                        Symfony - ExpressJS - PostgreSQL - Socket.IO - Docker
+                                        HTML - CSS
                                     </p>
                                 </div>
                             </BentoItem>

@@ -12,13 +12,13 @@ export function ProjectLayout(
 }
 
 ProjectLayout.Hero = function Hero({ children }: { children: React.ReactNode }) {
-    return <section className="col-start-2 col-end-11 text-center">{children}</section>
+    return <section className="col-span-4 md:col-span-8 lg:col-start-2 lg:col-end-11 text-center">{children}</section>
 }
 
 ProjectLayout.Description = function Description({ children }: { children: React.ReactNode }) {
-    return <section className="col-start-2 col-end-11 mt-16">{children}</section>
+    return <section className="col-span-4 md:col-span-8 lg:col-start-2 lg:col-end-11 mt-16">{children}</section>
 }
 
 ProjectLayout.Bento = function Bento({ children }: { children: React.ReactNode }) {
-    return <section className="col-start-2 col-end-11 my-16">{children}</section>
+    return <section className="col-span-4 md:col-span-8 lg:col-start-2 lg:col-end-11 my-16">{children}</section>
 }

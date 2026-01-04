@@ -36,8 +36,9 @@ export function BentoItem({
     return (
         <div
             className={`
-        ${colSpanClasses[colSpan]}
-        ${rowSpanClasses[rowSpan]}
+        col-span-${colSpan}
+        md:${colSpanClasses[colSpan]}
+        md:${rowSpanClasses[rowSpan]}
         rounded-xl
         ${bgColorClass}
         p-6

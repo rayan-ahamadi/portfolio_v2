@@ -13,20 +13,19 @@ export default function ProjectRonronPage() {
     const router = useRouter()
     return (
         <div>
-            <div className="noise" id="noise-white"></div>
 
             <main className="relative z-10">
                 <Header />
 
                 <LeftArrow
                     onClick={() => router.back()}
-                    className="fixed cursor-pointer bottom-10 left-20 w-10 h-10 hover:opacity-70 transition-opacity duration-300"
+                    className="fixed cursor-pointer bottom-10 left-5 md:left-20 w-10 h-10 hover:opacity-70 transition-opacity duration-300"
                 />
-                <ProjectLayout className="grid grid-cols-12 gap-6">
+                <ProjectLayout className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6">
                     <ProjectLayout.Hero>
                         {/* Hero content for Bloop project */}
                         <div className="mb-15">
-                            <h1 className="text-9xl font-bold uppercase mb-9">Café Ronron</h1>
+                            <h1 className="text-7xl md:text-8xl lg:text-9xl  font-bold uppercase mb-9">Café Ronron</h1>
                         </div>
                         <div className="rounded-lg flex flex-col justify-center items-center overflow-hidden p-8 bg-[#C0AAA5] h-max">
                             <Image
@@ -41,7 +40,7 @@ export default function ProjectRonronPage() {
                     <ProjectLayout.Description>
                         {/* Description content for Bloop project */}
                         <h3 className="font-semibold mb-7 text-4xl uppercase">Description</h3>
-                        <p className="font-light text-3xl normal-case leading-10">
+                        <p className="font-light text-2xl lg:text-3xl normal-case leading-normal md:leading-10">
                             Café Ronron is a personal experimental project based on a fictional cat café concept.
                             The goal of this project is to explore motion design and user experience through animation, using GSAP as a core tool.
                             Rather than focusing on completeness, the project acts as a creative playground where ideas, transitions, and visual rhythm are continuously tested and refined.
@@ -57,7 +56,7 @@ export default function ProjectRonronPage() {
                                         alt="Café Ronron Image 1 Preview"
                                         width={700}
                                         height={385}
-                                        className="rounded-lg h-auto object-cover"
+                                        className="rounded-lg h-auto object-cover z-[55]"
                                     /></div>
 
                             </BentoItem>
@@ -69,7 +68,7 @@ export default function ProjectRonronPage() {
                                         alt="Café Ronron Image 2 Preview"
                                         width={700}
                                         height={385}
-                                        className="rounded-lg h-auto object-cover"
+                                        className="rounded-lg h-auto object-cover z-[55]"
                                     />
                                 </div>
                             </BentoItem>
@@ -85,16 +84,16 @@ export default function ProjectRonronPage() {
                             <BentoItem colSpan={5}>
                                 <div className="flex flex-wrap justify-center items-center gap-6 h-full">
                                     <div className="flex flex-col items-center">
-                                        <div className="bg-[#FF4DAB] rounded-lg w-16 h-16 mb-3"></div>
-                                        <p className="font-regular text-lg">#FF4DAB</p>
+                                        <div className="bg-[#DCB47F] rounded-lg w-16 h-16 mb-3"></div>
+                                        <p className="font-regular text-lg">#DCB47F</p>
                                     </div>
                                     <div className="flex flex-col items-center">
-                                        <div className="bg-[#000000] rounded-lg w-16 h-16 mb-3"></div>
-                                        <p className="font-regular text-lg">#000000</p>
+                                        <div className="bg-[#F3EBE5] rounded-lg w-16 h-16 mb-3"></div>
+                                        <p className="font-regular text-lg">#F3EBE5</p>
                                     </div>
                                     <div className="flex flex-col items-center">
-                                        <div className="bg-[#A8FFC7] rounded-lg w-16 h-16 mb-3"></div>
-                                        <p className="font-regular text-lg">#A8FFC7</p>
+                                        <div className="bg-[#799B4B] rounded-lg w-16 h-16 mb-3"></div>
+                                        <p className="font-regular text-lg">#799B4B</p>
                                     </div>
                                 </div>
                             </BentoItem>
@@ -103,7 +102,7 @@ export default function ProjectRonronPage() {
                                 <div className="flex flex-col justify-center h-full">
                                     <h3 className="text-3xl font-semibold uppercase">Intent :</h3>
                                     <p className="text-2xl font-light normal case">
-                                        Create a social network without social pressure.
+                                        Explore motion design and user experience through animation.
                                     </p>
                                 </div>
                             </BentoItem>

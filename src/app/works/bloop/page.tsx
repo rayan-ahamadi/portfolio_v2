@@ -13,20 +13,19 @@ export default function ProjectBloopPage() {
     const router = useRouter()
     return (
         <div>
-            <div className="noise" id="noise-white"></div>
 
             <main className="relative z-10">
                 <Header />
 
                 <LeftArrow
                     onClick={() => router.back()}
-                    className="fixed cursor-pointer bottom-10 left-20 w-10 h-10 hover:opacity-70 transition-opacity duration-300"
+                    className="fixed cursor-pointer bottom-10 left-5 md:left-20 w-10 h-10 hover:opacity-70 transition-opacity duration-300"
                 />
-                <ProjectLayout className="grid grid-cols-12 gap-6">
+                <ProjectLayout className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6">
                     <ProjectLayout.Hero>
                         {/* Hero content for Bloop project */}
                         <div className="mb-15">
-                            <h1 className="text-9xl font-bold uppercase mb-9">Bloop</h1>
+                            <h1 className=" text-7xl md:text-8xl lg:text-9xl font-bold uppercase mb-9">Bloop</h1>
                             <div className="">
                                 <h2 className="text-3xl font-light uppercase mb-3">In collaboration with :</h2>
                                 <h2 className="text-4xl font-bold uppercase">
@@ -42,14 +41,14 @@ export default function ProjectBloopPage() {
                                 alt="Bloop Project Preview"
                                 width={960}
                                 height={680}
-                                className="rounded-lg h-auto object-cover"
+                                className="rounded-lg h-auto object-cover z-[55]"
                             />
                         </div>
                     </ProjectLayout.Hero>
                     <ProjectLayout.Description>
                         {/* Description content for Bloop project */}
                         <h3 className="font-semibold mb-7 text-4xl uppercase">Description</h3>
-                        <p className="font-light text-3xl normal-case leading-10">
+                        <p className="font-light text-2xl lg:text-3xl normal-case leading-normal md:leading-10">
                             Bloop is a fictional social media platform inspired by Twitter, designed around a bold neo-brutalist visual language. Developed as a collaborative project with three other creatives, it explores interface structure, typography, and interaction patterns within a contemporary social network context. The project is still evolving, with ongoing experimentation around usability, visual identity, and front-end implementation.
                         </p>
                     </ProjectLayout.Description>
@@ -63,7 +62,7 @@ export default function ProjectBloopPage() {
                                         alt="Bloop Bento Preview"
                                         width={541}
                                         height={385}
-                                        className="rounded-lg h-auto object-cover"
+                                        className="rounded-lg h-auto object-cover z-[55]"
                                     /></div>
 
                             </BentoItem>
