@@ -29,9 +29,27 @@ export default function Hero() {
                 // opacity: 1.2,
                 // y: 10,
                 rotate: 10,
-                ease: "back.out",
+                ease: "power4.out",
                 delay: 0,
                 duration: 1.5,
+            }
+        )
+
+        gsap.set(
+            fleur, {
+            transformOrigin: "center bottom",
+        }
+        )
+
+        gsap.to(
+            fleur,
+            {
+                yoyo: true,
+                repeat: -1,
+                ease: "sine.inOut",
+                duration: 4,
+                rotate: 1,
+                delay: 1.5,
             }
         )
     }, []);

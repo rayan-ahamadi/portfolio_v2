@@ -8,6 +8,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import CSSRulePlugin from "gsap/CSSRulePlugin";
+import HiddenTextReveal from "@/components/animations/HiddenTextReveal";
 
 gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
 
@@ -38,16 +39,16 @@ export default function About() {
         tl.to(
             "header a, header #logo span:last-child",
             { color: '#d7dae1' },
-            '<'
+            0
         )
         tl.to(
             navLinkAfterRule,
-            { cssRule: { backgroundColor: '#d7dae1' } },
-            '<'
+            { cssRule: { backgroundColor: 'var(--color-primary)' } },
+            0
         )
         tl.to(
             "#burgerButton", { fill: '#d7dae1' },
-            '<'
+            0
         );
 
     }, []);
@@ -57,7 +58,11 @@ export default function About() {
 
     return <section id="about" className="bg-secondary min-h-screen h-auto py-28" ref={sectionRef}>
         <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6">
-            <h2 className="col-span-4 md:col-span-8 lg:col-span-12 text-primary font-primary font-bold uppercase text-6xl md:text-8xl lg:text-9xl">About Me</h2>
+            <h2 className="col-span-4 md:col-span-8 lg:col-span-12 text-primary font-primary font-bold uppercase text-6xl md:text-8xl lg:text-9xl">
+                <HiddenTextReveal verticalOrigin="bottom">
+                    About Me
+                </HiddenTextReveal>
+            </h2>
             <div className="col-span-4 lg:col-start-3 lg:col-span-7 py-28 z-50">
                 <p className="font-primary text-primary font-regular leading-normal md:leading-14 tracking-tight text-2xl md:text-4xl lg:text-5xl z-[55] uppercase">
                     I'm Rayan Ahamadi, a <span className="text-accent">front-end creative developer</span> based in Aix-en-Provence,France and currently in a work-study program.

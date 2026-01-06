@@ -6,6 +6,8 @@ import Ellipse1 from "@/assets/vector/ellipse1.svg";
 import Ellipse2 from "@/assets/vector/ellipse2.svg";
 import Link from "next/link";
 
+import HiddenTextReveal from "@/components/animations/HiddenTextReveal";
+
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
@@ -79,7 +81,11 @@ export default function SelectedWorks() {
             <Ellipse2 className="absolute top-4/6 right-[55vw] select-none" />
         </div>
         <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6 grid-flow-row">
-            <h2 className="col-span-4 md:col-span-8 lg:col-span-12 uppercase font-primary text-secondary font-bold text-6xl md:text-8xl lg:text-9xl mb-32">Selected Works</h2>
+            <h2 className="col-span-4 md:col-span-8 lg:col-span-12 uppercase font-primary text-secondary font-bold text-6xl md:text-8xl lg:text-9xl mb-32">
+                <HiddenTextReveal verticalOrigin="bottom">
+                    Selected Works
+                </HiddenTextReveal>
+            </h2>
             {projects.map((project, index) => (
                 <div key={index} className="col-span-4 md:col-span-4 lg:col-span-6 lg:even:col-start-2 lg:odd:col-start-7 z-[55] mb-58 md:mb-32">
                     <Link href={project.link} className="hover:opacity-70 transition-opacity duration-300">
