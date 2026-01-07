@@ -3,6 +3,7 @@
 import Container from "@/components/layout/Container";
 import FleurHero from "@/assets/vector/Fleur_Hero.svg";
 import HiddenTextReveal from "@/components/animations/HiddenTextReveal";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 import { useRef } from "react";
 
@@ -11,11 +12,14 @@ import { useGSAP } from "@gsap/react";
 
 export default function Hero() {
     const fleurRef = useRef<SVGSVGElement>(null);
+    const sectionRef = useRef<HTMLDivElement>(null);
 
+    // Animation de la fleur centrale et overlap
     useGSAP(() => {
         const fleur = fleurRef.current;
         if (!fleur) return;
 
+        // Mouvement fleur d'intro
         gsap.set(
             fleur, {
             transformOrigin: "50% 50%",
@@ -52,10 +56,46 @@ export default function Hero() {
                 delay: 1.5,
             }
         )
+
+        // overlap intro text
+        const section = sectionRef.current;
+        if (!section) return;
+
+        const introSelector = gsap.utils.selector(section);
+
+
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: section,
+                start: "bottom bottom",
+                end: "+=80%",
+                pin: true,
+                scrub: true,
+                pinSpacing: false,
+                invalidateOnRefresh: true,
+            },
+        });
+
+        tl.fromTo(
+            "#works",
+            {
+                y: 0,
+            },
+            {
+                y: '-40vh',
+            }
+        )
+            .to(
+                introSelector('*'),
+                {
+                    opacity: 0,
+                },
+                '<'
+            )
     }, []);
 
 
-    return <section id="hero" className="bg-primary relative">
+    return <section id="hero" className="bg-primary relative" ref={sectionRef} >
         <FleurHero className="absolute
     left-1/2 top-[42%] md:top-[34%]
     -translate-x-1/2 -translate-y-1/2
@@ -65,7 +105,7 @@ export default function Hero() {
             ref={fleurRef}
         />
         <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6">
-            <div className="col-span-4 md:col-span-8 lg:col-span-12 flex flex-col justify-end items-start min-h-screen py-7 tracking-tight">
+            <div className="col-span-4 md:col-span-8 lg:col-span-12 flex flex-col justify-end items-start min-h-screen py-7 tracking-tight" >
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-primary z-[55] md:z-0">Creative developer focused on <span className="font-accent text-accent text-[46px] md:text-[62px] lg:text-[68px] mix-blend-darken">motion</span> and <span className="font-accent text-accent text-[46px] md:text-[62px] lg:text-[68px] mix-blend-darken">structure</span></h2>
                 <h1 className="text-[92px] md:text-[218px]  lg:text-[298px] font-primary font-black text-accent fill-accent uppercase leading-[0.70] mix-blend-darken w-full relative right-1.5">
                     <HiddenTextReveal verticalOrigin="top" delay={0.5}>
@@ -73,7 +113,7 @@ export default function Hero() {
                     </HiddenTextReveal>
                 </h1>
             </div>
-            <div className="col-span-4 md:col-span-8 lg:col-span-12  text-[68px] md:text-[176px] mix-blend-darken z-10 grid grid-cols-10 grid-rows-3 grid-flow-row gap-17 pb-20 my-32">
+            <div className="col-span-4 md:col-span-8 lg:col-span-12  text-[68px] md:text-[176px] mix-blend-darken z-10 grid grid-cols-10 grid-rows-3 grid-flow-row gap-17 pb-20 my-32"  >
                 <p className="inline w-max col-start-1 md:col-start-1 leading-none">
                     <span className="font-accent normal-case text-accent">
                         <HiddenTextReveal>Design</HiddenTextReveal>

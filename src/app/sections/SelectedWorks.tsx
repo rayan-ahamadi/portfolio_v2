@@ -44,14 +44,12 @@ export default function SelectedWorks() {
     ]
 
 
-    return <section id="works" className="bg-primary relative" ref={sectionRef}>
+    return <section id="works" className="bg-primary relative z-11 pt-28" ref={sectionRef}>
         {/* <Ellipse1 className="absolute top-1/4 left-[55vw] select-none" ref={ellipse1Ref} />
         <Ellipse2 className="absolute top-4/6 right-[55vw] select-none" ref={ellipse2Ref} /> */}
         <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6 grid-flow-row">
             <h2 className="col-span-4 md:col-span-8 lg:col-span-12 uppercase font-primary text-secondary font-bold text-6xl md:text-8xl lg:text-9xl mb-32">
-                <HiddenTextReveal verticalOrigin="bottom">
-                    Selected Works
-                </HiddenTextReveal>
+                Selected Works
             </h2>
             {projects.map((project, index) => (
                 <div key={index} className="col-span-4 md:col-span-4 lg:col-span-6 lg:even:col-start-2 lg:odd:col-start-7 z-[55] mb-58 md:mb-32">
@@ -67,8 +65,16 @@ export default function SelectedWorks() {
                         </ImageReveal>
                     </Link>
                     <div className="flex flex-col gap-3">
-                        <h3 className="mt-4 text-xl md:text-2xl lg:text-3xl  font-semibold font-primary text-secondary uppercase">{project.title}</h3>
-                        <p className="text-lg md:text-xl lg:text-2xl font-light font-primary text-secondary uppercase leading-7">{project.description}</p>
+                        <h3 className="mt-4 text-xl md:text-2xl lg:text-3xl font-semibold font-primary text-secondary uppercase">
+
+                            {project.title}
+
+                        </h3>
+                        <p className="text-lg md:text-xl lg:text-2xl font-light font-primary text-secondary uppercase leading-7">
+
+                            {project.description}
+
+                        </p>
                     </div>
                 </div>
             ))}
