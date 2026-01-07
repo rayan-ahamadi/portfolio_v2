@@ -55,7 +55,7 @@ export default function Hero() {
     }, []);
 
 
-    return <section className="relative min-h-screen h-auto bg-primary">
+    return <section id="hero" className="bg-primary relative">
         <FleurHero className="absolute
     left-1/2 top-[42%] md:top-[34%]
     -translate-x-1/2 -translate-y-1/2

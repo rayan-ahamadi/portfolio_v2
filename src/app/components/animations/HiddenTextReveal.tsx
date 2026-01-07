@@ -40,8 +40,13 @@ export default function HiddenTextReveal({ children, verticalOrigin = "bottom", 
             reduceWhiteSpace: false,
         });
 
-        gsap.from(split.chars, {
+        gsap.set(split.chars, {
             yPercent: verticalOrigin === "bottom" ? 300 : -300,
+        });
+
+
+        const tween = gsap.to(split.chars, {
+            yPercent: 0,
             duration: 1,
             ease: "power4.out",
             stagger: {
@@ -51,8 +56,16 @@ export default function HiddenTextReveal({ children, verticalOrigin = "bottom", 
             scrollTrigger: {
                 trigger: element,
                 start: "top 80%",
+                invalidateOnRefresh: true,
+                once: true,
             }
         });
+
+        return () => {
+            tween.scrollTrigger?.kill();
+            tween.kill();
+            split.revert();
+        };
     })
 
 

@@ -7,6 +7,7 @@ import Ellipse2 from "@/assets/vector/ellipse2.svg";
 import Link from "next/link";
 
 import HiddenTextReveal from "@/components/animations/HiddenTextReveal";
+import ImageReveal from "@/components/animations/ImageReveal";
 
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
@@ -17,42 +18,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function SelectedWorks() {
     const sectionRef = useRef<HTMLElement>(null);
-    const ellipseDivRef = useRef<HTMLDivElement>(null);
-
-    useGSAP(() => {
-        if (!sectionRef.current || !ellipseDivRef.current) return;
-
-        const section = sectionRef.current;
-        const ellipseDiv = ellipseDivRef.current;
-        const ellipse1 = ellipseDiv.querySelector('svg:nth-child(1)') as SVGSVGElement;
-        const ellipse2 = ellipseDiv.querySelector('svg:nth-child(2)') as SVGSVGElement;
-
-        const stickyEllipses = gsap.timeline({
-            scrollTrigger: {
-                trigger: section,
-                start: "top top",
-                end: "bottom bottom",
-                scrub: true,
-                pin: ellipseDiv,
-                pinSpacing: false,
-            }
-        });
-
-        stickyEllipses
-            .to(ellipse1, {
-                y: 100,
-                x: -100,
-                scale: 0.8,
-                ease: "power1.out",
-            }, 0)
-            .to(ellipse2, {
-                y: -500,
-                x: 100,
-                scale: 0.8,
-                ease: "power1.out",
-            }, 0);
-    }, [])
-
+    const contentRef = useRef<HTMLDivElement>(null);
+    // const ellipse1Ref = useRef<SVGSVGElement>(null);
+    // const ellipse2Ref = useRef<SVGSVGElement>(null);
 
     const projects = [
         {
@@ -75,11 +43,10 @@ export default function SelectedWorks() {
         },
     ]
 
-    return <section id="works" className="relative overflow-hidden min-h-screen h-auto bg-primary" ref={sectionRef}>
-        <div id="ellipse-div" className="absolute inset-0 pointer-events-none h-screen w-screen top-0 left-0" ref={ellipseDivRef}>
-            <Ellipse1 className="absolute top-1/4 left-[55vw] select-none" />
-            <Ellipse2 className="absolute top-4/6 right-[55vw] select-none" />
-        </div>
+
+    return <section id="works" className="bg-primary relative" ref={sectionRef}>
+        {/* <Ellipse1 className="absolute top-1/4 left-[55vw] select-none" ref={ellipse1Ref} />
+        <Ellipse2 className="absolute top-4/6 right-[55vw] select-none" ref={ellipse2Ref} /> */}
         <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6 grid-flow-row">
             <h2 className="col-span-4 md:col-span-8 lg:col-span-12 uppercase font-primary text-secondary font-bold text-6xl md:text-8xl lg:text-9xl mb-32">
                 <HiddenTextReveal verticalOrigin="bottom">
@@ -89,13 +56,15 @@ export default function SelectedWorks() {
             {projects.map((project, index) => (
                 <div key={index} className="col-span-4 md:col-span-4 lg:col-span-6 lg:even:col-start-2 lg:odd:col-start-7 z-[55] mb-58 md:mb-32">
                     <Link href={project.link} className="hover:opacity-70 transition-opacity duration-300">
-                        <Image
-                            src={project.imageUrl + `?${new Date().getTime()}`}
-                            alt={project.title}
-                            width={800}
-                            height={600}
-                            className="mb-4 h-auto w-200 object-cover"
-                        />
+                        <ImageReveal>
+                            <img
+                                src={project.imageUrl + `?${new Date().getTime()}`}
+                                alt={project.title}
+                                width={800}
+                                height={600}
+                                className="mb-4 "
+                            />
+                        </ImageReveal>
                     </Link>
                     <div className="flex flex-col gap-3">
                         <h3 className="mt-4 text-xl md:text-2xl lg:text-3xl  font-semibold font-primary text-secondary uppercase">{project.title}</h3>
@@ -105,5 +74,6 @@ export default function SelectedWorks() {
             ))}
 
         </Container>
+
     </section>;
 }

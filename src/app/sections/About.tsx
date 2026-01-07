@@ -9,6 +9,7 @@ import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import CSSRulePlugin from "gsap/CSSRulePlugin";
 import HiddenTextReveal from "@/components/animations/HiddenTextReveal";
+import ImageReveal from "@/components/animations/ImageReveal";
 
 gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
 
@@ -19,45 +20,50 @@ export default function About() {
         const element = sectionRef.current;
         if (!element) return;
 
+        ScrollTrigger.refresh();
+
         const bodyAfterRule = CSSRulePlugin.getRule("body::after");
         const navLinkAfterRule = CSSRulePlugin.getRule(".underlined-text::after");
         if (!bodyAfterRule) return;
 
-
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: element,
-                start: "top 50%",
-                end: "top 0%",
+                start: "top top",
+                end: "top top",
                 scrub: true,
-            }
+                markers: true,
+                invalidateOnRefresh: true,
+            },
         });
 
         tl.to(bodyAfterRule, {
-            cssRule: { opacity: 0.06 }
-        })
-        tl.to(
-            "header a, header #logo span:last-child",
-            { color: '#d7dae1' },
+            cssRule: { opacity: 0.06 },
+        },
             0
         )
-        tl.to(
-            navLinkAfterRule,
-            { cssRule: { backgroundColor: 'var(--color-primary)' } },
-            0
-        )
-        tl.to(
-            "#burgerButton", { fill: '#d7dae1' },
-            0
-        );
+            .to(
+                "header a, header #logo span:last-child",
+                { color: '#d7dae1' },
+                0
+            )
+            .to(
+                navLinkAfterRule,
+                { cssRule: { backgroundColor: '#d7dae1' } },
+                0
+            )
+            .to(
+                "#burgerButton", { fill: '#d7dae1' },
+                0
+            );
 
     }, []);
 
 
 
 
-    return <section id="about" className="bg-secondary min-h-screen h-auto py-28" ref={sectionRef}>
-        <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6">
+    return <section id="about" className="bg-secondary min-h-screen h-min relative" ref={sectionRef}>
+        <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6 pt-28">
             <h2 className="col-span-4 md:col-span-8 lg:col-span-12 text-primary font-primary font-bold uppercase text-6xl md:text-8xl lg:text-9xl">
                 <HiddenTextReveal verticalOrigin="bottom">
                     About Me
@@ -71,21 +77,22 @@ export default function About() {
                 </p>
             </div>
             <div className="col-start-3 col-span-2 lg:col-start-8 lg:col-span-3 relative bottom-45 md:bottom-75 z-0">
-                <div className="absolute inset-0 bg-accent mix-blend-multiply z-10"></div>
-                <Image
-                    src="/images/rara.png"
-                    alt="Rayan Ahamadi"
-                    width={302}
-                    height={302}
-                    className="h-auto object-cover"
-                />
+                <ImageReveal verticalOrigin="top">
+                    <div className="absolute inset-0 bg-accent mix-blend-multiply z-10"></div>
+                    <img
+                        src="/images/rara.png"
+                        alt="Rayan Ahamadi"
+                        width={302}
+                        height={302}
+                        className="h-auto object-cover"
+                    />
+                </ImageReveal>
             </div>
 
         </Container>
-        <div className="overflow-hidden flex flex-col gap-10 relative bottom-16">
+        {/* <div className="overflow-hidden flex flex-col gap-10 relative bottom-16">
             <StackSlider />
             <StackSlider textColor="#775BC8" scrollDirection="left" />
-        </div>
-
+        </div> */}
     </section>;
 }

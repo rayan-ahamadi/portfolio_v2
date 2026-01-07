@@ -27,13 +27,15 @@ export default function Hero() {
             {
                 scale: 0.8,
                 rotate: -10,
-                ease: "power4.in",
+                ease: "power4.out",
                 delay: 0.8,
                 duration: 1,
                 scrollTrigger: {
                     trigger: sectionRef.current,
                     start: "50% bottom",
                     markers: false,
+                    invalidateOnRefresh: true,
+                    once: true,
                 }
             }
         )
@@ -53,7 +55,7 @@ export default function Hero() {
     }, []);
 
 
-    return <section id="contact" className="bg-secondary min-h-screen h-auto pt-24 " ref={sectionRef}>
+    return <section id="contact" className="bg-secondary min-h-screen h-auto pt-24 relative " ref={sectionRef}>
         <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6 relative top-[10vh] md:static">
             <FleurFooter className="absolute bottom-[2vh] pointer-events-none select-none z-0 left-[35vw] opacity-15"
                 ref={FleurFooterRef} />
