@@ -16,6 +16,8 @@ export default function useScrollRefresh() {
         // 2. sécurité supplémentaire
         setTimeout(refresh, 100);
 
+        window.scrollTo(0, 0);
+
         return () => {
             window.removeEventListener("load", refresh);
         };

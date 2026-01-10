@@ -62,7 +62,7 @@ export default function About() {
 
 
 
-    return <section id="about" className="bg-secondary min-h-screen h-min relative z-11" ref={sectionRef}>
+    return <section id="about" className="bg-secondary min-h-screen h-min relative z-12" ref={sectionRef}>
         <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6 pt-28">
             <h2 className="col-span-4 md:col-span-8 lg:col-span-12 text-primary font-primary font-bold uppercase text-6xl md:text-8xl lg:text-9xl">
                 <HiddenTextReveal verticalOrigin="bottom">

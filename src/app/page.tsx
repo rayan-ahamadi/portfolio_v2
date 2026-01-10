@@ -17,8 +17,10 @@ export default function Home() {
         <Header />
         <Hero />
         <SelectedWorks />
-        <About />
-        <Footer />
+        <div id="black-overlay" className=" z-[12]">
+          <About />
+          <Footer />
+        </div>
       </main>
     </div>
   );

@@ -76,21 +76,22 @@ export default function Hero() {
             },
         });
 
-        tl.fromTo(
-            "#works",
-            {
-                y: 0,
-            },
-            {
-                y: '-40vh',
-            }
-        )
+        tl
+            .fromTo(
+                "#works > .container",
+                {
+                    y: 0,
+                },
+                {
+                    y: '-40vh',
+                }
+            )
             .to(
                 introSelector('*'),
                 {
                     opacity: 0,
                 },
-                '<'
+                '<+0.1'
             )
     }, []);
 

@@ -55,7 +55,7 @@ export default function Hero() {
     }, []);
 
 
-    return <section id="contact" className="bg-secondary min-h-screen h-auto pt-24 relative z-11" ref={sectionRef}>
+    return <section id="contact" className="bg-secondary min-h-screen h-auto pt-24 relative z-12 overflow-hidden" ref={sectionRef}>
         <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6 relative top-[10vh] md:static">
             <FleurFooter className="absolute bottom-[2vh] pointer-events-none select-none z-0 left-[35vw] opacity-15"
                 ref={FleurFooterRef} />
