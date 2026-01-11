@@ -9,15 +9,17 @@ import Link from "next/link";
 import HiddenTextReveal from "@/components/animations/HiddenTextReveal";
 import ImageReveal from "@/components/animations/ImageReveal";
 
-import { useRef } from "react";
+import { useRef, useLayoutEffect, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-
+import { useLenis } from "lenis/react";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function SelectedWorks() {
     const sectionRef = useRef<HTMLElement>(null);
+    const lenis = useLenis();
+
     // const ellipse1Ref = useRef<SVGSVGElement>(null);
     // const ellipse2Ref = useRef<SVGSVGElement>(null);
 
@@ -43,26 +45,32 @@ export default function SelectedWorks() {
     ];
 
     useGSAP(() => {
+
         const section = sectionRef.current;
         if (!section) return;
 
         const sectionSelector = gsap.utils.selector(section);
 
+        const overlay = document.querySelector("#black-overlay") as HTMLElement;
+        const targetY = overlay?.offsetTop || 0;
+        const startScroll = lenis?.scroll || 0; // à vérifier avec -400
+
+
+
         const opacityTimeline = gsap.timeline({
             scrollTrigger: {
                 trigger: section,
                 start: "bottom bottom",
-                end: "+=500",
-                // end: "bottom -=200",
+                end: () => targetY - 400, // à vérifier en responsive
                 markers: true,
                 pin: true,
-                pinSpacing: true,
+                pinSpacing: false,
                 scrub: true,
                 invalidateOnRefresh: true,
                 onEnter: () => {
                     const overlay = document.querySelector("#black-overlay");
                     if (!overlay) return;
-
+                    console.log("Target Y :" + targetY);
                     gsap.set(
                         "#works",
                         {
@@ -82,7 +90,7 @@ export default function SelectedWorks() {
                     });
                 },
                 onLeave: () => {
-                    const overlay = document.querySelector("#black-overlay");
+                    const overlay = document.querySelector("#black-overlay") as HTMLElement;
                     if (!overlay) return;
 
                     // remettre l’overlay dans le flow
@@ -93,13 +101,6 @@ export default function SelectedWorks() {
                         zIndex: 11,
                     });
 
-                    // 🔑 CORRECTION DE SCROLL
-                    const y = overlay.getBoundingClientRect().top;
-
-                    window.scrollBy({
-                        top: y,
-                        behavior: "auto",
-                    });
                 },
                 // ➜ SCROLL ARRIÈRE (LA PIÈCE MANQUANTE)
                 onEnterBack: () => {
@@ -131,26 +132,27 @@ export default function SelectedWorks() {
         });
 
         // Retour au onEnterBack
-        ScrollTrigger.create({
-            trigger: "#black-overlay",
-            start: "top top",
-            end: "top top",
-            markers: false,
-            onEnterBack: () => {
-                const overlay = document.querySelector("#black-overlay");
-                if (!overlay) return;
+        // ScrollTrigger.create({
+        //     trigger: "#black-overlay",
+        //     start: "top top",
+        //     end: "top top",
+        //     markers: false,
+        //     onEnterBack: () => {
+        //         const overlay = document.querySelector("#black-overlay");
+        //         if (!overlay) return;
 
+        //         console.log("Position absolu 2 :" + overlay.offsetTop);
 
-                gsap.set(overlay, {
-                    position: "fixed",
-                    top: 0,
-                    left: 0,
-                    width: "100%",
-                    height: "100%",
-                    zIndex: 12,
-                });
-            }
-        });
+        //         gsap.set(overlay, {
+        //             position: "fixed",
+        //             top: 0,
+        //             left: 0,
+        //             width: "100%",
+        //             height: "100%",
+        //             zIndex: 12,
+        //         });
+        //     }
+        // });
 
         opacityTimeline
             .to(

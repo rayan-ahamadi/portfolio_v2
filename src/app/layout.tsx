@@ -1,6 +1,8 @@
 // app/layout.tsx
 import "./globals.css";
 import { Barlow_Condensed, Pinyon_Script } from "next/font/google";
+import LenisScrollProvider from "@/provider/LenisProvider";
+
 
 export const metadata = {
   title: "Rayan Ahamadi - Creative Developer",
@@ -27,6 +29,7 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+
   return (
     <html lang="fr" className={`${barlow.variable} ${pinyon.variable} font-primary`}>
       <body className="">
