@@ -67,6 +67,7 @@ export function BentoItem({
     return (
         <div
             className={`
+        bento-item
         ${bgColorClass}
         ${colSpanClasses[colSpan]}
         ${mdColSpan ? mdColSpanClasses[mdColSpan] : ""}

@@ -4,6 +4,7 @@ import Container from "@/components/layout/Container";
 import FleurHero from "@/assets/vector/Fleur_Hero.svg";
 import HiddenTextReveal from "@/components/animations/HiddenTextReveal";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import CSSRulePlugin from "gsap/CSSRulePlugin";
 
 import { useRef } from "react";
 
@@ -73,6 +74,9 @@ export default function Hero() {
                 scrub: true,
                 pinSpacing: false,
                 invalidateOnRefresh: true,
+                onLeave: () => {
+                    ScrollTrigger.refresh();
+                },
             },
         });
 

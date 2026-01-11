@@ -13,8 +13,10 @@ import { useRef, useLayoutEffect, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import CSSRulePlugin from "gsap/CSSRulePlugin";
 import { useLenis } from "lenis/react";
-gsap.registerPlugin(ScrollTrigger);
+
+gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
 
 export default function SelectedWorks() {
     const sectionRef = useRef<HTMLElement>(null);
@@ -55,7 +57,7 @@ export default function SelectedWorks() {
         const targetY = overlay?.offsetTop || 0;
         const startScroll = lenis?.scroll || 0; // à vérifier avec -400
 
-
+        const bodyAfterRule = CSSRulePlugin.getRule("body::after");
 
         const opacityTimeline = gsap.timeline({
             scrollTrigger: {
@@ -70,7 +72,6 @@ export default function SelectedWorks() {
                 onEnter: () => {
                     const overlay = document.querySelector("#black-overlay");
                     if (!overlay) return;
-                    console.log("Target Y :" + targetY);
                     gsap.set(
                         "#works",
                         {
@@ -131,28 +132,6 @@ export default function SelectedWorks() {
             },
         });
 
-        // Retour au onEnterBack
-        // ScrollTrigger.create({
-        //     trigger: "#black-overlay",
-        //     start: "top top",
-        //     end: "top top",
-        //     markers: false,
-        //     onEnterBack: () => {
-        //         const overlay = document.querySelector("#black-overlay");
-        //         if (!overlay) return;
-
-        //         console.log("Position absolu 2 :" + overlay.offsetTop);
-
-        //         gsap.set(overlay, {
-        //             position: "fixed",
-        //             top: 0,
-        //             left: 0,
-        //             width: "100%",
-        //             height: "100%",
-        //             zIndex: 12,
-        //         });
-        //     }
-        // });
 
         opacityTimeline
             .to(
@@ -174,6 +153,13 @@ export default function SelectedWorks() {
                     opacity: 1,
                     duration: 1.5,
                     ease: "power1.out",
+                },
+                '<'
+            )
+            .to(
+                bodyAfterRule,
+                {
+                    cssRule: { opacity: 0.06 },
                 },
                 '<'
             )

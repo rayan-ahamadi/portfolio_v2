@@ -57,7 +57,7 @@ export default function ProjectBloopPage() {
                     </ProjectLayout.Hero>
                     <ProjectLayout.Description>
                         {/* Description content for Bloop project */}
-                        <h3 className={"font-semibold mb-7 text-2xl md:text-3xl lg:text-4xl uppercase"}>Description</h3>
+                        <h3 className={"font-semibold mb-4 text-2xl md:text-3xl lg:text-4xl uppercase"}>Description</h3>
                         <p className="font-light text-xl md:text-2xl lg:text-3xl normal-case leading-normal md:leading-10">
                             Bloop is a fictional social media platform inspired by Twitter, designed around a bold neo-brutalist visual language. Developed as a collaborative project with three other creatives, it explores interface structure, typography, and interaction patterns within a contemporary social network context. The project is still evolving, with ongoing experimentation around usability, visual identity, and front-end implementation.
                         </p>

@@ -22,9 +22,8 @@ export default function About() {
 
         ScrollTrigger.refresh();
 
-        const bodyAfterRule = CSSRulePlugin.getRule("body::after");
+
         const navLinkAfterRule = CSSRulePlugin.getRule(".underlined-text::after");
-        if (!bodyAfterRule) return;
 
         const tl = gsap.timeline({
             scrollTrigger: {
@@ -37,11 +36,7 @@ export default function About() {
             },
         });
 
-        tl.to(bodyAfterRule, {
-            cssRule: { opacity: 0.06 },
-        },
-            0
-        )
+        tl
             .to(
                 "header a, header #logo span:last-child",
                 { color: '#d7dae1' },

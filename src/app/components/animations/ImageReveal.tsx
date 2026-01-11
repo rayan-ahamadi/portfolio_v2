@@ -30,7 +30,8 @@ export default function ImageReveal({ children, verticalOrigin = "bottom", delay
             {
                 scrollTrigger: {
                     trigger: container,
-                    start: "top 75%",
+                    start: "top 85%",
+                    markers: true,
                     invalidateOnRefresh: true,
                     once: true,
                 }
