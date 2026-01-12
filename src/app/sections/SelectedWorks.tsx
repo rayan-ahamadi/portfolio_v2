@@ -1,12 +1,7 @@
 "use client";
 
 import Container from "@/components/layout/Container";
-import Image from "next/image";
-import Ellipse1 from "@/assets/vector/ellipse1.svg";
-import Ellipse2 from "@/assets/vector/ellipse2.svg";
 import Link from "next/link";
-
-import HiddenTextReveal from "@/components/animations/HiddenTextReveal";
 import ImageReveal from "@/components/animations/ImageReveal";
 
 import { useRef, useLayoutEffect, useState } from "react";
@@ -15,6 +10,8 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CSSRulePlugin from "gsap/CSSRulePlugin";
 import { useLenis } from "lenis/react";
+
+import { useMediaQuery } from "react-responsive";
 
 gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
 
@@ -46,6 +43,8 @@ export default function SelectedWorks() {
         },
     ];
 
+    const scrollMinus = useMediaQuery({ maxWidth: 768 }) ? 200 : 400;
+
     useGSAP(() => {
 
         const section = sectionRef.current;
@@ -63,7 +62,7 @@ export default function SelectedWorks() {
             scrollTrigger: {
                 trigger: section,
                 start: "bottom bottom",
-                end: () => targetY - 400, // à vérifier en responsive
+                end: () => targetY - scrollMinus, // 200 = mobile, 400 = desktop
                 markers: true,
                 pin: true,
                 pinSpacing: false,
@@ -180,9 +179,7 @@ export default function SelectedWorks() {
 
 
     return <section id="works" className="bg-primary relative z-11 pt-28" ref={sectionRef}>
-        {/* <Ellipse1 className="absolute top-1/4 left-[55vw] select-none" ref={ellipse1Ref} />
-        <Ellipse2 className="absolute top-4/6 right-[55vw] select-none" ref={ellipse2Ref} /> */}
-        <Container className="container grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6 grid-flow-row">
+        <Container className="container grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6 grid-flow-row z-13">
             <h2 className="col-span-4 md:col-span-8 lg:col-span-12 uppercase font-primary text-secondary font-bold text-6xl md:text-8xl lg:text-9xl mb-32">
                 Selected Works
             </h2>

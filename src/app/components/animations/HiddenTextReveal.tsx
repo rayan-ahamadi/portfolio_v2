@@ -55,7 +55,7 @@ export default function HiddenTextReveal({ children, verticalOrigin = "bottom", 
             delay: delay || 0,
             scrollTrigger: {
                 trigger: element,
-                start: "top 80%",
+                start: "top 75%",
                 invalidateOnRefresh: true,
                 once: true,
             }
