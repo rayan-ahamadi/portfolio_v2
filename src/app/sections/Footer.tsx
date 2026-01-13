@@ -52,6 +52,10 @@ export default function Hero() {
             }
         )
 
+        return () => {
+            gsap.killTweensOf(fleurFooter);
+        }
+
     }, []);
 
 

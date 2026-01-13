@@ -20,9 +20,6 @@ export default function About() {
         const element = sectionRef.current;
         if (!element) return;
 
-        ScrollTrigger.refresh();
-
-
         const navLinkAfterRule = CSSRulePlugin.getRule(".underlined-text::after");
 
         const tl = gsap.timeline({
@@ -51,6 +48,10 @@ export default function About() {
                 "#burgerButton", { fill: '#d7dae1' },
                 0
             );
+
+        return () => {
+            tl.kill();
+        }
 
     }, []);
 

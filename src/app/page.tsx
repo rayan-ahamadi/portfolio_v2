@@ -8,6 +8,7 @@ import SelectedWorks from "@/sections/SelectedWorks";
 import Footer from "@/sections/Footer";
 import LeafPath from "@/assets/vector/LeafPath";
 import useScrollRefresh from "@/hooks/useScrollRefresh";
+import LoadingScreen from "@/components/animations/LoadingScreen";
 
 
 import { ReactLenis, useLenis } from "lenis/react";
@@ -15,15 +16,17 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import MotionPathPlugin from "gsap/MotionPathPlugin";
 import { useGSAP } from "@gsap/react";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
 export default function Home() {
-  useScrollRefresh();
+  // useScrollRefresh();
   const lenisRef = useRef(null);
-  const leafWrapperRef = useRef<HTMLElement>(null);
+  const leafWrapperRef = useRef<SVGSVGElement>(null);
+
+  const [onComplete, setOnComplete] = useState<boolean>(false);
 
   useEffect(() => {
     function update(time) {
@@ -94,17 +97,28 @@ export default function Home() {
       },
     });
 
+
+  }, []);
+
+  useEffect(() => {
+    Promise.all([
+      document.fonts.ready,
+      new Promise(resolve => window.addEventListener("load", resolve))
+    ]).then(() => {
+      setOnComplete(true);
+    })
   }, []);
 
   return (
     <div>
       <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
+      {/* {!onComplete && <LoadingScreen onComplete={() => setOnComplete(true)} />} */}
       <main className="relative z-10 overflow-x-hidden">
         <Header />
         <Hero />
         <LeafPath className="absolute
             left-1/2 
-            top-[33.5%] md:top-[40%]
+            top-[33.5%] md:top-[38%]
             -translate-x-[35%] md:-translate-x-[43%] 
             -translate-y-1/2
             pointer-events-none select-none

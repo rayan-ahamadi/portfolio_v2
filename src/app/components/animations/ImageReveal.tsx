@@ -61,6 +61,10 @@ export default function ImageReveal({ children, verticalOrigin = "bottom", delay
                 }
                 , 0
             )
+
+        return () => {
+            tl.kill();
+        }
     }, []);
 
     return (

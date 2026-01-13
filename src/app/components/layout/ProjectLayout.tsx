@@ -61,6 +61,10 @@ ProjectLayout.Description = function Description({ children }: { children: React
                 }
             )
 
+            return () => {
+                split.revert();
+            }
+
         });
     }, []);
 

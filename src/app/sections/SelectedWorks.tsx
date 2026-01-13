@@ -53,6 +53,7 @@ export default function SelectedWorks() {
         const sectionSelector = gsap.utils.selector(section);
 
         const overlay = document.querySelector("#black-overlay") as HTMLElement;
+        const overlayHeight = overlay?.offsetHeight || 0;
         const targetY = overlay?.offsetTop || 0;
         const startScroll = lenis?.scroll || 0; // à vérifier avec -400
 
@@ -62,8 +63,8 @@ export default function SelectedWorks() {
             scrollTrigger: {
                 trigger: section,
                 start: "bottom bottom",
-                end: () => targetY - scrollMinus, // 200 = mobile, 400 = desktop
-                markers: true,
+                end: () => targetY,
+                // markers: true,
                 pin: true,
                 pinSpacing: false,
                 scrub: true,
@@ -77,6 +78,14 @@ export default function SelectedWorks() {
                             y: '0vh',
                             ease: 'none'
                         },
+                    )
+
+                    gsap.set(
+                        "body",
+                        {
+                            paddingBottom: overlayHeight + 'px',
+                            ease: 'none'
+                        }
                     )
 
                     // positionner l’overlay en fixed
@@ -93,6 +102,14 @@ export default function SelectedWorks() {
                     const overlay = document.querySelector("#black-overlay") as HTMLElement;
                     if (!overlay) return;
 
+                    gsap.set(
+                        "body",
+                        {
+                            clearProps: "padding-bottom",
+                            ease: 'none'
+                        }
+                    )
+
                     // remettre l’overlay dans le flow
                     gsap.set(overlay, {
                         opacity: 1,
@@ -102,11 +119,17 @@ export default function SelectedWorks() {
                     });
 
                 },
-                // ➜ SCROLL ARRIÈRE (LA PIÈCE MANQUANTE)
                 onEnterBack: () => {
                     const overlay = document.querySelector("#black-overlay");
                     if (!overlay) return;
 
+                    gsap.set(
+                        "body",
+                        {
+                            paddingBottom: overlayHeight + 'px',
+                            ease: 'none'
+                        }
+                    )
 
                     gsap.set(overlay, {
                         position: "fixed",
@@ -121,6 +144,14 @@ export default function SelectedWorks() {
                 onLeaveBack: () => {
                     const overlay = document.querySelector("#black-overlay");
                     if (!overlay) return;
+
+                    gsap.set(
+                        "body",
+                        {
+                            clearProps: "padding-bottom",
+                            ease: 'none'
+                        }
+                    )
 
                     gsap.set(overlay, {
                         position: "relative",
@@ -174,7 +205,13 @@ export default function SelectedWorks() {
                 }
             )
 
+        requestAnimationFrame(() => {
+            ScrollTrigger.refresh();
+        });
 
+        return () => {
+            opacityTimeline.kill();
+        }
     }, []);
 
 

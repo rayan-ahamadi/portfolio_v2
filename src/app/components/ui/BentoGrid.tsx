@@ -1,6 +1,6 @@
 "use client"
+
 import gsap from "gsap"
-import ScrollTrigger from "gsap/ScrollTrigger"
 import { useGSAP } from "@gsap/react";
 import { useRef } from "react";
 
@@ -42,6 +42,12 @@ export function BentoGrid({ children }: { children: React.ReactNode }) {
                 }
             );
         });
+
+        return () => {
+            gridItems.forEach((item) => {
+                gsap.killTweensOf(item);
+            });
+        }
     }, []);
 
     return (
