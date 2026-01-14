@@ -117,7 +117,7 @@ export default function Home() {
         <Hero />
         <LeafPath className="absolute
             left-1/2 
-            top-[33.5%] md:top-[38%]
+            top-[32.5%] md:top-[38%]
             -translate-x-[35%] md:-translate-x-[43%] 
             -translate-y-1/2
             pointer-events-none select-none

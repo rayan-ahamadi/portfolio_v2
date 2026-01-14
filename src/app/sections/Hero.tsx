@@ -123,7 +123,7 @@ export default function Hero() {
     return (
         <section id="hero" className="bg-primary relative" ref={sectionRef} >
             <FleurHero className="absolute
-    left-1/2 top-[42%] md:top-[34%]
+    left-1/2 top-[40%] md:top-[34%]
     -translate-x-1/2 -translate-y-1/2
     w-84 md:w-128.25 h-auto
     pointer-events-none select-none
