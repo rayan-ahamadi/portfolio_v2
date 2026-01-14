@@ -13,9 +13,10 @@ type Props = {
     children: React.ReactNode;
     verticalOrigin?: 'top' | 'bottom'
     delay?: number;
+    startViewport?: string;
 }
 
-export default function HiddenTextReveal({ children, verticalOrigin = "bottom", delay }: Props) {
+export default function HiddenTextReveal({ children, verticalOrigin = "bottom", delay, startViewport = "75%" }: Props) {
     const textRef = useRef<HTMLDivElement>(null);
     const svgTextRef = useRef<SVGTextElement>(null);
     const textContent = typeof children === 'string' ? children : '';
@@ -55,9 +56,12 @@ export default function HiddenTextReveal({ children, verticalOrigin = "bottom", 
             delay: delay || 0,
             scrollTrigger: {
                 trigger: element,
-                start: "top 75%",
+                start: "top " + startViewport,
                 invalidateOnRefresh: true,
-                once: true,
+                // onEnter: () => tween.restart(true),
+                // onEnterBack: () => tween.play(),
+                // onLeaveBack: () => tween.reverse(),
+                markers: false,
             }
         });
 

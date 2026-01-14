@@ -3,6 +3,7 @@
 import Container from "@/components/layout/Container";
 import Link from "next/link";
 import ImageReveal from "@/components/animations/ImageReveal";
+import HiddenTextReveal from "@/components/animations/HiddenTextReveal";
 
 import { useRef, useLayoutEffect, useState } from "react";
 import { useGSAP } from "@gsap/react";
@@ -205,10 +206,6 @@ export default function SelectedWorks() {
                 }
             )
 
-        requestAnimationFrame(() => {
-            ScrollTrigger.refresh();
-        });
-
         return () => {
             opacityTimeline.kill();
         }
@@ -218,7 +215,9 @@ export default function SelectedWorks() {
     return <section id="works" className="bg-primary relative z-11 pt-28" ref={sectionRef}>
         <Container className="container grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6 grid-flow-row z-13">
             <h2 className="col-span-4 md:col-span-8 lg:col-span-12 uppercase font-primary text-secondary font-bold text-6xl md:text-8xl lg:text-9xl mb-32">
-                Selected Works
+                <HiddenTextReveal startViewport="25%">
+                    Selected Works
+                </HiddenTextReveal>
             </h2>
             {projects.map((project, index) => (
                 <div key={index} className="work-div col-span-4 md:col-span-4 lg:col-span-6 lg:even:col-start-2 lg:odd:col-start-7 z-[55] mb-58 md:mb-32">

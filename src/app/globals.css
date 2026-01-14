@@ -117,3 +117,25 @@ body::after {
 h1 > div {
   font-kerning: none;
 }
+
+.block-line-wrapper {
+  position: relative;
+  display: block;
+  width: max-content;
+}
+
+.block-line {
+  position: relative;
+  display: block;
+}
+
+.block-revealer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 101%;
+  height: 101%;
+  pointer-events: none;
+  will-change: transform;
+  z-index: 13;
+}

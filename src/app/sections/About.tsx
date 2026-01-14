@@ -11,6 +11,8 @@ import CSSRulePlugin from "gsap/CSSRulePlugin";
 import HiddenTextReveal from "@/components/animations/HiddenTextReveal";
 import ImageReveal from "@/components/animations/ImageReveal";
 
+import { LineBlockReveal } from "@/components/animations/LineBlockReveal";
+
 gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
 
 export default function About() {
@@ -61,16 +63,18 @@ export default function About() {
     return <section id="about" className="bg-secondary min-h-screen h-min relative z-12" ref={sectionRef}>
         <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6 pt-28">
             <h2 className="col-span-4 md:col-span-8 lg:col-span-12 text-primary font-primary font-bold uppercase text-6xl md:text-8xl lg:text-9xl">
-                <HiddenTextReveal verticalOrigin="bottom">
+                <HiddenTextReveal startViewport="25%">
                     About Me
                 </HiddenTextReveal>
             </h2>
             <div className="col-span-4 lg:col-start-3 lg:col-span-7 py-28 z-50">
-                <p className="font-primary text-primary font-regular leading-normal md:leading-14 tracking-tight text-2xl md:text-4xl lg:text-5xl z-[55] uppercase">
-                    I'm Rayan Ahamadi, a <span className="text-accent">front-end creative developer</span> based in Aix-en-Provence,France and currently in a work-study program.
-                    I design and build <span className="text-accent"> interactive</span> interfaces with a strong attention to <span className="text-accent">motion</span>, <span className="text-accent">structure</span>, and <span className="text-accent">visual identity</span>.
-                    aiming to create meaningful and expressive digital experiences.
-                </p>
+                <LineBlockReveal>
+                    <p className="font-primary text-primary font-regular leading-normal md:leading-14 tracking-tight text-2xl md:text-4xl lg:text-5xl z-[55] uppercase">
+                        I'm Rayan Ahamadi, a <span className="text-accent">front-end creative developer</span> based in Aix-en-Provence,France and currently in a work-study program.
+                        I design and build <span className="text-accent"> interactive</span> interfaces with a strong attention to <span className="text-accent">motion</span>, <span className="text-accent">structure</span>, and <span className="text-accent">visual identity</span>.
+                        aiming to create meaningful and expressive digital experiences.
+                    </p>
+                </LineBlockReveal>
             </div>
             <div className="col-start-3 col-span-2 lg:col-start-8 lg:col-span-3 relative bottom-45 md:bottom-75 z-0">
                 <ImageReveal verticalOrigin="top">
