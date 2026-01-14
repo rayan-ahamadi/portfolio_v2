@@ -139,3 +139,7 @@ h1 > div {
   will-change: transform;
   z-index: 13;
 }
+
+#loading-container .masker {
+  transform: scaleX(0);
+}

@@ -34,11 +34,9 @@ export default function Hero() {
             fleur,
             {
                 scale: 1.2,
-                // opacity: 1.2,
-                // y: 10,
                 rotate: 10,
                 ease: "power4.out",
-                delay: 0,
+                delay: 0.5,
                 duration: 1.5,
             }
         )
@@ -69,6 +67,7 @@ export default function Hero() {
 
         gsap.to(split.chars, {
             yPercent: 0,
+            delay: 0.8,
             duration: 1,
             ease: "power4.out",
             stagger: {
@@ -113,10 +112,11 @@ export default function Hero() {
                 '<+0.1'
             )
 
+        ScrollTrigger.refresh();
+
         return () => {
             tl.kill();
         };
-
     }, []);
 
 

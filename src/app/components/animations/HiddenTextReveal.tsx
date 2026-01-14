@@ -14,9 +14,10 @@ type Props = {
     verticalOrigin?: 'top' | 'bottom'
     delay?: number;
     startViewport?: string;
+    splitType?: 'lines' | 'chars';
 }
 
-export default function HiddenTextReveal({ children, verticalOrigin = "bottom", delay, startViewport = "75%" }: Props) {
+export default function HiddenTextReveal({ children, verticalOrigin = "bottom", delay, startViewport = "75%", splitType = "chars" }: Props) {
     const textRef = useRef<HTMLDivElement>(null);
     const svgTextRef = useRef<SVGTextElement>(null);
     const textContent = typeof children === 'string' ? children : '';
@@ -41,29 +42,30 @@ export default function HiddenTextReveal({ children, verticalOrigin = "bottom", 
             reduceWhiteSpace: false,
         });
 
-        gsap.set(split.chars, {
-            yPercent: verticalOrigin === "bottom" ? 300 : -300,
-        });
+        gsap.set(
+            splitType === "chars" ? split.chars : split.lines,
+            {
+                yPercent: verticalOrigin === "bottom" ? 300 : -300,
+            });
 
 
-        const tween = gsap.to(split.chars, {
-            yPercent: 0,
-            duration: 1,
-            ease: "power4.out",
-            stagger: {
-                each: 0.02,
-            },
-            delay: delay || 0,
-            scrollTrigger: {
-                trigger: element,
-                start: "top " + startViewport,
-                invalidateOnRefresh: true,
-                // onEnter: () => tween.restart(true),
-                // onEnterBack: () => tween.play(),
-                // onLeaveBack: () => tween.reverse(),
-                markers: false,
-            }
-        });
+        const tween = gsap.to(
+            splitType === "chars" ? split.chars : split.lines,
+            {
+                yPercent: 0,
+                duration: 1,
+                ease: "power4.out",
+                stagger: {
+                    each: 0.02,
+                },
+                delay: delay || 0,
+                scrollTrigger: {
+                    trigger: element,
+                    start: "top " + startViewport,
+                    invalidateOnRefresh: true,
+                    markers: false,
+                }
+            });
 
         return () => {
             tween.scrollTrigger?.kill();

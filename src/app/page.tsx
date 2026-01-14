@@ -8,7 +8,7 @@ import SelectedWorks from "@/sections/SelectedWorks";
 import Footer from "@/sections/Footer";
 import LeafPath from "@/assets/vector/LeafPath";
 import useScrollRefresh from "@/hooks/useScrollRefresh";
-import LoadingScreen from "@/components/animations/LoadingScreen";
+
 
 
 import { ReactLenis, useLenis } from "lenis/react";
@@ -112,7 +112,6 @@ export default function Home() {
   return (
     <div>
       <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
-      {/* {!onComplete && <LoadingScreen onComplete={() => setOnComplete(true)} />} */}
       <main className="relative z-10 overflow-x-hidden">
         <Header />
         <Hero />

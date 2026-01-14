@@ -1,7 +1,7 @@
 "use client";
 
 import Container from "@/components/layout/Container";
-import Link from "next/link";
+import NewLink from "@/components/ui/NewLink";
 import ImageReveal from "@/components/animations/ImageReveal";
 import HiddenTextReveal from "@/components/animations/HiddenTextReveal";
 
@@ -215,13 +215,13 @@ export default function SelectedWorks() {
     return <section id="works" className="bg-primary relative z-11 pt-28" ref={sectionRef}>
         <Container className="container grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6 grid-flow-row z-13">
             <h2 className="col-span-4 md:col-span-8 lg:col-span-12 uppercase font-primary text-secondary font-bold text-6xl md:text-8xl lg:text-9xl mb-32">
-                <HiddenTextReveal startViewport="25%">
+                <HiddenTextReveal startViewport="90%">
                     Selected Works
                 </HiddenTextReveal>
             </h2>
             {projects.map((project, index) => (
                 <div key={index} className="work-div col-span-4 md:col-span-4 lg:col-span-6 lg:even:col-start-2 lg:odd:col-start-7 z-[55] mb-58 md:mb-32">
-                    <Link href={project.link} className="hover:opacity-70 transition-opacity duration-300">
+                    <NewLink href={project.link} className="hover:opacity-70 transition-opacity duration-300">
                         <ImageReveal>
                             <img
                                 src={project.imageUrl + `?${new Date().getTime()}`}
@@ -231,12 +231,10 @@ export default function SelectedWorks() {
                                 className="mb-4 "
                             />
                         </ImageReveal>
-                    </Link>
+                    </NewLink>
                     <div className="flex flex-col gap-3">
                         <h3 className="mt-4 text-xl md:text-2xl lg:text-3xl font-semibold font-primary text-secondary uppercase">
-
                             {project.title}
-
                         </h3>
                         <p className="text-lg md:text-xl lg:text-2xl font-light font-primary text-secondary uppercase leading-7">
 

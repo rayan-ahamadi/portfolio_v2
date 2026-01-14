@@ -2,6 +2,7 @@
 import "./globals.css";
 import { Barlow_Condensed, Pinyon_Script } from "next/font/google";
 import LenisScrollProvider from "@/provider/LenisProvider";
+import Template from "./template";
 
 
 export const metadata = {
@@ -33,7 +34,9 @@ export default function RootLayout({
   return (
     <html lang="fr" className={`${barlow.variable} ${pinyon.variable} font-primary`}>
       <body className="">
-        {children}
+        <Template>
+          {children}
+        </Template>
       </body>
     </html>
   );

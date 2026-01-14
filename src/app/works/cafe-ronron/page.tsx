@@ -3,7 +3,7 @@
 import { ProjectLayout } from "@/components/layout/ProjectLayout"
 import { BentoGrid } from "@/components/ui/BentoGrid"
 import { BentoItem } from "@/components/ui/BentoItem"
-import LeftArrow from "@/assets/vector/left_arrow.svg"
+import ProjectPageLeftArrow from "@/components/ui/ProjectPageLeftArrow"
 import Link from "next/link"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
@@ -38,10 +38,7 @@ export default function ProjectRonronPage() {
             <main className="relative z-10">
                 <Header />
 
-                <LeftArrow
-                    onClick={() => router.back()}
-                    className="fixed cursor-pointer bottom-10 left-5 md:left-20 w-10 h-10 hover:opacity-70 transition-opacity duration-300"
-                />
+                <ProjectPageLeftArrow />
                 <ProjectLayout className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6">
                     <ProjectLayout.Hero>
                         {/* Hero content for CaféRonron project */}
