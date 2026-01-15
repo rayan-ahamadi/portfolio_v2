@@ -14,6 +14,11 @@ const nextConfig: NextConfig = {
       rule.test?.test?.(".svg")
     );
 
+    config.module.rules.push({
+      test: /\.(glsl|vert|frag)$/,
+      type: "asset/source",
+    });
+
     config.module.rules.push(
       {
         ...fileLoaderRule,

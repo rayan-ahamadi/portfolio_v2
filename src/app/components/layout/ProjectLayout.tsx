@@ -53,7 +53,7 @@ ProjectLayout.Description = function Description({ children }: { children: React
                     duration: 0.1,
                     scrollTrigger: {
                         trigger: paragraph,
-                        start: "top 85%",
+                        start: "top bottom",
                         markers: false,
                         invalidateOnRefresh: true,
                         once: true,

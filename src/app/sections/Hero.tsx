@@ -6,6 +6,7 @@ import LeafPath from "@/assets/vector/LeafPath.svg";
 import HiddenTextReveal from "@/components/animations/HiddenTextReveal";
 import SplitText from "gsap/SplitText";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import FleurDistorted from "@/components/animations/FleurDistorded";
 import CSSRulePlugin from "gsap/CSSRulePlugin";
 
 import { useRef } from "react";
@@ -130,6 +131,15 @@ export default function Hero() {
     "
                 ref={fleurRef}
             />
+            {/* <div
+                className="absolute left-1/2 top-[40%] md:top-[34%]
+  -translate-x-1/2 -translate-y-1/2
+  w-[60vw] h-auto"
+
+            >
+                <FleurDistorted />
+            </div> */}
+
             <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6">
                 <div className="col-span-4 md:col-span-8 lg:col-span-12 flex flex-col justify-end items-start min-h-screen py-7 tracking-tight" >
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-primary md:z-0 -mb-2.5 ">Creative developer focused on <span className="font-accent text-accent text-[46px] md:text-[62px] lg:text-[68px] mix-blend-darken">motion</span> and <span className="font-accent text-accent text-[46px] md:text-[62px] lg:text-[68px] mix-blend-darken">structure</span></h2>

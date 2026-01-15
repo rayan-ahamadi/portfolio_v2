@@ -13,7 +13,7 @@ export const animatePageIn = () => {
 
   tl.to("#loading-container .masker", {
     scaleX: 1,
-    duration: 2,
+    duration: 2.5,
     ease: "power2.out",
   })
     .to(
