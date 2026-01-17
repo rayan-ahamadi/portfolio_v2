@@ -90,9 +90,9 @@ export default function About() {
             </div>
 
         </Container>
-        {/* <div className="overflow-hidden flex flex-col gap-10 relative bottom-16">
+        <div className="overflow-hidden flex flex-col gap-8 relative bottom-16">
             <StackSlider />
             <StackSlider textColor="#775BC8" scrollDirection="left" />
-        </div> */}
+        </div>
     </section>;
 }

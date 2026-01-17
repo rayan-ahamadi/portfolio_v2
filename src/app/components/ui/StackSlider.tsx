@@ -1,19 +1,17 @@
 'use client';
 
-import 'keen-slider/keen-slider.min.css'
-import KeenSlider, { KeenSliderInstance } from 'keen-slider'
-import { useEffect, useRef } from 'react';
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
 
 type props = {
     textColor?: string;
     scrollDirection?: 'left' | 'right';
 }
 
-const animation = { duration: 50000, easing: (t: number) => t }
+gsap.registerPlugin(ScrollTrigger);
 
-const moveWithDirection = (s: KeenSliderInstance, offset: number) => {
-    s.moveToIdx(s.track.details.abs + offset, true, animation);
-}
 
 export default function StackSlider({ textColor = "#D7DAE1", scrollDirection = 'right' }: props) {
     const sliderRef = useRef<HTMLDivElement>(null);
@@ -29,56 +27,38 @@ export default function StackSlider({ textColor = "#D7DAE1", scrollDirection = '
         "Figma",
     ];
 
-    useEffect(() => {
-        if (!sliderRef.current) return;
-
-        const moveOffset = scrollDirection === 'left' ? -5 : 5;
-
-        const slider = new KeenSlider(sliderRef.current, {
-            loop: true,
-            drag: false,
-            renderMode: "performance",
-            slides: {
-                perView: 3,
-            },
-            breakpoints: {
-                '(max-width: 768px)': {
-                    slides: {
-                        perView: 2,
-                        spacing: 12,
-                    },
-                },
-            },
-            created(s) {
-                moveWithDirection(s, moveOffset)
-            },
-            updated(s) {
-                moveWithDirection(s, moveOffset)
-            },
-            animationEnded(s) {
-                moveWithDirection(s, moveOffset)
-            },
-        },
-            []
-        );
-        return () => {
-            slider.destroy();
-        };
-    }, [scrollDirection]);
-
-
     return (
-        <div ref={sliderRef} className="keen-slider bg-secondary">
-            {stacks.map((stack, index) => (
-                <div
-                    key={index}
-                    className="keen-slider__slide flex items-center justify-center"
-                >
-                    <span className={`text-8xl font-extrabold uppercase w-max`} style={{ color: textColor }}>
-                        {stack}
-                    </span>
-                </div>
-            ))}
+        <div
+            ref={sliderRef}
+            className="slider bg-secondary w-screen overflow-hidden overflow-x-auto flex"
+            style={{ ['--carousel-speed' as never]: 50 }}
+        >
+            <div className={"group flex items-center justify-center gap-20 pr-20" + (scrollDirection === 'left' ? ' animate-scrollLeft' : ' animate-scrollRight')}>
+                {
+                    stacks.map((stack, index) => (
+                        <div
+                            key={index}
+                            className="text-9xl font-extrabold tracking-tight select-none flex-0 uppercase"
+                            style={{ color: textColor }}
+                        >
+                            {stack}
+                        </div>
+                    ))
+                }
+            </div>
+            <div aria-hidden className={"group flex items-center justify-center gap-20 pr-20" + (scrollDirection === 'left' ? ' animate-scrollLeft' : ' animate-scrollRight')}>
+                {
+                    stacks.map((stack, index) => (
+                        <div
+                            key={index}
+                            className="text-9xl font-extrabold tracking-tight select-none flex-0 uppercase"
+                            style={{ color: textColor }}
+                        >
+                            {stack}
+                        </div>
+                    ))
+                }
+            </div>
         </div>
     );
 

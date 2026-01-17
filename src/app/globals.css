@@ -8,6 +8,7 @@
   --color-primary: #d7dae1;
   --color-secondary: #000009;
   --color-accent: #775bc8;
+  --carousel-speed: 50;
   /* --background: #ffffff;
   --foreground: #171717; */
 }
@@ -142,4 +143,35 @@ h1 > div {
 
 #loading-container .masker {
   transform: scaleX(0);
+}
+
+.slider::-webkit-scrollbar {
+  display: none;
+}
+
+.slider .group.animate-scrollLeft {
+  animation: sliderScrollLeft calc(var(--carousel-speed) * 1s) infinite ease-out;
+}
+
+.slider .group.animate-scrollRight {
+  animation: sliderScrollRight calc(var(--carousel-speed) * 1s) infinite
+    ease-out;
+}
+
+@keyframes sliderScrollLeft {
+  from {
+    translate: 0;
+  }
+  to {
+    translate: -100%;
+  }
+}
+
+@keyframes sliderScrollRight {
+  from {
+    translate: -100%;
+  }
+  to {
+    translate: 0;
+  }
 }

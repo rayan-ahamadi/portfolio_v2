@@ -2,14 +2,11 @@
 
 import Container from "@/components/layout/Container";
 import FleurHero from "@/assets/vector/Fleur_Hero.svg";
-import LeafPath from "@/assets/vector/LeafPath.svg";
 import HiddenTextReveal from "@/components/animations/HiddenTextReveal";
 import SplitText from "gsap/SplitText";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import FleurDistorted from "@/components/animations/FleurDistorded";
-import CSSRulePlugin from "gsap/CSSRulePlugin";
 
-import { useRef } from "react";
+import { useRef, useEffect, use } from "react";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -18,6 +15,14 @@ export default function Hero() {
     const fleurRef = useRef<SVGSVGElement>(null);
     const sectionRef = useRef<HTMLDivElement>(null);
     const h1Ref = useRef<HTMLHeadingElement>(null);
+    const heroRef = useRef<HTMLDivElement>(null);
+
+    const idle = { rotate: 0 }
+    const wind = { rotate: 0 }
+
+    let lastX = 0
+    let lastTime = 0
+
 
     // Animation de la fleur centrale et overlap
     useGSAP(() => {
@@ -48,17 +53,6 @@ export default function Hero() {
         }
         )
 
-        gsap.to(
-            fleur,
-            {
-                yoyo: true,
-                repeat: -1,
-                ease: "sine.inOut",
-                duration: 4,
-                rotate: 1,
-                delay: 1.5,
-            }
-        )
 
         // Animation texte Rayan.dev sans scrollTrigger
         const split = new SplitText(h1Ref.current, { type: "chars" });
@@ -113,6 +107,58 @@ export default function Hero() {
                 '<+0.1'
             )
 
+
+        // Animation vent sur la fleur avec la souris 
+        gsap.to(
+            idle,
+            {
+                yoyo: true,
+                repeat: -1,
+                ease: "sine.inOut",
+                duration: 4,
+                rotate: 1,
+                delay: 1.5,
+            }
+        )
+
+        fleur.addEventListener("mousemove", (e) => {
+            const rect = fleur.getBoundingClientRect()
+            const x = (e.clientX - rect.left) / rect.width - 0.5
+
+            const now = performance.now()
+            const dx = x - lastX
+            const dt = now - lastTime || 16
+
+            const velocity = dx / dt // vitesse normalisée
+
+            lastX = x
+            lastTime = now
+
+            gsap.to(wind, {
+                rotate: gsap.utils.clamp(-6, 6, velocity * 600),
+                duration: 0.3,
+                ease: "power3.out",
+            })
+        })
+
+        fleur.addEventListener("mouseleave", () => {
+            gsap.to(wind, {
+                rotate: 0,
+                duration: 1,
+                ease: "power3.out",
+            })
+        })
+
+
+        const setRotate = gsap.quickSetter(fleur, "rotate", "deg")
+
+        gsap.ticker.add(() => {
+            setRotate(idle.rotate + wind.rotate)
+        })
+
+
+
+
         ScrollTrigger.refresh();
 
         return () => {
@@ -120,29 +166,20 @@ export default function Hero() {
         };
     }, []);
 
-
     return (
         <section id="hero" className="bg-primary relative" ref={sectionRef} >
             <FleurHero className="absolute
-    left-1/2 top-[40%] md:top-[34%]
+    left-1/2 top-[40%]
     -translate-x-1/2 -translate-y-1/2
     w-84 md:w-128.25 h-auto
-    pointer-events-none select-none
+    select-none pointer-events-auto
     "
                 ref={fleurRef}
             />
-            {/* <div
-                className="absolute left-1/2 top-[40%] md:top-[34%]
-  -translate-x-1/2 -translate-y-1/2
-  w-[60vw] h-auto"
-
-            >
-                <FleurDistorted />
-            </div> */}
 
             <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6">
-                <div className="col-span-4 md:col-span-8 lg:col-span-12 flex flex-col justify-end items-start min-h-screen py-7 tracking-tight" >
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-primary md:z-0 -mb-2.5 ">Creative developer focused on <span className="font-accent text-accent text-[46px] md:text-[62px] lg:text-[68px] mix-blend-darken">motion</span> and <span className="font-accent text-accent text-[46px] md:text-[62px] lg:text-[68px] mix-blend-darken">structure</span></h2>
+                <div className="col-span-4 md:col-span-8 lg:col-span-12 flex flex-col justify-end items-start min-h-screen py-7 tracking-tight" ref={heroRef}>
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-primary md:z-0 -mb-2.5 mix-blend-multiply">Creative developer focused on <span className="font-accent text-accent text-[46px] md:text-[62px] lg:text-[68px] mix-blend-darken">motion</span> and <span className="font-accent text-accent text-[46px] md:text-[62px] lg:text-[68px] mix-blend-darken">structure</span></h2>
                     <h1 className="text-[92px] md:text-[218px]  lg:text-[298px] font-primary font-black text-accent fill-accent uppercase leading-[0.70] mix-blend-darken w-full relative right-1.5">
                         <div className="overflow-hidden inline-block h-full w-max" ref={h1Ref}>
                             Rayan.dev

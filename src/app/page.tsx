@@ -26,7 +26,6 @@ export default function Home() {
   const lenisRef = useRef(null);
   const leafWrapperRef = useRef<SVGSVGElement>(null);
 
-  const [onComplete, setOnComplete] = useState<boolean>(false);
 
   useEffect(() => {
     function update(time) {
@@ -100,14 +99,7 @@ export default function Home() {
 
   }, []);
 
-  useEffect(() => {
-    Promise.all([
-      document.fonts.ready,
-      new Promise(resolve => window.addEventListener("load", resolve))
-    ]).then(() => {
-      setOnComplete(true);
-    })
-  }, []);
+
 
   return (
     <div>

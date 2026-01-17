@@ -74,7 +74,7 @@ export default function Hero() {
         <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6 relative top-[10vh] md:static">
             <FleurFooter className="absolute bottom-[2vh] pointer-events-none select-none z-0 left-[35vw] opacity-15"
                 ref={FleurFooterRef} />
-            <h2 className="w-max col-span-4 md:col-span-8 lg:col-span-12 font-primary font-extrabold text-accent text-[82px] md:text-[292px] uppercase leading-[0.70] z-[55] relative right-1.5">
+            <h2 className="w-max col-span-4 md:col-span-8 lg:col-span-12 font-primary font-extrabold text-accent text-[82px] md:text-[292px] uppercase leading-[0.70] z-[55] relative right-9">
                 <HiddenTextReveal verticalOrigin="top">
                     Contact Me
                 </HiddenTextReveal>
