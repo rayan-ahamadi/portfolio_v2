@@ -45,21 +45,10 @@ export default function Hero() {
                 {
                     scale: 0.8,
                     rotate: -10,
-                    ease: "power4.out",
+                    ease: "power4.inOut",
                     delay: 0.8,
-                    duration: 1,
+                    duration: 2,
 
-                }
-            )
-            .to(
-                fleurFooter,
-                {
-                    yoyo: true,
-                    repeat: -1,
-                    ease: "sine.inOut",
-                    duration: 4,
-                    rotate: 0.8,
-                    delay: 1,
                 }
             )
 

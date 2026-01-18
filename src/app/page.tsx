@@ -11,7 +11,7 @@ import useScrollRefresh from "@/hooks/useScrollRefresh";
 
 
 
-import { ReactLenis, useLenis } from "lenis/react";
+import { ReactLenis, type LenisRef, useLenis } from "lenis/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import MotionPathPlugin from "gsap/MotionPathPlugin";
@@ -23,32 +23,33 @@ gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
 export default function Home() {
   // useScrollRefresh();
-  const lenisRef = useRef(null);
+  const lenisRef = useRef<LenisRef | null>(null);
   const leafWrapperRef = useRef<SVGSVGElement>(null);
 
 
   useEffect(() => {
-    function update(time) {
-      lenisRef.current?.lenis?.raf(time * 1000)
+    function update(time: number) {
+      lenisRef.current?.lenis?.raf(time * 1000);
     }
 
-    gsap.ticker.add(update)
+    gsap.ticker.add(update);
 
-    return () => gsap.ticker.remove(update)
-  }, [])
+    return () => gsap.ticker.remove(update);
+  }, []);
 
   // Synchronise Lenis avec ScrollTrigger pour avoir des coordonnées cohérentes (scroll absolu).
   useEffect(() => {
-    const lenis = (lenisRef.current as any)?.lenis;
+    const lenis = lenisRef.current?.lenis;
     if (!lenis) return;
 
     ScrollTrigger.scrollerProxy(document.documentElement, {
-      scrollTop(value) {
-        if (arguments.length) {
+      scrollTop(value?: number) {
+        if (typeof value === "number") {
           lenis.scrollTo(value, { immediate: true });
-        } else {
-          return lenis.scroll;
+          return;
         }
+
+        return lenis.scroll;
       },
       getBoundingClientRect() {
         return {
@@ -110,7 +111,7 @@ export default function Home() {
         <LeafPath className="absolute
             left-1/2 
             top-[32.5%] md:top-[38%]
-            -translate-x-[35%] md:-translate-x-[43%] 
+            -translate-x-[35%] md:-translate-x-[44.5%] 
             -translate-y-1/2
             pointer-events-none select-none
             z-15

@@ -1,8 +1,9 @@
 type Span = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12
+type MdSpan = 1 | 2 | 3 | 4 | 5 | 6
 
 type BentoItemProps = {
     colSpan?: Span
-    mdColSpan?: Span
+    mdColSpan?: MdSpan
     lgColSpan?: Span
     rowSpan?: 1 | 2 | 3
     bgColorClass?: string
@@ -25,7 +26,7 @@ const colSpanClasses = {
 }
 
 
-const mdColSpanClasses = {
+const mdColSpanClasses: Record<MdSpan, string> = {
     1: "md:col-span-1",
     2: "md:col-span-2",
     3: "md:col-span-3",
@@ -72,7 +73,7 @@ export function BentoItem({
         ${colSpanClasses[colSpan]}
         ${mdColSpan ? mdColSpanClasses[mdColSpan] : ""}
         ${lgColSpan ? lgColSpanClasses[lgColSpan] : ""}
-        row-span-${rowSpan}
+        ${rowSpanClasses[rowSpan]}
         rounded-xl
         p-6
       `}

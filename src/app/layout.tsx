@@ -1,7 +1,6 @@
 // app/layout.tsx
 import "./globals.css";
 import { Barlow_Condensed, Pinyon_Script } from "next/font/google";
-import LenisScrollProvider from "@/provider/LenisProvider";
 import Template from "./template";
 
 

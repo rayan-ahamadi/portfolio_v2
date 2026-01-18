@@ -37,7 +37,7 @@ export default function About() {
 
         tl
             .to(
-                "header a, header #logo span:last-child",
+                "header a, #header-occupation",
                 { color: '#d7dae1' },
                 0
             )
