@@ -1,7 +1,13 @@
 import gsap from "gsap";
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime";
+import {
+  markTransitionDone,
+  markTransitionStart,
+} from "@/stores/transitionStore";
 
 export const animatePageIn = () => {
+  markTransitionStart();
+
   const tiles = gsap.utils.toArray<HTMLElement>(".tile");
 
   const tl = gsap.timeline();
@@ -42,7 +48,12 @@ export const animatePageIn = () => {
       },
       "-=1"
     )
+    .add(() => {
+      markTransitionDone();
+    }, "-=1")
     .set("#loading-container", { display: "none" });
+
+  return tl;
 };
 
 type AnimatePageOutProps = {
@@ -51,6 +62,8 @@ type AnimatePageOutProps = {
 };
 
 export const animatePageOut = ({ href, router }: AnimatePageOutProps) => {
+  markTransitionStart();
+
   const tiles = gsap.utils.toArray<HTMLElement>(".tile");
 
   const tl = gsap.timeline({
@@ -91,4 +104,6 @@ export const animatePageOut = ({ href, router }: AnimatePageOutProps) => {
     duration: 0.5,
     ease: "power2.out",
   });
+
+  return tl;
 };

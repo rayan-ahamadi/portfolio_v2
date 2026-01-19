@@ -12,13 +12,13 @@ export default function LeafPath({ className, ref }: Props) {
             height="799.2525mm"
             viewBox="0 0 172.47382 799.25251"
             version="1.1"
-            id="svg1"
+            id="LeafPathSVG"
         >
             <defs
                 id="defs1" />
             <g
                 id="layer1"
-                transform="translate(-1.899206,-3.32754)">
+                transform="translate(26,-3.32754)" style={{ transform: "translateX(26px);" }}>
                 <g
                     id="leafPath"
                     transform="matrix(0.26458333,0,0,0.26458333,-42.907194,41.078898)"

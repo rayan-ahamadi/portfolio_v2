@@ -23,6 +23,10 @@ body::after {
   opacity: 0.03;
 }
 
+body {
+  overflow-x: hidden;
+}
+
 @layer utilities {
   .text-primary {
     color: var(--color-primary);
@@ -174,4 +178,16 @@ h1 > div {
   to {
     translate: 0;
   }
+}
+
+#hero-title {
+  font-size: clamp(75px, 22vw, 298px);
+}
+
+#contact-title {
+  font-size: clamp(70px, 19vw, 292px);
+}
+
+#intro p {
+  font-size: clamp(62px, 16vw, 176px);
 }

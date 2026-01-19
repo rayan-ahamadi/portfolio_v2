@@ -64,7 +64,7 @@ export default function SelectedWorks() {
             scrollTrigger: {
                 trigger: section,
                 start: "bottom bottom",
-                end: () => targetY,
+                end: () => targetY - scrollMinus,
                 // markers: true,
                 pin: true,
                 pinSpacing: false,
@@ -73,6 +73,15 @@ export default function SelectedWorks() {
                 onEnter: () => {
                     const overlay = document.querySelector("#black-overlay");
                     if (!overlay) return;
+
+                    gsap.set(
+                        "#LeafPathSVG",
+                        {
+                            display: 'none',
+                            ease: 'none'
+                        }
+                    )
+
                     gsap.set(
                         "#works",
                         {
@@ -147,6 +156,14 @@ export default function SelectedWorks() {
                     if (!overlay) return;
 
                     gsap.set(
+                        "#LeafPathSVG",
+                        {
+                            clearProps: "display",
+                            ease: 'none'
+                        }
+                    )
+
+                    gsap.set(
                         "body",
                         {
                             clearProps: "padding-bottom",
@@ -212,15 +229,15 @@ export default function SelectedWorks() {
     }, []);
 
 
-    return <section id="works" className="bg-primary relative z-11 pt-28" ref={sectionRef}>
-        <Container className="container grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6 grid-flow-row z-13">
-            <h2 className="col-span-4 md:col-span-8 lg:col-span-12 uppercase font-primary text-secondary font-bold text-6xl md:text-8xl lg:text-9xl mb-32">
+    return <section id="works" className="bg-primary relative pt-28 z-10" ref={sectionRef}>
+        <Container className="container bg-primary grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6 grid-flow-row z-12">
+            <h2 className="col-span-4 md:col-span-8 lg:col-span-12 uppercase font-primary text-secondary font-bold text-5xl md:text-8xl lg:text-9xl mb-8 md:mb-16 lg:mb-32">
                 <HiddenTextReveal startViewport="90%">
                     Selected Works
                 </HiddenTextReveal>
             </h2>
             {projects.map((project, index) => (
-                <div key={index} className="work-div col-span-4 md:col-span-4 lg:col-span-6 lg:even:col-start-2 lg:odd:col-start-7 z-[55] mb-58 md:mb-32">
+                <div key={index} className="work-div col-span-4 md:col-span-4 lg:col-span-6 lg:even:col-start-2 lg:odd:col-start-7  mb-28 md:mb-32">
                     <NewLink href={project.link} className="hover:opacity-70 transition-opacity duration-300">
                         <ImageReveal>
                             <img

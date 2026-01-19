@@ -61,13 +61,13 @@ export default function About() {
 
 
     return <section id="about" className="bg-secondary min-h-screen h-min relative z-12" ref={sectionRef}>
-        <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6 pt-28">
-            <h2 className="col-span-4 md:col-span-8 lg:col-span-12 text-primary font-primary font-bold uppercase text-6xl md:text-8xl lg:text-9xl">
+        <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6 p-28">
+            <h2 className="col-span-4 md:col-span-8 lg:col-span-12 text-primary font-primary font-bold uppercase text-5xl md:text-8xl lg:text-9xl">
                 <HiddenTextReveal startViewport="25%">
                     About Me
                 </HiddenTextReveal>
             </h2>
-            <div className="col-span-4 lg:col-start-3 lg:col-span-7 py-28 z-50">
+            <div className="col-span-4 lg:col-start-3 lg:col-span-7 py-6 md:py-14 lg:py-28 z-50">
                 <LineBlockReveal>
                     <p className="font-primary text-primary font-regular leading-normal md:leading-14 tracking-tight text-2xl md:text-4xl lg:text-5xl z-[55] uppercase">
                         I'm Rayan Ahamadi, a <span className="text-accent">front-end creative developer</span> based in Aix-en-Provence,France and currently in a work-study program.
@@ -76,7 +76,7 @@ export default function About() {
                     </p>
                 </LineBlockReveal>
             </div>
-            <div className="col-start-3 col-span-2 lg:col-start-8 lg:col-span-3 relative bottom-45 md:bottom-75 z-0">
+            <div className="col-start-3 col-span-2 lg:col-start-8 lg:col-span-3 relative bottom-20 md:bottom-42 lg:bottom-75 z-0">
                 <ImageReveal verticalOrigin="top">
                     <div className="absolute inset-0 bg-accent mix-blend-multiply z-10"></div>
                     <img
@@ -90,7 +90,7 @@ export default function About() {
             </div>
 
         </Container>
-        <div className="overflow-hidden flex flex-col gap-8 relative bottom-16">
+        <div className="overflow-hidden flex flex-col gap-5 md:gap-6 lg:gap-8 relative bottom-16">
             <StackSlider />
             <StackSlider textColor="#775BC8" scrollDirection="left" />
         </div>

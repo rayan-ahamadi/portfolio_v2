@@ -100,7 +100,7 @@ export function LineBlockReveal({
         if (animateOnScroll) {
             st = ScrollTrigger.create({
                 trigger: containerRef.current,
-                start: 'top 80%',
+                start: 'top 90%',
                 onEnter: () => master.restart(true),
                 // onEnterBack: () => master.restart(true),
                 onLeaveBack: () => master.reverse(),

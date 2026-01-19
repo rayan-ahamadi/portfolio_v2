@@ -33,12 +33,12 @@ export default function StackSlider({ textColor = "#D7DAE1", scrollDirection = '
             className="slider bg-secondary w-screen overflow-hidden overflow-x-auto flex"
             style={{ ['--carousel-speed' as never]: 50 }}
         >
-            <div className={"group flex items-center justify-center gap-20 pr-20" + (scrollDirection === 'left' ? ' animate-scrollLeft' : ' animate-scrollRight')}>
+            <div className={"group flex items-center justify-center gap-8 pr-8 md:gap-14 md:pr-14 lg:gap-20 lg:pr-20" + (scrollDirection === 'left' ? ' animate-scrollLeft' : ' animate-scrollRight')}>
                 {
                     stacks.map((stack, index) => (
                         <div
                             key={index}
-                            className="text-9xl font-extrabold tracking-tight select-none flex-0 uppercase"
+                            className="text-6xl md:text-7xl lg:text-9xl font-extrabold tracking-tight select-none flex-0 uppercase"
                             style={{ color: textColor }}
                         >
                             {stack}
@@ -46,12 +46,12 @@ export default function StackSlider({ textColor = "#D7DAE1", scrollDirection = '
                     ))
                 }
             </div>
-            <div aria-hidden className={"group flex items-center justify-center gap-20 pr-20" + (scrollDirection === 'left' ? ' animate-scrollLeft' : ' animate-scrollRight')}>
+            <div aria-hidden className={"group flex items-center justify-center gap-8 pr-8 md:gap-14 md:pr-14 lg:gap-20 lg:pr-20" + (scrollDirection === 'left' ? ' animate-scrollLeft' : ' animate-scrollRight')}>
                 {
                     stacks.map((stack, index) => (
                         <div
                             key={index}
-                            className="text-9xl font-extrabold tracking-tight select-none flex-0 uppercase"
+                            className="text-6xl md:text-7xl lg:text-9xl  font-extrabold tracking-tight select-none flex-0 uppercase"
                             style={{ color: textColor }}
                         >
                             {stack}

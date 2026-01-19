@@ -1,74 +1,53 @@
 "use client";
 
 import Container from "@/components/layout/Container";
-import FleurHero from "@/assets/vector/Fleur_Hero.svg";
 import HiddenTextReveal from "@/components/animations/HiddenTextReveal";
-import SplitText from "gsap/SplitText";
-import ScrollTrigger from "gsap/ScrollTrigger";
-
-import { useRef, useEffect, use } from "react";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { useTransitionStore } from "@/stores/transitionStore";
+import { SplitText } from "gsap/SplitText";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import { useRef } from "react";
+
+gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export default function Hero() {
-    const fleurRef = useRef<SVGSVGElement>(null);
     const sectionRef = useRef<HTMLDivElement>(null);
     const h1Ref = useRef<HTMLHeadingElement>(null);
     const heroRef = useRef<HTMLDivElement>(null);
 
-    const idle = { rotate: 0 }
-    const wind = { rotate: 0 }
+    const isTransitionDone = useTransitionStore((s) => s.isTransitionDone);
 
-    let lastX = 0
-    let lastTime = 0
-
-
-    // Animation de la fleur centrale et overlap
+    // Animation du texte Rayan.dev et overlap
     useGSAP(() => {
-        const fleur = fleurRef.current;
-        if (!fleur) return;
-
-        // Mouvement fleur d'intro
-        gsap.set(
-            fleur, {
-            transformOrigin: "50% 50%",
-        }
-        )
-
-        gsap.from(
-            fleur,
-            {
-                scale: 1.2,
-                rotate: 10,
-                ease: "power4.out",
-                delay: 0.5,
-                duration: 1.5,
-            }
-        )
-
-        gsap.set(
-            fleur, {
-            transformOrigin: "center bottom",
-        }
-        )
-
+        if (!isTransitionDone) return;
 
         // Animation texte Rayan.dev sans scrollTrigger
         const split = new SplitText(h1Ref.current, { type: "chars" });
-        gsap.set(split.chars, {
-            yPercent: -300,
-        });
+        // gsap.set(split.chars, {
+        //     yPercent: -300,
+        //     opacity: 0,
+        // });
 
-        gsap.to(split.chars, {
-            yPercent: 0,
-            delay: 0.8,
-            duration: 1,
-            ease: "power4.out",
-            stagger: {
-                each: 0.02,
+        gsap.set(h1Ref.current, {
+            opacity: 1,
+        }
+        )
+
+        gsap.from(split.chars,
+            {
+                opacity: 0,
+                yPercent: -300,
+                duration: 1,
+                ease: "power4.out",
+                stagger: {
+                    each: 0.02,
+                },
+                delay: 0.25,
             },
-        })
+        );
 
         // overlap intro text
         const section = sectionRef.current;
@@ -100,61 +79,13 @@ export default function Hero() {
                 }
             )
             .to(
-                introSelector('*'),
+                introSelector('#hero > div, #hero > svg:first-of-type'),
                 {
                     opacity: 0,
                 },
                 '<+0.1'
             )
 
-
-        // Animation vent sur la fleur avec la souris 
-        gsap.to(
-            idle,
-            {
-                yoyo: true,
-                repeat: -1,
-                ease: "sine.inOut",
-                duration: 4,
-                rotate: 1,
-                delay: 1.5,
-            }
-        )
-
-        fleur.addEventListener("mousemove", (e) => {
-            const rect = fleur.getBoundingClientRect()
-            const x = (e.clientX - rect.left) / rect.width - 0.5
-
-            const now = performance.now()
-            const dx = x - lastX
-            const dt = now - lastTime || 16
-
-            const velocity = dx / dt // vitesse normalisée
-
-            lastX = x
-            lastTime = now
-
-            gsap.to(wind, {
-                rotate: gsap.utils.clamp(-6, 6, velocity * 600),
-                duration: 0.3,
-                ease: "power3.out",
-            })
-        })
-
-        fleur.addEventListener("mouseleave", () => {
-            gsap.to(wind, {
-                rotate: 0,
-                duration: 1,
-                ease: "power3.out",
-            })
-        })
-
-
-        const setRotate = gsap.quickSetter(fleur, "rotate", "deg")
-
-        gsap.ticker.add(() => {
-            setRotate(idle.rotate + wind.rotate)
-        })
 
 
 
@@ -163,30 +94,24 @@ export default function Hero() {
 
         return () => {
             tl.kill();
+            split.revert();
         };
-    }, []);
+    }, { dependencies: [isTransitionDone] });
+
+
 
     return (
-        <section id="hero" className="bg-primary relative" ref={sectionRef} >
-            <FleurHero className="absolute
-    left-1/2 top-[40%]
-    -translate-x-1/2 -translate-y-1/2
-    w-84 md:w-128.25 h-auto
-    select-none pointer-events-auto
-    "
-                ref={fleurRef}
-            />
-
+        <section id="hero" className="bg-primary relative z-9" ref={sectionRef}>
             <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6">
-                <div className="col-span-4 md:col-span-8 lg:col-span-12 flex flex-col justify-end items-start min-h-screen py-7 tracking-tight" ref={heroRef}>
-                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-primary md:z-0 -mb-2.5 mix-blend-multiply">Creative developer focused on <span className="font-accent text-accent text-[46px] md:text-[62px] lg:text-[68px] mix-blend-darken">motion</span> and <span className="font-accent text-accent text-[46px] md:text-[62px] lg:text-[68px] mix-blend-darken">structure</span></h2>
-                    <h1 className="text-[92px] md:text-[218px]  lg:text-[298px] font-primary font-black text-accent fill-accent uppercase leading-[0.70] mix-blend-darken w-full relative right-1.5">
-                        <div className="overflow-hidden inline-block h-full w-max" ref={h1Ref}>
+                <div className="col-span-4 md:col-span-8 lg:col-span-12 flex flex-col justify-end items-start min-h-screen py-7 tracking-tight z-11" ref={heroRef}>
+                    <h2 className="text-3xl md:text-4xl lg:text-5xl font-primary mb-2 md:-mb-2.5 leading-8 md:leading-none mix-blend-multiply relative z-11">Creative developer focused on <span className="font-accent text-accent text-[46px] md:text-[62px] lg:text-[68px] mix-blend-darken">motion</span> and <span className="font-accent text-accent text-[46px] md:text-[62px] lg:text-[68px] mix-blend-darken">structure</span></h2>
+                    <h1 id="hero-title" className="font-primary font-black text-accent fill-accent uppercase leading-[0.70] mix-blend-darken w-full relative right-1.5 z-11">
+                        <div className="overflow-hidden inline-block h-full w-max opacity-0" ref={h1Ref}>
                             Rayan.dev
                         </div>
                     </h1>
                 </div>
-                <div id="intro" className="col-span-4 md:col-span-8 lg:col-span-12  text-[68px] md:text-[176px] mix-blend-darken grid grid-cols-10 grid-rows-3 grid-flow-row gap-17 pb-20 my-32 z-11"  >
+                <div id="intro" className="col-span-4 md:col-span-8 lg:col-span-12  mix-blend-darken grid grid-cols-10 grid-rows-3 grid-flow-row gap-17 pb-20 my-32 z-11"  >
                     <p className="inline w-max col-start-1 md:col-start-1 leading-none">
                         <span className="font-accent normal-case text-accent">
                             <HiddenTextReveal>Design</HiddenTextReveal>

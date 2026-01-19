@@ -6,26 +6,20 @@ import Hero from "@/sections/Hero";
 import About from "@/sections/About";
 import SelectedWorks from "@/sections/SelectedWorks";
 import Footer from "@/sections/Footer";
-import LeafPath from "@/assets/vector/LeafPath";
-import useScrollRefresh from "@/hooks/useScrollRefresh";
+import GlobalDecor from "@/components/ui/GlobalDecor";
+// import useScrollRefresh from "@/hooks/useScrollRefresh";
 
-
-
-import { ReactLenis, type LenisRef, useLenis } from "lenis/react";
+import { ReactLenis, type LenisRef } from "lenis/react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
-import MotionPathPlugin from "gsap/MotionPathPlugin";
-import { useGSAP } from "@gsap/react";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 
 
-gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   // useScrollRefresh();
   const lenisRef = useRef<LenisRef | null>(null);
-  const leafWrapperRef = useRef<SVGSVGElement>(null);
-
 
   useEffect(() => {
     function update(time: number) {
@@ -75,50 +69,13 @@ export default function Home() {
     };
   }, []);
 
-  useGSAP(() => {
-    const leafWrapper = leafWrapperRef.current;
-    if (!leafWrapper) return;
-
-
-    gsap.from("#leaf", {
-      ease: "none",
-      scrollTrigger: {
-        trigger: leafWrapper,
-        start: "top",
-        end: "bottom+=60% top",
-        markers: false,
-        scrub: 0,
-      },
-      motionPath: {
-        path: "#LeafPath",
-        align: "#LeafPath",
-        alignOrigin: [0.5, 0.5],
-        autoRotate: true,
-      },
-    });
-
-
-  }, []);
-
-
-
   return (
     <div>
       <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
       <main className="relative z-10 overflow-x-hidden">
+        <GlobalDecor />
         <Header />
         <Hero />
-        <LeafPath className="absolute
-            left-1/2 
-            top-[32.5%] md:top-[38%]
-            -translate-x-[35%] md:-translate-x-[44.5%] 
-            -translate-y-1/2
-            pointer-events-none select-none
-            z-15
-            w-full
-            "
-          ref={leafWrapperRef}
-        />
         <SelectedWorks />
         <div id="black-overlay" className=" z-[12]">
           <About />
