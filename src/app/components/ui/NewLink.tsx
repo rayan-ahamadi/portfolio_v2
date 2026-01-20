@@ -6,7 +6,7 @@ import { usePathname, useRouter } from "next/navigation";
 
 type LinkProps = {
     children: React.ReactNode;
-    href: string;
+    href: string | { pathname: string; hash: string };
     className?: string;
 };
 

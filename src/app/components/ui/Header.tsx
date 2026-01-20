@@ -3,8 +3,12 @@
 import Container from "@/components/layout/Container";
 import Link from "next/link";
 import NewLink from "./NewLink";
+import { usePathname } from "next/navigation";
+import path from "path";
 
 export default function Header() {
+    const pathname = usePathname();
+
     return <header className="fixed top-0 w-full z-[60]">
         <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6">
             <div className="col-span-4 md:col-span-8 lg:col-span-12 flex flex-col md:flex-row justify-between items-center py-7 uppercase">
@@ -14,10 +18,21 @@ export default function Header() {
                 </NewLink>
                 <nav className="block">
                     <ul className="font-semibold font-primary text-secondary text-lg flex gap-6">
-                        <Link href="#works" className="underlined-text mix-blend-difference"><li>Projects</li></Link>
-                        <Link href="#about" className="underlined-text mix-blend-difference"><li>About</li></Link>
-                        <Link href="#contact" className="underlined-text mix-blend-difference"><li>Contact</li></Link>
-                        <Link href="/CV_Rayan_Ahamadi.pdf" target="_blank" className="underlined-text mix-blend-difference"><li>Resume</li></Link>
+                        {pathname === "/" ? (
+                            <>
+                                <Link href="#works" className="underlined-text mix-blend-difference"><li>Projects</li></Link>
+                                <Link href="#about" className="underlined-text mix-blend-difference"><li>About</li></Link>
+                                <Link href="#contact" className="underlined-text mix-blend-difference"><li>Contact</li></Link>
+                                <Link href="/CV_Rayan_Ahamadi.pdf" target="_blank" className="underlined-text mix-blend-difference"><li>Resume</li></Link>
+                            </>
+                        ) : (
+                            <>
+                                <NewLink href={{ pathname: "/", hash: "works" }} className="underlined-text mix-blend-difference"><li>Projects</li></NewLink>
+                                <NewLink href={{ pathname: "/", hash: "about" }} className="underlined-text mix-blend-difference"><li>About</li></NewLink>
+                                <NewLink href={{ pathname: "/", hash: "contact" }} className="underlined-text mix-blend-difference"><li>Contact</li></NewLink>
+                                <Link href="/CV_Rayan_Ahamadi.pdf" target="_blank" className="underlined-text mix-blend-difference"><li>Resume</li></Link>
+                            </>
+                        )}
                     </ul>
                 </nav>
             </div>

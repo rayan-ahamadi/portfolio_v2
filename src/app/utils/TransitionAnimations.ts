@@ -57,7 +57,7 @@ export const animatePageIn = () => {
 };
 
 type AnimatePageOutProps = {
-  href?: string;
+  href?: string | { pathname: string; hash: string };
   router: AppRouterInstance;
 };
 
@@ -69,7 +69,12 @@ export const animatePageOut = ({ href, router }: AnimatePageOutProps) => {
   const tl = gsap.timeline({
     onComplete: () => {
       if (href) {
-        router.push(href);
+        if (typeof href === "string") {
+          router.push(href);
+        } else {
+          const path = href.pathname + (href.hash ? `#${href.hash}` : "");
+          router.push(path);
+        }
       } else {
         router.back();
       }
