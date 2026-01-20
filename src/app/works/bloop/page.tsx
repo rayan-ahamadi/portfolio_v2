@@ -27,7 +27,7 @@ export default function ProjectBloopPage() {
                     <ProjectLayout.Hero>
                         {/* Hero content for Bloop project */}
                         <div className="mb-15">
-                            <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold uppercase mb-9">Bloop</h1>
+                            <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold uppercase mb-4 md:mb-6 lg:mb-9">Bloop</h1>
                             <div className="">
                                 <h2 className="text-xl md:text-2xl lg:text-3xl font-light uppercase mb-3">In collaboration with :</h2>
                                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold uppercase">
@@ -37,7 +37,7 @@ export default function ProjectBloopPage() {
                                 </h2>
                             </div>
                         </div>
-                        <div className="rounded-lg flex flex-col justify-center items-center overflow-hidden p-8 bg-[#FF99CF] h-max">
+                        <div className="rounded-lg flex flex-col justify-center items-center overflow-hidden p-4 md:p-6 lg:p-8 bg-[#FF99CF] h-max">
                             <Image
                                 src="/images/projects/Bloop/BloopHero.png"
                                 alt="Bloop Project Preview"

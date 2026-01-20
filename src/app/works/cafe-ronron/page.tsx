@@ -43,9 +43,9 @@ export default function ProjectRonronPage() {
                     <ProjectLayout.Hero>
                         {/* Hero content for CaféRonron project */}
                         <div className="mb-15">
-                            <h1 className="text-7xl md:text-8xl lg:text-9xl  font-bold uppercase mb-9">Café Ronron</h1>
+                            <h1 className="text-7xl md:text-8xl lg:text-9xl  font-bold uppercase mb-4 md:mb-6 lg:mb-9">Café Ronron</h1>
                         </div>
-                        <div className="rounded-lg flex flex-col justify-center items-center overflow-hidden p-8 bg-[#C0AAA5] h-max">
+                        <div className="rounded-lg flex flex-col justify-center items-center overflow-hidden p-4 md:p-6 lg:p-8 bg-[#C0AAA5] h-max">
                             <Image
                                 src="/images/projects/Ronron/RonronHero.png"
                                 alt="Café Ronron Project Preview"

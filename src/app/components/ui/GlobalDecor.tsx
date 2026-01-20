@@ -23,6 +23,7 @@ export default function GlobalDecor() {
     const wind = useRef({ rotate: 0 });
     const lastX = useRef(0);
     const lastTime = useRef(0);
+    const isPointerInside = useRef(false);
 
     useGSAP(() => {
         if (!isTransitionDone) return;
@@ -78,36 +79,56 @@ export default function GlobalDecor() {
             }
         )
 
-        const handleMouseMove = (e: MouseEvent) => {
-            const rect = fleur.getBoundingClientRect()
-            const x = (e.clientX - rect.left) / rect.width - 0.5
+        // NOTE: on écoute `pointermove` sur window pour éviter les cas
+        // où la fleur ne reçoit plus directement les events (overlays / pin / portal).
+        const handlePointerMove = (e: PointerEvent) => {
+            const rect = fleur.getBoundingClientRect();
+            if (rect.width === 0 || rect.height === 0) return;
 
-            const now = performance.now()
-            const dx = x - lastX.current
-            const dt = now - lastTime.current || 16
+            const inside =
+                e.clientX >= rect.left &&
+                e.clientX <= rect.right &&
+                e.clientY >= rect.top &&
+                e.clientY <= rect.bottom;
 
-            const velocity = dx / dt // vitesse normalisée
+            if (!inside) {
+                if (isPointerInside.current) {
+                    isPointerInside.current = false;
+                    gsap.to(windState, {
+                        rotate: 0,
+                        duration: 1,
+                        ease: "power3.out",
+                    });
+                }
+                return;
+            }
 
-            lastX.current = x
-            lastTime.current = now
+            const x = (e.clientX - rect.left) / rect.width - 0.5;
+            const now = performance.now();
+
+            if (!isPointerInside.current) {
+                // reset de la vélocité quand on entre dans la zone
+                isPointerInside.current = true;
+                lastX.current = x;
+                lastTime.current = now;
+                return;
+            }
+
+            const dx = x - lastX.current;
+            const dt = now - lastTime.current || 16;
+            const velocity = dx / dt; // vitesse normalisée
+
+            lastX.current = x;
+            lastTime.current = now;
 
             gsap.to(windState, {
                 rotate: gsap.utils.clamp(-6, 6, velocity * 600),
                 duration: 0.3,
                 ease: "power3.out",
-            })
-        }
+            });
+        };
 
-        const handleMouseLeave = () => {
-            gsap.to(windState, {
-                rotate: 0,
-                duration: 1,
-                ease: "power3.out",
-            })
-        }
-
-        fleur.addEventListener("mousemove", handleMouseMove)
-        fleur.addEventListener("mouseleave", handleMouseLeave)
+        window.addEventListener("pointermove", handlePointerMove, { passive: true });
 
 
         const setRotate = gsap.quickSetter(fleur, "rotate", "deg")
@@ -121,8 +142,7 @@ export default function GlobalDecor() {
         return () => {
             idleTween.kill();
             gsap.ticker.remove(tickerFn);
-            fleur.removeEventListener("mousemove", handleMouseMove);
-            fleur.removeEventListener("mouseleave", handleMouseLeave);
+            window.removeEventListener("pointermove", handlePointerMove);
         };
 
     }, { dependencies: [isTransitionDone] });
