@@ -8,6 +8,7 @@ import { useGSAP } from "@gsap/react";
 import { useTransitionStore } from "@/stores/transitionStore";
 import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import GlobalDecor from "@/components/ui/GlobalDecor";
 
 import { useRef } from "react";
 
@@ -55,7 +56,6 @@ export default function Hero() {
 
         const introSelector = gsap.utils.selector(section);
 
-
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: section,
@@ -102,6 +102,7 @@ export default function Hero() {
 
     return (
         <section id="hero" className="bg-primary relative z-9" ref={sectionRef}>
+            <GlobalDecor />
             <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6">
                 <div className="col-span-4 md:col-span-8 lg:col-span-12 flex flex-col justify-end items-start min-h-screen py-7 tracking-tight z-11" ref={heroRef}>
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-primary mb-2 md:-mb-2.5 leading-8 md:leading-none mix-blend-multiply relative z-11">Creative developer focused on <span className="font-accent text-accent text-[46px] md:text-[62px] lg:text-[68px] mix-blend-darken">motion</span> and <span className="font-accent text-accent text-[46px] md:text-[62px] lg:text-[68px] mix-blend-darken">structure</span></h2>

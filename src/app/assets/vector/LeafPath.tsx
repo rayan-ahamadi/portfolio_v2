@@ -1,9 +1,13 @@
-type Props = {
-    className?: string
-    ref?: React.Ref<SVGSVGElement>
-}
+import * as React from "react";
 
-export default function LeafPath({ className, ref }: Props) {
+type Props = {
+    className?: string;
+};
+
+const LeafPath = React.forwardRef<SVGSVGElement, Props>(function LeafPath(
+    { className }: Props,
+    ref,
+) {
     return (
         <svg
             className={className}
@@ -209,4 +213,6 @@ export default function LeafPath({ className, ref }: Props) {
         </svg>
 
     )
-}
+});
+
+export default LeafPath;

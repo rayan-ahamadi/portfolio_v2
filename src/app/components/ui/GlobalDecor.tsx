@@ -7,6 +7,7 @@ import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import MotionPathPlugin from "gsap/MotionPathPlugin";
 import { useRef } from "react";
+import { createPortal } from "react-dom";
 
 gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
 
@@ -14,6 +15,7 @@ export default function GlobalDecor() {
     const fleurRef = useRef<SVGSVGElement>(null);
     const leafWrapperRef = useRef<SVGSVGElement>(null);
 
+    const portalTarget = typeof document !== "undefined" ? document.body : null;
 
     const isTransitionDone = useTransitionStore((s) => s.isTransitionDone);
 
@@ -153,7 +155,7 @@ export default function GlobalDecor() {
     return (
         <div>
             <FleurHero className="absolute
-                        left-1/2 top-[11%]
+                        left-1/2 top-[40%]
                         -translate-x-1/2 -translate-y-1/2
                         w-84 md:w-128.25 h-auto
                         select-none pointer-events-auto
@@ -162,14 +164,21 @@ export default function GlobalDecor() {
                         "
                 ref={fleurRef}
             />
-            <LeafPath className="absolute
-                        top-[17%]
+
+            {portalTarget
+                ? createPortal(
+                    <LeafPath
+                        className="absolute
                         pointer-events-none select-none
+                        translate-y-[9%]    md:translate-y-[40%]
                         z-49
-                        w-full  
+                        w-full
                         "
-                ref={leafWrapperRef}
-            />
+                        ref={leafWrapperRef}
+                    />,
+                    portalTarget,
+                )
+                : null}
 
         </div>
     );

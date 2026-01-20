@@ -53,7 +53,7 @@ export default function ProjectRonronPage() {
                                 height={680}
                                 className="rounded-lg object-cover flex-1"
                             />
-                            <div className="flex justify-between w-full">
+                            <div className="flex justify-between w-full text-xs md:text-sm lg:text-base mt-4 px-2">
                                 <p>Self-Learning</p>
                                 <p>Role : Front-End Developer</p>
                             </div>

@@ -31,9 +31,9 @@ export default function ProjectBloopPage() {
                             <div className="">
                                 <h2 className="text-xl md:text-2xl lg:text-3xl font-light uppercase mb-3">In collaboration with :</h2>
                                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold uppercase">
-                                    <Link href="https://fr.linkedin.com/in/lucie-cottrelle">Lucie Cottrelle • </Link>
-                                    <Link href="https://github.com/AdlenSouci">Adlen Souci • </Link>
-                                    <Link href="https://github.com/charefs13">Mohamed saadi</Link>
+                                    <Link href="https://fr.linkedin.com/in/lucie-cottrelle">Lucie Cottrelle</Link>
+                                    {/* <Link href="https://github.com/AdlenSouci">Adlen Souci • </Link>
+                                    <Link href="https://github.com/charefs13">Mohamed saadi</Link> */}
                                 </h2>
                             </div>
                         </div>
@@ -45,7 +45,7 @@ export default function ProjectBloopPage() {
                                 height={680}
                                 className="rounded-lg h-auto object-cover z-[55] flex-1"
                             />
-                            <div className="flex justify-between w-full">
+                            <div className="flex justify-between w-full text-xs md:text-sm lg:text-base mt-4 px-2">
                                 <p>At : La Plateforme & Ynov</p>
                                 <p>Role : Full-Stack Developer</p>
                             </div>

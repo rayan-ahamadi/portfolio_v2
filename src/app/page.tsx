@@ -73,7 +73,7 @@ export default function Home() {
     <div>
       <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
       <main className="relative z-10 overflow-x-hidden">
-        <GlobalDecor />
+
         <Header />
         <Hero />
         <SelectedWorks />

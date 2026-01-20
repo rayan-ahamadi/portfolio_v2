@@ -47,7 +47,6 @@ export default function SelectedWorks() {
     const scrollMinus = useMediaQuery({ maxWidth: 768 }) ? 200 : 400;
 
     useGSAP(() => {
-
         const section = sectionRef.current;
         if (!section) return;
 
