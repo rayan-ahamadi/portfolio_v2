@@ -1,16 +1,16 @@
 // components/layout/Container.tsx
 export default function Container({
-    children,
-    className = "",
+  children,
+  className = "",
 }: {
-    children: React.ReactNode;
-    className?: string;
+  children: React.ReactNode;
+  className?: string;
 }) {
-    return (
-        <div
-            className={`max-w-360 mx-auto px-6 md:px-12 lg:px-20 ${className}`}
-        >
-            {children}
-        </div>
-    );
+  return (
+    <div
+      className={`max-w-360 mx-auto px-6 md:px-12 lg:px-7.5 gap-5 ${className}`}
+    >
+      {children}
+    </div>
+  );
 }
