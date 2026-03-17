@@ -198,6 +198,14 @@ label {
   text-transform: uppercase;
 }
 
+label.white {
+  color: var(--color-primary);
+}
+
+label.white::before {
+  background-color: var(--color-primary);
+}
+
 label::before {
   content: "";
   display: block;
@@ -205,6 +213,17 @@ label::before {
   height: 12px;
   border-radius: 50%;
   background-color: var(--color-secondary);
+  animation: fadeIn 1s infinite alternate;
+  transition: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 mark {

@@ -10,6 +10,7 @@ import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import GlobalDecor from "@/components/ui/GlobalDecor";
 import Label from "@/components/layout/Label";
+import { markOverlapDone } from "@/stores/transitionStore";
 
 import { useRef } from "react";
 
@@ -60,6 +61,9 @@ export default function Hero() {
           scrub: true,
           pinSpacing: false,
           invalidateOnRefresh: true,
+          onLeave: () => {
+            markOverlapDone();
+          },
         },
       });
 
@@ -89,7 +93,7 @@ export default function Hero() {
 
   return (
     <section id="hero" className="bg-primary relative z-9" ref={sectionRef}>
-      <GlobalDecor />
+      {/* <GlobalDecor /> */}
       <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
         <div
           className="col-span-4 md:col-span-8 lg:col-span-12 min-h-[98vh] tracking-tight z-11 flex flex-col justify-end"
