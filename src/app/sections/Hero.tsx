@@ -59,7 +59,7 @@ export default function Hero() {
           end: "+=80%",
           pin: true,
           scrub: true,
-          pinSpacing: false,
+          // pinSpacing: true,
           invalidateOnRefresh: true,
           onLeave: () => {
             markOverlapDone();
@@ -93,7 +93,7 @@ export default function Hero() {
 
   return (
     <section id="hero" className="bg-primary relative z-9" ref={sectionRef}>
-      {/* <GlobalDecor /> */}
+      <GlobalDecor />
       <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
         <div
           className="col-span-4 md:col-span-8 lg:col-span-12 min-h-[98vh] tracking-tight z-11 flex flex-col justify-end"
@@ -121,7 +121,7 @@ export default function Hero() {
 
         <div
           id="intro"
-          className="col-span-4 md:col-span-8 lg:col-start-4 pb-20 my-32 z-11"
+          className="col-span-4 md:col-span-8 lg:col-start-4 pb-26 my-32 z-49"
         >
           <Label>Manifesto</Label>
           <p className="font-primary leading-[1.3] tracking-[0.02em] lg:text-[42px]">

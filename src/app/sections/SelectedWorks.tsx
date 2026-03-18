@@ -66,150 +66,150 @@ export default function SelectedWorks() {
 
     const bodyAfterRule = CSSRulePlugin.getRule("body::after");
 
-    const opacityTimeline = gsap.timeline({
-      scrollTrigger: {
-        trigger: section,
-        start: "bottom bottom",
-        end: () => targetY,
-        // markers: true,
-        pin: true,
-        pinSpacing: false,
-        scrub: true,
-        invalidateOnRefresh: true,
-        onEnter: () => {
-          const overlay = document.querySelector("#black-overlay");
-          if (!overlay) return;
+    // const opacityTimeline = gsap.timeline({
+    //   scrollTrigger: {
+    //     trigger: section,
+    //     start: "bottom bottom",
+    //     end: () => targetY,
+    //     // markers: true,
+    //     pin: true,
+    //     pinSpacing: false,
+    //     scrub: true,
+    //     invalidateOnRefresh: true,
+    //     onEnter: () => {
+    //       const overlay = document.querySelector("#black-overlay");
+    //       if (!overlay) return;
 
-          gsap.set("#LeafPathSVG", {
-            display: "none",
-            ease: "none",
-          });
+    //       gsap.set("#LeafPathSVG", {
+    //         display: "none",
+    //         ease: "none",
+    //       });
 
-          gsap.set("#works", {
-            y: "0vh",
-            ease: "none",
-          });
+    //       gsap.set("#works", {
+    //         y: "0vh",
+    //         ease: "none",
+    //       });
 
-          gsap.set("body", {
-            paddingBottom: overlayHeight + "px",
-            ease: "none",
-          });
+    //       gsap.set("body", {
+    //         paddingBottom: overlayHeight + "px",
+    //         ease: "none",
+    //       });
 
-          // positionner l’overlay en fixed
-          gsap.set(overlay, {
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            zIndex: 12,
-          });
-        },
-        onLeave: () => {
-          const overlay = document.querySelector(
-            "#black-overlay",
-          ) as HTMLElement;
-          if (!overlay) return;
+    //       // positionner l’overlay en fixed
+    //       gsap.set(overlay, {
+    //         position: "fixed",
+    //         top: 0,
+    //         left: 0,
+    //         width: "100%",
+    //         height: "100%",
+    //         zIndex: 12,
+    //       });
+    //     },
+    //     onLeave: () => {
+    //       const overlay = document.querySelector(
+    //         "#black-overlay",
+    //       ) as HTMLElement;
+    //       if (!overlay) return;
 
-          gsap.set("body", {
-            clearProps: "padding-bottom",
-            ease: "none",
-          });
+    //       gsap.set("body", {
+    //         clearProps: "padding-bottom",
+    //         ease: "none",
+    //       });
 
-          // remettre l’overlay dans le flow
-          gsap.set(overlay, {
-            opacity: 1,
-            position: "relative",
-            clearProps: "top,left,transform",
-            zIndex: 11,
-          });
-        },
-        onEnterBack: () => {
-          const overlay = document.querySelector("#black-overlay");
-          if (!overlay) return;
+    //       // remettre l’overlay dans le flow
+    //       gsap.set(overlay, {
+    //         opacity: 1,
+    //         position: "relative",
+    //         clearProps: "top,left,transform",
+    //         zIndex: 11,
+    //       });
+    //     },
+    //     onEnterBack: () => {
+    //       const overlay = document.querySelector("#black-overlay");
+    //       if (!overlay) return;
 
-          gsap.set("body", {
-            paddingBottom: overlayHeight + "px",
-            ease: "none",
-          });
+    //       gsap.set("body", {
+    //         paddingBottom: overlayHeight + "px",
+    //         ease: "none",
+    //       });
 
-          gsap.set(overlay, {
-            position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "100%",
-            zIndex: 12,
-          });
-        },
+    //       gsap.set(overlay, {
+    //         position: "fixed",
+    //         top: 0,
+    //         left: 0,
+    //         width: "100%",
+    //         height: "100%",
+    //         zIndex: 12,
+    //       });
+    //     },
 
-        onLeaveBack: () => {
-          const overlay = document.querySelector("#black-overlay");
-          if (!overlay) return;
+    //     onLeaveBack: () => {
+    //       const overlay = document.querySelector("#black-overlay");
+    //       if (!overlay) return;
 
-          gsap.set("#LeafPathSVG", {
-            clearProps: "display",
-            ease: "none",
-          });
+    //       gsap.set("#LeafPathSVG", {
+    //         clearProps: "display",
+    //         ease: "none",
+    //       });
 
-          gsap.set("body", {
-            clearProps: "padding-bottom",
-            ease: "none",
-          });
+    //       gsap.set("body", {
+    //         clearProps: "padding-bottom",
+    //         ease: "none",
+    //       });
 
-          gsap.set(overlay, {
-            position: "relative",
-            clearProps: "top,left,transform",
-            zIndex: 11,
-          });
-        },
-      },
-    });
+    //       gsap.set(overlay, {
+    //         position: "relative",
+    //         clearProps: "top,left,transform",
+    //         zIndex: 11,
+    //       });
+    //     },
+    //   },
+    // });
 
-    opacityTimeline
-      .to(
-        sectionSelector(".work-div"),
-        {
-          yPercent: -80,
-          duration: 1.5,
-          ease: "power1.out",
-          opacity: 0.2,
-        },
-        0,
-      )
-      .fromTo(
-        "#black-overlay",
-        {
-          opacity: 0,
-        },
-        {
-          opacity: 1,
-          duration: 1.5,
-          ease: "power1.out",
-        },
-        "<",
-      )
-      .to(
-        bodyAfterRule,
-        {
-          cssRule: { opacity: 0.06 },
-        },
-        "<",
-      )
-      .fromTo(
-        "#black-overlay > section > *",
-        {
-          opacity: 0,
-        },
-        {
-          opacity: 1,
-          duration: 0.5,
-          ease: "power1.out",
-        },
-      );
+    // opacityTimeline
+    //   .to(
+    //     sectionSelector(".work-div"),
+    //     {
+    //       yPercent: -80,
+    //       duration: 1.5,
+    //       ease: "power1.out",
+    //       opacity: 0.2,
+    //     },
+    //     0,
+    //   )
+    //   .fromTo(
+    //     "#black-overlay",
+    //     {
+    //       opacity: 0,
+    //     },
+    //     {
+    //       opacity: 1,
+    //       duration: 1.5,
+    //       ease: "power1.out",
+    //     },
+    //     "<",
+    //   )
+    //   .to(
+    //     bodyAfterRule,
+    //     {
+    //       cssRule: { opacity: 0.06 },
+    //     },
+    //     "<",
+    //   )
+    //   .fromTo(
+    //     "#black-overlay > section > *",
+    //     {
+    //       opacity: 0,
+    //     },
+    //     {
+    //       opacity: 1,
+    //       duration: 0.5,
+    //       ease: "power1.out",
+    //     },
+    //   );
 
     return () => {
-      opacityTimeline.kill();
+      // opacityTimeline.kill();
     };
   }, []);
 
