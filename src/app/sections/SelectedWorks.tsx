@@ -5,13 +5,11 @@ import NewLink from "@/components/ui/NewLink";
 import ImageReveal from "@/components/animations/ImageReveal";
 import HiddenTextReveal from "@/components/animations/HiddenTextReveal";
 
-import { useRef, useLayoutEffect, useState } from "react";
+import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import CSSRulePlugin from "gsap/CSSRulePlugin";
-import { useLenis } from "lenis/react";
-import { useTransitionStore } from "@/stores/transitionStore";
 
 import Label from "@/components/layout/Label";
 
@@ -21,11 +19,6 @@ gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
 
 export default function SelectedWorks() {
   const sectionRef = useRef<HTMLElement>(null);
-  const lenis = useLenis();
-  const isOverlapDone = useTransitionStore((s) => s.isOverlapDone);
-
-  // const ellipse1Ref = useRef<SVGSVGElement>(null);
-  // const ellipse2Ref = useRef<SVGSVGElement>(null);
 
   const projects = [
     {
@@ -51,162 +44,66 @@ export default function SelectedWorks() {
     },
   ];
 
-  const scrollMinus = useMediaQuery({ maxWidth: 768 }) ? 200 : 400;
-
   useGSAP(() => {
     const section = sectionRef.current;
     if (!section) return;
 
     const sectionSelector = gsap.utils.selector(section);
-
-    const overlay = document.querySelector("#black-overlay") as HTMLElement;
-    const overlayHeight = overlay?.offsetHeight || 0;
-    const targetY = overlay?.offsetTop || 0;
-    const startScroll = lenis?.scroll || 0; // à vérifier avec -400
-
     const bodyAfterRule = CSSRulePlugin.getRule("body::after");
 
-    // const opacityTimeline = gsap.timeline({
-    //   scrollTrigger: {
-    //     trigger: section,
-    //     start: "bottom bottom",
-    //     end: () => targetY,
-    //     // markers: true,
-    //     pin: true,
-    //     pinSpacing: false,
-    //     scrub: true,
-    //     invalidateOnRefresh: true,
-    //     onEnter: () => {
-    //       const overlay = document.querySelector("#black-overlay");
-    //       if (!overlay) return;
+    // Changement de couleur de la page pendant le scroll
+    const colorTimeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: section,
+        start: "bottom 55%",
+        end: "bottom top",
+        markers: true,
+        scrub: true,
+      },
+    });
 
-    //       gsap.set("#LeafPathSVG", {
-    //         display: "none",
-    //         ease: "none",
-    //       });
+    const aboutSection = document.querySelector("#about");
 
-    //       gsap.set("#works", {
-    //         y: "0vh",
-    //         ease: "none",
-    //       });
-
-    //       gsap.set("body", {
-    //         paddingBottom: overlayHeight + "px",
-    //         ease: "none",
-    //       });
-
-    //       // positionner l’overlay en fixed
-    //       gsap.set(overlay, {
-    //         position: "fixed",
-    //         top: 0,
-    //         left: 0,
-    //         width: "100%",
-    //         height: "100%",
-    //         zIndex: 12,
-    //       });
-    //     },
-    //     onLeave: () => {
-    //       const overlay = document.querySelector(
-    //         "#black-overlay",
-    //       ) as HTMLElement;
-    //       if (!overlay) return;
-
-    //       gsap.set("body", {
-    //         clearProps: "padding-bottom",
-    //         ease: "none",
-    //       });
-
-    //       // remettre l’overlay dans le flow
-    //       gsap.set(overlay, {
-    //         opacity: 1,
-    //         position: "relative",
-    //         clearProps: "top,left,transform",
-    //         zIndex: 11,
-    //       });
-    //     },
-    //     onEnterBack: () => {
-    //       const overlay = document.querySelector("#black-overlay");
-    //       if (!overlay) return;
-
-    //       gsap.set("body", {
-    //         paddingBottom: overlayHeight + "px",
-    //         ease: "none",
-    //       });
-
-    //       gsap.set(overlay, {
-    //         position: "fixed",
-    //         top: 0,
-    //         left: 0,
-    //         width: "100%",
-    //         height: "100%",
-    //         zIndex: 12,
-    //       });
-    //     },
-
-    //     onLeaveBack: () => {
-    //       const overlay = document.querySelector("#black-overlay");
-    //       if (!overlay) return;
-
-    //       gsap.set("#LeafPathSVG", {
-    //         clearProps: "display",
-    //         ease: "none",
-    //       });
-
-    //       gsap.set("body", {
-    //         clearProps: "padding-bottom",
-    //         ease: "none",
-    //       });
-
-    //       gsap.set(overlay, {
-    //         position: "relative",
-    //         clearProps: "top,left,transform",
-    //         zIndex: 11,
-    //       });
-    //     },
-    //   },
-    // });
-
-    // opacityTimeline
-    //   .to(
-    //     sectionSelector(".work-div"),
-    //     {
-    //       yPercent: -80,
-    //       duration: 1.5,
-    //       ease: "power1.out",
-    //       opacity: 0.2,
-    //     },
-    //     0,
-    //   )
-    //   .fromTo(
-    //     "#black-overlay",
-    //     {
-    //       opacity: 0,
-    //     },
-    //     {
-    //       opacity: 1,
-    //       duration: 1.5,
-    //       ease: "power1.out",
-    //     },
-    //     "<",
-    //   )
-    //   .to(
-    //     bodyAfterRule,
-    //     {
-    //       cssRule: { opacity: 0.06 },
-    //     },
-    //     "<",
-    //   )
-    //   .fromTo(
-    //     "#black-overlay > section > *",
-    //     {
-    //       opacity: 0,
-    //     },
-    //     {
-    //       opacity: 1,
-    //       duration: 0.5,
-    //       ease: "power1.out",
-    //     },
-    //   );
+    colorTimeline
+      .to("section, .container", {
+        backgroundColor: "#000009",
+        color: "#d7dae1",
+      })
+      .to(
+        sectionSelector(".container *"),
+        {
+          opacity: 0,
+        },
+        0,
+      )
+      .to(
+        bodyAfterRule,
+        {
+          opacity: 0.06,
+        },
+        0,
+      ) // Synchroniser avec le début de la timeline
+      .to(
+        aboutSection,
+        {
+          height: aboutSection ? aboutSection.clientHeight * 0.25 : 0,
+        },
+        0,
+      )
+      .to(
+        "#about > div:not(#sliders)",
+        {
+          yPercent: -45, // Faire remonter la section "About" pendant le scroll
+        },
+        "-=0.4",
+      )
+      .to(
+        "#leaf",
+        {
+          opacity: 0,
+        },
+        "-=0.6",
+      );
 
     return () => {
       // opacityTimeline.kill();

@@ -150,7 +150,7 @@ export default function GlobalDecor() {
       scrollTrigger: {
         trigger: leafWrapper,
         start: "top center",
-        end: "bottom+=65%",
+        end: "bottom+=70%",
         scrub: 1.5,
       },
       motionPath: {

@@ -88,7 +88,10 @@ export default function About() {
           </ImageReveal>
         </div>
       </Container>
-      <div className="overflow-hidden flex flex-col gap-5 md:gap-6 lg:gap-8 relative bottom-16">
+      <div
+        id="sliders"
+        className="overflow-hidden flex flex-col gap-5 md:gap-6 lg:gap-8 absolute bottom-16"
+      >
         <StackSlider />
         <StackSlider textColor="#775BC8" scrollDirection="left" />
       </div>
