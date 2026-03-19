@@ -61,6 +61,7 @@ export default function Hero() {
     });
 
     headerTl.to("header", {
+      display: "none",
       opacity: 0,
       ease: "power4.out",
     });
@@ -84,8 +85,11 @@ export default function Hero() {
         />
 
         <h2 className="text-[42px] lg:col-span-12 py-12">
-          Let's build something that moves.
+          <LineBlockReveal>
+            <span>Let's build something that moves.</span>
+          </LineBlockReveal>
         </h2>
+
         <div className="col-span-4 md:col-span-8 lg:col-span-12 grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
           <div className="md:col-start-1">
             <Label className="white font-bold text-[12px] mb-5">

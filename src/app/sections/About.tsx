@@ -55,9 +55,11 @@ export default function About() {
       <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6 p-28">
         <div className="col-span-4 md:col-span-8 lg:col-span-12">
           <Label className="white">Resume</Label>
-          <h2 className="text-primary font-primary font-bold uppercase lg:text-[67px] leading-[0.8]">
-            <HiddenTextReveal startViewport="40%">About Me</HiddenTextReveal>
-          </h2>
+          <HiddenTextReveal startViewport="60%" splitType="chars">
+            <h2 className="text-primary font-primary font-bold uppercase lg:text-[67px] leading-[0.8]">
+              About Me
+            </h2>
+          </HiddenTextReveal>
         </div>
 
         <div className="col-span-4 lg:col-start-3 lg:col-span-7 py-6 md:py-14 lg:py-28 z-50">
@@ -76,7 +78,7 @@ export default function About() {
           </LineBlockReveal>
         </div>
         <div className="col-start-3 col-span-2 lg:col-start-8 lg:col-span-2 relative bottom-20 md:bottom-42 lg:bottom-60 z-0">
-          <ImageReveal verticalOrigin="top">
+          <ImageReveal verticalOrigin="top" startViewport="90%">
             <div className="absolute inset-0 bg-accent mix-blend-multiply z-10"></div>
             <img
               src="/images/rara.png"

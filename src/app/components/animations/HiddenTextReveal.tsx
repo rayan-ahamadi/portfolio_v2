@@ -4,82 +4,129 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
-import { useRef, useLayoutEffect, useState } from "react";
-
+import { useRef, useLayoutEffect, useState, use } from "react";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 type Props = {
-    children: React.ReactNode;
-    verticalOrigin?: 'top' | 'bottom'
-    delay?: number;
-    startViewport?: string;
-    splitType?: 'lines' | 'chars';
-}
+  children: React.ReactNode;
+  verticalOrigin?: "top" | "bottom";
+  delay?: number;
+  startViewport?: string;
+  splitType?: "lines" | "chars";
+  animateOnScroll?: boolean;
+};
 
-export default function HiddenTextReveal({ children, verticalOrigin = "bottom", delay, startViewport = "75%", splitType = "chars" }: Props) {
-    const textRef = useRef<HTMLDivElement>(null);
-    const svgTextRef = useRef<SVGTextElement>(null);
-    const textContent = typeof children === 'string' ? children : '';
-    const [parentClasses, setParentClasses] = useState<string>("");
+export default function HiddenTextReveal({
+  children,
+  verticalOrigin = "bottom",
+  delay,
+  startViewport = "75%",
+  splitType = "lines",
+  animateOnScroll = true,
+}: Props) {
+  const containerRef = useRef<HTMLDivElement>(null);
 
-    useLayoutEffect(() => {
-        const parentNode = textRef.current?.parentNode as HTMLElement | null;
-        if (parentNode) {
-            setParentClasses(Array.from(parentNode.classList).join(" "));
-        } else {
-            setParentClasses("");
-        }
-    }, []);
+  useGSAP(
+    () => {
+      const container = containerRef.current;
+      if (!container) return;
 
-    useGSAP(() => {
-        const element = textRef.current;
-        if (!element) return;
+      if (container.children.length === 0) return;
 
-        const split = new SplitText(element, {
-            type: "lines,chars",
-            charsClass: "char",
-            reduceWhiteSpace: false,
+      const elements: Element[] = []; // stocke les nodes à animer
+
+      if (container.hasAttribute("data-copy-wrapper")) {
+        elements.push(...Array.from(container.children));
+      } else {
+        elements.push(container);
+      }
+
+      const lines: Element[] = []; // stocke les lignes créées par SplitText
+
+      // Diviser le texte par lignes
+      elements.forEach((element) => {
+        const split = new SplitText(element, { type: "lines" });
+
+        split.lines.forEach((line) => {
+          const wrapper = document.createElement("div"); // Mettre la ligne dans un wrapper avec overflow hidden
+          wrapper.style.overflow = "hidden";
+          line.parentNode?.insertBefore(wrapper, line);
+          wrapper.appendChild(line);
+          lines.push(line);
         });
+      });
 
-        gsap.set(
-            splitType === "chars" ? split.chars : split.lines,
+      const master = gsap.timeline({ paused: true }); // timeline principale pour synchroniser les animations
+
+      lines.forEach((line) => {
+        const tl = gsap.timeline(); // timeline pour chaque ligne
+
+        if (splitType === "chars") {
+          // Créer un nouveau SplitText par chars
+          const newSplit = new SplitText(line, { type: "chars" });
+          gsap.set(newSplit.chars, {
+            yPercent: verticalOrigin === "bottom" ? 400 : -400,
+          });
+          tl.to(
+            newSplit.chars,
             {
-                yPercent: verticalOrigin === "bottom" ? 300 : -300,
-            });
-
-
-        const tween = gsap.to(
-            splitType === "chars" ? split.chars : split.lines,
+              yPercent: 0,
+              ease: "power4.out",
+              duration: 1,
+              stagger: 0.02,
+              delay: delay || 0,
+            },
+            0,
+          );
+        } else {
+          // animation par ligne
+          gsap.set(line, {
+            yPercent: verticalOrigin === "bottom" ? 400 : -400,
+          });
+          tl.to(
+            line,
             {
-                yPercent: 0,
-                duration: 1,
-                ease: "power4.out",
-                stagger: {
-                    each: 0.02,
-                },
-                delay: delay || 0,
-                scrollTrigger: {
-                    trigger: element,
-                    start: "top " + startViewport,
-                    invalidateOnRefresh: true,
-                    markers: false,
-                }
-            });
+              yPercent: 0,
+              ease: "power4.out",
+              duration: 1,
+              delay: delay || 0,
+            },
+            0,
+          );
+        }
 
-        return () => {
-            tween.scrollTrigger?.kill();
-            tween.kill();
-            split.revert();
-        };
-    })
+        master.add(tl, 0); // Ajouter la timeline enfant à la timeline parente
+      });
 
+      if (animateOnScroll) {
+        // Brancher la timeline maitre au scrollTrigger
+        ScrollTrigger.create({
+          trigger: container,
+          start: `top ${startViewport}`,
+          markers: false,
+          onEnter: () => master.restart(true),
+          //   onLeave: () => master.reverse(),
+          onEnterBack: () => master.restart(true),
+          onLeaveBack: () => master.reverse(),
+        });
+      } else {
+        master.play(); // Jouer immédiatement si pas d'animation au scroll
+      }
 
-    return (
-        <div ref={textRef} className="overflow-hidden inline-block h-full w-max">
-            {children}
-        </div>
-    );
+      return () => {
+        master.kill();
+      };
+    },
+    {
+      scope: containerRef,
+      dependencies: [children, verticalOrigin, delay, startViewport, splitType],
+    },
+  );
 
-
+  return (
+    <div ref={containerRef} data-copy-wrapper="true">
+      {children}
+    </div>
+  );
 }

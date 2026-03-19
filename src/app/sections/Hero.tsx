@@ -10,7 +10,7 @@ import { SplitText } from "gsap/SplitText";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import GlobalDecor from "@/components/ui/GlobalDecor";
 import Label from "@/components/layout/Label";
-import { markOverlapDone } from "@/stores/transitionStore";
+import { markFirstOverlapDone } from "@/stores/transitionStore";
 
 import { useRef } from "react";
 
@@ -62,7 +62,7 @@ export default function Hero() {
           // pinSpacing: true,
           invalidateOnRefresh: true,
           onLeave: () => {
-            markOverlapDone();
+            markFirstOverlapDone();
           },
         },
       });
@@ -100,22 +100,34 @@ export default function Hero() {
           ref={heroRef}
         >
           <div className="flex flex-col-reverse md:flex-row items-end gap-12">
-            <h1
-              id="hero-title"
-              className="font-primary font-black text-accent fill-accent uppercase mix-blend-darken w-full leading-[0.9] tracking-[-0.01em] z-11"
+            <HiddenTextReveal
+              animateOnScroll={false}
+              splitType="lines"
+              verticalOrigin="bottom"
             >
-              Rayan.dev
-            </h1>
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-primary leading-[1.1] tracking-[-0.01em] z-11">
-              Creative developer focused on&nbsp;
-              <span className="font-accent text-accent mix-blend-darken">
-                motion
-              </span>
-              &nbsp; and&nbsp;
-              <span className="font-accent text-accent mix-blend-darken">
-                structure
-              </span>
-            </h2>
+              <h1
+                id="hero-title"
+                className="font-primary font-black text-accent fill-accent uppercase mix-blend-darken w-full leading-[0.9] tracking-[-0.01em] z-11"
+              >
+                Rayan.dev
+              </h1>
+            </HiddenTextReveal>
+            <HiddenTextReveal
+              animateOnScroll={false}
+              splitType="lines"
+              verticalOrigin="top"
+            >
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-primary leading-[1.1] tracking-[-0.01em] z-11">
+                Creative developer focused on&nbsp;
+                <span className="font-accent text-accent mix-blend-darken">
+                  motion
+                </span>
+                &nbsp; and&nbsp;
+                <span className="font-accent text-accent mix-blend-darken">
+                  structure
+                </span>
+              </h2>
+            </HiddenTextReveal>
           </div>
         </div>
 
@@ -124,20 +136,22 @@ export default function Hero() {
           className="col-span-4 md:col-span-8 lg:col-start-4 pb-26 my-32 z-49"
         >
           <Label>Manifesto</Label>
-          <p className="font-primary leading-[1.3] tracking-[0.02em] lg:text-[42px]">
-            I love building interfaces that breathe.
-          </p>
-          <br />
-          <p className="font-primary leading-[1.3] tracking-[0.02em] lg:text-[42px]">
-            Spaces where rhythm, contrast, and movement create a living
-            <mark className="text-accent"> experience.</mark>
-          </p>
-          <br />
-          <p className="font-primary leading-[1.3] tracking-[0.02em] lg:text-[42px]">
-            I work at the intersection of design and development, where
-            structure gives rise to{" "}
-            <mark className="font-accent"> emotion</mark>.
-          </p>
+          <HiddenTextReveal startViewport="80%">
+            <p className="font-primary leading-[1.3] tracking-[0.02em] lg:text-[42px]">
+              I love building interfaces that breathe.
+            </p>
+            <br />
+            <p className="font-primary leading-[1.3] tracking-[0.02em] lg:text-[42px]">
+              Spaces where rhythm, contrast, and movement create a living
+              <mark className="text-accent"> experience.</mark>
+            </p>
+            <br />
+            <p className="font-primary leading-[1.3] tracking-[0.02em] lg:text-[42px]">
+              I work at the intersection of design and development, where
+              structure gives rise to{" "}
+              <mark className="font-accent">emotion</mark>.
+            </p>
+          </HiddenTextReveal>
         </div>
       </Container>
     </section>
