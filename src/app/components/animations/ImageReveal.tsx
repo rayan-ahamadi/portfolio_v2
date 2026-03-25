@@ -42,7 +42,7 @@ export default function ImageReveal({
         scrollTrigger: {
           trigger: container,
           start: "top " + startViewport,
-          markers: true,
+          markers: false,
           invalidateOnRefresh: true,
           once: true,
           onEnter: () => tl.restart(true),

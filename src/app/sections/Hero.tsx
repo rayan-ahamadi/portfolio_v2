@@ -89,7 +89,6 @@ export default function Hero() {
 
       return () => {
         tl.kill();
-        split.revert();
       };
     },
     { dependencies: [isTransitionDone] },

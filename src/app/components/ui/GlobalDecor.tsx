@@ -43,7 +43,7 @@ export default function GlobalDecor() {
         fleur,
         {
           opacity: 0,
-          scale: 1.2,
+          scale: 0.8,
           rotate: 20,
           ease: "power4.out",
           duration: 1.5,
