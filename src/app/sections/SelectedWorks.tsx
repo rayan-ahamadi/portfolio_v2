@@ -14,11 +14,13 @@ import CSSRulePlugin from "gsap/CSSRulePlugin";
 import Label from "@/components/layout/Label";
 
 import { markSecondOverlapDone } from "@/stores/transitionStore";
+import { useTransitionStore } from "@/stores/transitionStore";
 
 gsap.registerPlugin(ScrollTrigger, CSSRulePlugin);
 
 export default function SelectedWorks() {
   const sectionRef = useRef<HTMLElement>(null);
+  const isSecondOverlapDone = useTransitionStore((s) => s.isSecondOverlapDone);
 
   const projects = [
     {
@@ -59,7 +61,12 @@ export default function SelectedWorks() {
         end: "bottom top",
         markers: false,
         scrub: true,
-        onLeave: () => markSecondOverlapDone(),
+        onLeave: () => {
+          if (!isSecondOverlapDone) {
+            // éviter de toggle plusieurs fois
+            markSecondOverlapDone();
+          }
+        },
       },
     });
 
@@ -121,7 +128,7 @@ export default function SelectedWorks() {
         <div className="col-span-4 md:col-span-8 lg:col-span-12">
           <Label>Works</Label>
           <HiddenTextReveal startViewport="60%" splitType="chars">
-            <h2 className="uppercase font-primary text-secondary font-bold lg:text-[67px] leading-[0.8] mb-8 md:mb-16 lg:mb-32">
+            <h2 className="uppercase font-primary text-secondary font-bold text-[length:var(--fluid-h2)] leading-[0.8] mb-8 md:mb-16 lg:mb-32">
               Selected Works
             </h2>
           </HiddenTextReveal>
@@ -149,12 +156,12 @@ export default function SelectedWorks() {
             </NewLink>
             <div className="flex flex-col gap-4.5">
               <HiddenTextReveal verticalOrigin="top" startViewport="78%">
-                <h3 className="mt-4 text-xl md:text-2xl lg:text-[38px] font-semibold font-primary text-secondary uppercase leading-[0.9] tracking-[-0.01em]">
+                <h3 className="mt-4 text-[length:var(--fluid-h3)] font-semibold font-primary text-secondary uppercase leading-[0.9] tracking-[-0.01em]">
                   {project.title}
                 </h3>
               </HiddenTextReveal>
               <HiddenTextReveal verticalOrigin="bottom" startViewport="78%">
-                <p className="text-lg md:text-xl lg:text-[16px] font-light font-primary text-secondary uppercase leading-[1.3] tracking-normal">
+                <p className="text-[length:var(--fluid-paragraph)] font-light font-primary text-secondary uppercase leading-[1.3] tracking-normal">
                   {project.description}
                 </p>
               </HiddenTextReveal>

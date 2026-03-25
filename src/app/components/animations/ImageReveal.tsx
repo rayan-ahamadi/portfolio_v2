@@ -46,7 +46,7 @@ export default function ImageReveal({
           invalidateOnRefresh: true,
           once: true,
           onEnter: () => tl.restart(true),
-          //   onLeave: () => tl.reverse(),
+          onLeave: () => tl.reverse(),
           onEnterBack: () => tl.restart(true),
           onLeaveBack: () => tl.reverse(),
         },

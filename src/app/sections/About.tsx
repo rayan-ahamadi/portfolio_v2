@@ -56,7 +56,7 @@ export default function About() {
         <div className="col-span-4 md:col-span-8 lg:col-span-12">
           <Label className="white">Resume</Label>
           <HiddenTextReveal startViewport="60%" splitType="chars">
-            <h2 className="text-primary font-primary font-bold uppercase lg:text-[67px] leading-[0.8]">
+            <h2 className="text-primary font-primary font-bold uppercase text-[length:var(--fluid-h2)] leading-[0.8]">
               About Me
             </h2>
           </HiddenTextReveal>
@@ -64,7 +64,7 @@ export default function About() {
 
         <div className="col-span-4 lg:col-start-3 lg:col-span-7 py-6 md:py-14 lg:py-28 z-50">
           <LineBlockReveal>
-            <p className="font-primary text-primary leading-[1.3] lg:text-[42px] z-[55] uppercase">
+            <p className="font-primary text-primary leading-[1.3] text-[length:var(--fluid-manifesto)] z-[55] uppercase">
               I'm Rayan Ahamadi, a{" "}
               <span className="text-accent">front-end creative developer</span>{" "}
               based in Aix-en-Provence,France and currently in a work-study

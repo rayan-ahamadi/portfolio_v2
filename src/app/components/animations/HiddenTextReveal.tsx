@@ -12,6 +12,8 @@ type Props = {
   children: React.ReactNode;
   verticalOrigin?: "top" | "bottom";
   delay?: number;
+  duration?: number;
+  stagger?: number;
   startViewport?: string;
   splitType?: "lines" | "chars";
   animateOnScroll?: boolean;
@@ -20,7 +22,9 @@ type Props = {
 export default function HiddenTextReveal({
   children,
   verticalOrigin = "bottom",
-  delay,
+  delay = 0,
+  duration = 1,
+  stagger = 0.15,
   startViewport = "75%",
   splitType = "lines",
   animateOnScroll = true,
@@ -59,7 +63,7 @@ export default function HiddenTextReveal({
 
       const master = gsap.timeline({ paused: true }); // timeline principale pour synchroniser les animations
 
-      lines.forEach((line) => {
+      lines.forEach((line, index) => {
         const tl = gsap.timeline(); // timeline pour chaque ligne
 
         if (splitType === "chars") {
@@ -73,7 +77,7 @@ export default function HiddenTextReveal({
             {
               yPercent: 0,
               ease: "power4.out",
-              duration: 1,
+              duration: duration,
               stagger: 0.02,
               delay: delay || 0,
             },
@@ -89,14 +93,14 @@ export default function HiddenTextReveal({
             {
               yPercent: 0,
               ease: "power4.out",
-              duration: 1,
+              duration: duration,
               delay: delay || 0,
             },
             0,
           );
         }
 
-        master.add(tl, 0); // Ajouter la timeline enfant à la timeline parente
+        master.add(tl, delay + index * stagger); // Ajouter la timeline enfant à la timeline parente
       });
 
       if (animateOnScroll) {
@@ -106,7 +110,7 @@ export default function HiddenTextReveal({
           start: `top ${startViewport}`,
           markers: false,
           onEnter: () => master.restart(true),
-          //   onLeave: () => master.reverse(),
+          onLeave: () => master.reverse(),
           onEnterBack: () => master.restart(true),
           onLeaveBack: () => master.reverse(),
         });

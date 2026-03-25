@@ -4,5 +4,9 @@ type LabelProps = {
 };
 
 export default function Label({ children, className = "" }: LabelProps) {
-  return <label className={"label " + className}>{children}</label>;
+  return (
+    <label className={"label text-[length:var(--fluid-label)] " + className}>
+      {children}
+    </label>
+  );
 }

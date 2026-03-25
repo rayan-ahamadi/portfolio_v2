@@ -22,6 +22,7 @@ export default function Hero() {
   const heroRef = useRef<HTMLDivElement>(null);
 
   const isTransitionDone = useTransitionStore((s) => s.isTransitionDone);
+  const isFirstOverlapDone = useTransitionStore((s) => s.isFirstOverlapDone);
 
   // Animation du texte Rayan.dev et overlap
   useGSAP(
@@ -62,7 +63,10 @@ export default function Hero() {
           // pinSpacing: true,
           invalidateOnRefresh: true,
           onLeave: () => {
-            markFirstOverlapDone();
+            if (!isFirstOverlapDone) {
+              // éviter de toggle plusieurs fois
+              markFirstOverlapDone();
+            }
           },
         },
       });
@@ -107,7 +111,7 @@ export default function Hero() {
             >
               <h1
                 id="hero-title"
-                className="font-primary font-black text-accent fill-accent uppercase mix-blend-darken w-full leading-[0.9] tracking-[-0.01em] z-11"
+                className="font-primary text-[length:var(--fluid-h1-display)] font-black text-accent fill-accent uppercase mix-blend-darken w-full leading-[0.9] tracking-[-0.01em] z-11"
               >
                 Rayan.dev
               </h1>
@@ -115,9 +119,11 @@ export default function Hero() {
             <HiddenTextReveal
               animateOnScroll={false}
               splitType="lines"
+              stagger={0.02}
+              duration={1.5}
               verticalOrigin="top"
             >
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-primary leading-[1.1] tracking-[-0.01em] z-11">
+              <h2 className="text-[length:var(--fluid-h2-display)] font-primary leading-[1.1] tracking-[-0.01em] z-11">
                 Creative developer focused on&nbsp;
                 <span className="font-accent text-accent mix-blend-darken">
                   motion
@@ -136,17 +142,17 @@ export default function Hero() {
           className="col-span-4 md:col-span-8 lg:col-start-4 pb-26 my-32 z-49"
         >
           <Label>Manifesto</Label>
-          <HiddenTextReveal startViewport="80%">
-            <p className="font-primary leading-[1.3] tracking-[0.02em] lg:text-[42px]">
+          <HiddenTextReveal startViewport="80%" stagger={0.02}>
+            <p className="font-primary leading-[1.3] tracking-[0.02em] text-[length:var(--fluid-manifesto)]">
               I love building interfaces that breathe.
             </p>
             <br />
-            <p className="font-primary leading-[1.3] tracking-[0.02em] lg:text-[42px]">
+            <p className="font-primary leading-[1.3] tracking-[0.02em] text-[length:var(--fluid-manifesto)]">
               Spaces where rhythm, contrast, and movement create a living
               <mark className="text-accent"> experience.</mark>
             </p>
             <br />
-            <p className="font-primary leading-[1.3] tracking-[0.02em] lg:text-[42px]">
+            <p className="font-primary leading-[1.3] tracking-[0.02em] text-[length:var(--fluid-manifesto)]">
               I work at the intersection of design and development, where
               structure gives rise to{" "}
               <mark className="font-accent">emotion</mark>.

@@ -86,32 +86,55 @@ export default function Hero() {
 
         <h2 className="text-[42px] lg:col-span-12 py-12">
           <LineBlockReveal>
-            <span>Let's build something that moves.</span>
+            <span className="text-[length:var(--fluid-footer-h1)]">
+              Let's build something that moves.
+            </span>
           </LineBlockReveal>
         </h2>
 
         <div className="col-span-4 md:col-span-8 lg:col-span-12 grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
           <div className="md:col-start-1">
-            <Label className="white font-bold text-[12px] mb-5">
+            <Label className="white font-bold text-[length:var(--fluid-footer-label)] mb-5">
               Navigation
             </Label>
-            <ul className="leading-[1.1] text-lg">
+            <ul className="leading-[1.1]">
               <li>
-                <Link href="/#">Home</Link>
+                <Link
+                  href="/#"
+                  className="underlined-text-white text-[length:var(--fluid-footer-link)]"
+                >
+                  Home
+                </Link>
               </li>
               <li>
-                <Link href="/#works">Selected Work</Link>
+                <Link
+                  href="/#works"
+                  className="underlined-text-white text-[length:var(--fluid-footer-link)]"
+                >
+                  Selected Work
+                </Link>
               </li>
               <li>
-                <Link href="/#about">About</Link>
+                <Link
+                  href="/#about"
+                  className="underlined-text-white text-[length:var(--fluid-footer-link)]"
+                >
+                  About
+                </Link>
               </li>
             </ul>
           </div>
           <div className="md:col-start-7">
-            <Label className="white font-bold text-[12px] mb-5">Socials</Label>
+            <Label className="white font-bold text-[length:var(--fluid-footer-label)] mb-5">
+              Socials
+            </Label>
             <ul className="leading-[1.1] text-lg">
               <li>
-                <Link href="https://github.com/rayan-ahamadi" target="_blank">
+                <Link
+                  href="https://github.com/rayan-ahamadi"
+                  target="_blank"
+                  className="underlined-text-white text-[length:var(--fluid-footer-link)]"
+                >
                   Github
                 </Link>
               </li>
@@ -119,6 +142,7 @@ export default function Hero() {
                 <Link
                   href="https://www.linkedin.com/in/rayan-ahamadi/"
                   target="_blank"
+                  className="underlined-text-white text-[length:var(--fluid-footer-link)]"
                 >
                   linkedin
                 </Link>
@@ -126,24 +150,31 @@ export default function Hero() {
             </ul>
           </div>
           <div className="md:col-start-11">
-            <Label className="white font-bold text-[12px] mb-5">Contact</Label>
+            <Label className="white font-bold text-[length:var(--fluid-footer-label)] mb-5">
+              Contact
+            </Label>
             <ul className="leading-[1.1] text-lg">
               <li>
-                <Link href="mailto:rayanahamadi13@gmail.com">
+                <Link
+                  href="mailto:rayanahamadi13@gmail.com"
+                  className="underlined-text-white text-[length:var(--fluid-footer-link)]"
+                >
                   rayanahamadi13@gmail.com
                 </Link>
               </li>
               <li>
-                <p>Aix-en-Provence, France</p>
+                <p className="underlined-text-white text-[length:var(--fluid-footer-link)]">
+                  Aix-en-Provence, France
+                </p>
               </li>
             </ul>
           </div>
         </div>
         <div className="col-start-1 lg:col-span-12 relative top-32">
-          <h2 className="text-[343px] font-black uppercase leading-[0.8] tracking-[-0.01em] relative -left-[9px] ">
+          <h2 className="text-[length:var(--fluid-footer-h2)] font-black uppercase leading-[0.8] tracking-[-0.01em] relative -left-[9px] ">
             Rayan.dev
           </h2>
-          <p className="text-[10px] mt-4">
+          <p className="text-[length:var(--fluid-footer-copyright)] mt-4  tracking-[0.01em]">
             ©2026 Rayan Ahamadi all rights reserved
           </p>
         </div>
