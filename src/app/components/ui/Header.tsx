@@ -11,8 +11,8 @@ export default function Header() {
 
   return (
     <header className="fixed top-0 w-full z-[60]">
-      <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6">
-        <div className="col-span-4 md:col-span-8 lg:col-span-12 flex flex-col md:flex-row justify-between items-center py-7 uppercase">
+      <Container className="grid grid-cols-12 gap-4 md:gap-7.5 ">
+        <div className="col-span-12 flex flex-col md:flex-row justify-between items-center py-4 uppercase">
           <NewLink
             href="/"
             className="flex flex-col md:flex-row items-center md:items-baseline  md:gap-4"

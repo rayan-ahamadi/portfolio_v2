@@ -18,7 +18,7 @@ type Props = {
 export default function ImageReveal({
   children,
   verticalOrigin = "bottom",
-  startViewport = "75%",
+  startViewport = "80%",
   delay,
 }: Props) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -42,12 +42,10 @@ export default function ImageReveal({
         scrollTrigger: {
           trigger: container,
           start: "top " + startViewport,
-          markers: false,
+          // start: `top 80%`,
           invalidateOnRefresh: true,
           once: true,
           onEnter: () => tl.restart(true),
-          onLeave: () => tl.reverse(),
-          onEnterBack: () => tl.restart(true),
           onLeaveBack: () => tl.reverse(),
         },
       });
@@ -70,7 +68,7 @@ export default function ImageReveal({
       ).from(
         imageElement,
         {
-          scale: 1.3,
+          // scale: 1.3,
           ease: "power4.out",
           duration: 1,
           delay: delay || 0,

@@ -30,7 +30,6 @@ export default function Hero() {
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "50% bottom",
-        markers: false,
         invalidateOnRefresh: true,
         once: false,
         onEnter: () => apparitionTl.restart(true),
@@ -54,7 +53,6 @@ export default function Hero() {
         trigger: sectionRef.current,
         start: "top-=10 top",
         end: "top top",
-        // markers: true,
         scrub: true,
         invalidateOnRefresh: true,
       },
@@ -78,7 +76,7 @@ export default function Hero() {
       className="bg-secondary min-h-screen h-auto relative z-12 overflow-hidden"
       ref={sectionRef}
     >
-      <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 md:static text-primary">
+      <Container className="grid grid-cols-12 gap-4 md:gap-7.5 md:static text-primary">
         <FleurFooter
           className="absolute bottom-[15vh] pointer-events-none select-none z-0 left-[35vw] opacity-25"
           ref={FleurFooterRef}
@@ -92,7 +90,7 @@ export default function Hero() {
           </LineBlockReveal>
         </h2>
 
-        <div className="col-span-4 md:col-span-8 lg:col-span-12 grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+        <div className="col-span-12 grid grid-cols-12">
           <div className="md:col-start-1">
             <Label className="white font-bold text-[length:var(--fluid-footer-label)] mb-5">
               Navigation

@@ -133,10 +133,7 @@ export function LineBlockReveal({
           trigger: containerRef.current,
           start: "top 80%", // L'animation commence quand le haut atteint 80% de la fenêtre
           onEnter: () => master.restart(true),
-          //   onLeave: () => master.reverse(),
-          onEnterBack: () => master.restart(true),
           onLeaveBack: () => master.reverse(),
-          markers: false,
         });
       } else {
         // Lance l'animation immédiatement si pas de scroll

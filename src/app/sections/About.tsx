@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Container from "@/components/layout/Container";
@@ -32,7 +33,6 @@ export default function About() {
         start: "top top",
         end: "top top",
         scrub: true,
-        markers: false,
         invalidateOnRefresh: true,
       },
     });
@@ -52,8 +52,8 @@ export default function About() {
       className="bg-secondary min-h-screen h-min relative z-12"
       ref={sectionRef}
     >
-      <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6 p-28">
-        <div className="col-span-4 md:col-span-8 lg:col-span-12">
+      <Container className="grid grid-cols-12 gap-4 md:gap-7.5 p-28">
+        <div className="col-span-12">
           <Label className="white">Resume</Label>
           <HiddenTextReveal startViewport="60%" splitType="chars">
             <h2 className="text-primary font-primary font-bold uppercase text-[length:var(--fluid-h2)] leading-[0.8]">
@@ -78,7 +78,7 @@ export default function About() {
           </LineBlockReveal>
         </div>
         <div className="col-start-3 col-span-2 lg:col-start-8 lg:col-span-2 relative bottom-20 md:bottom-42 lg:bottom-60 z-0">
-          <ImageReveal verticalOrigin="top" startViewport="90%">
+          <ImageReveal verticalOrigin="top" startViewport="75%">
             <div className="absolute inset-0 bg-accent mix-blend-multiply z-10"></div>
             <img
               src="/images/rara.png"

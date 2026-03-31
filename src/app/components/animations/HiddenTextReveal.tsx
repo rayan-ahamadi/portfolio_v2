@@ -107,11 +107,8 @@ export default function HiddenTextReveal({
         // Brancher la timeline maitre au scrollTrigger
         ScrollTrigger.create({
           trigger: container,
-          start: `top ${startViewport}`,
-          markers: false,
+          start: `top 80%`,
           onEnter: () => master.restart(true),
-          onLeave: () => master.reverse(),
-          onEnterBack: () => master.restart(true),
           onLeaveBack: () => master.reverse(),
         });
       } else {

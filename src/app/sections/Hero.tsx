@@ -53,6 +53,7 @@ export default function Hero() {
 
       const introSelector = gsap.utils.selector(section);
 
+      let firstOverlapCounter = 0;
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
@@ -63,9 +64,12 @@ export default function Hero() {
           // pinSpacing: true,
           invalidateOnRefresh: true,
           onLeave: () => {
-            if (!isFirstOverlapDone) {
+            if (firstOverlapCounter === 0) {
               // éviter de toggle plusieurs fois
               markFirstOverlapDone();
+              firstOverlapCounter++;
+              console.log("first overlap done");
+              ScrollTrigger.refresh();
             }
           },
         },
@@ -97,9 +101,9 @@ export default function Hero() {
   return (
     <section id="hero" className="bg-primary relative z-9" ref={sectionRef}>
       <GlobalDecor />
-      <Container className="grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12">
+      <Container className="grid grid-cols-12">
         <div
-          className="col-span-4 md:col-span-8 lg:col-span-12 min-h-[98vh] tracking-tight z-11 flex flex-col justify-end"
+          className="col-span-12 min-h-[98vh] tracking-tight z-11 flex flex-col justify-end"
           ref={heroRef}
         >
           <div className="flex flex-col-reverse md:flex-row items-end gap-12">
@@ -138,7 +142,7 @@ export default function Hero() {
 
         <div
           id="intro"
-          className="col-span-4 md:col-span-8 lg:col-start-4 pb-26 my-32 z-49"
+          className="col-span-12 md:col-start-4 md:col-span-8 pb-26 my-32 z-49"
         >
           <Label>Manifesto</Label>
           <HiddenTextReveal startViewport="80%" stagger={0.02}>

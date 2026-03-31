@@ -3,7 +3,6 @@ import "./globals.css";
 import { Barlow_Condensed, Pinyon_Script } from "next/font/google";
 import Template from "./template";
 
-
 export const metadata = {
   title: "Rayan Ahamadi - Creative Developer",
   description: "Creative frontend developer portfolio",
@@ -13,8 +12,6 @@ export const metadata = {
     shortcut: "/favicon/favicon-16x16.png",
   },
 };
-
-
 
 const barlow = Barlow_Condensed({
   subsets: ["latin"],
@@ -30,19 +27,18 @@ const pinyon = Pinyon_Script({
   display: "swap",
 });
 
-
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-
   return (
-    <html lang="fr" className={`${barlow.variable} ${pinyon.variable} font-primary`}>
+    <html
+      lang="fr"
+      className={`${barlow.variable} ${pinyon.variable} font-primary`}
+    >
       <body className="">
-        <Template>
-          {children}
-        </Template>
+        <Template>{children}</Template>
       </body>
     </html>
   );

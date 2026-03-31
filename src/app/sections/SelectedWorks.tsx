@@ -1,9 +1,11 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import Container from "@/components/layout/Container";
 import NewLink from "@/components/ui/NewLink";
 import ImageReveal from "@/components/animations/ImageReveal";
 import HiddenTextReveal from "@/components/animations/HiddenTextReveal";
+import Image from "next/image";
 
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
@@ -54,17 +56,19 @@ export default function SelectedWorks() {
     const bodyAfterRule = CSSRulePlugin.getRule("body::after");
 
     // Changement de couleur de la page pendant le scroll
+    let secondOverlapCounter = 0;
     const colorTimeline = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start: "bottom 55%",
         end: "bottom top",
-        markers: false,
         scrub: true,
         onLeave: () => {
-          if (!isSecondOverlapDone) {
+          if (secondOverlapCounter === 0) {
             // éviter de toggle plusieurs fois
             markSecondOverlapDone();
+            console.log("second overlap done");
+            secondOverlapCounter++;
           }
         },
       },
@@ -124,8 +128,8 @@ export default function SelectedWorks() {
       className="bg-primary relative pt-28 z-10"
       ref={sectionRef}
     >
-      <Container className="container bg-primary grid grid-cols-4 md:grid-cols-8 lg:grid-cols-12 gap-6 grid-flow-row z-12">
-        <div className="col-span-4 md:col-span-8 lg:col-span-12">
+      <Container className="container bg-primary grid grid-cols-12 gap-4 md:gap-7.5 grid-flow-row z-12">
+        <div className="col-span-12">
           <Label>Works</Label>
           <HiddenTextReveal startViewport="60%" splitType="chars">
             <h2 className="uppercase font-primary text-secondary font-bold text-[length:var(--fluid-h2)] leading-[0.8] mb-8 md:mb-16 lg:mb-32">
@@ -136,7 +140,7 @@ export default function SelectedWorks() {
         {projects.map((project, index) => (
           <article
             key={index}
-            className="work-div col-span-4 md:col-span-4 lg:col-span-6 lg:even:col-start-6 lg:odd:col-start-2  mb-28 md:mb-32"
+            className="work-div col-span-12 md:col-span-6 lg:even:col-start-6 lg:odd:col-start-2  mb-28 md:mb-32"
           >
             <NewLink
               href={project.link}
@@ -149,18 +153,18 @@ export default function SelectedWorks() {
                     alt={project.title}
                     width={800}
                     height={600}
-                    className="mb-4 "
+                    className="mb-4"
                   />
                 </figure>
               </ImageReveal>
             </NewLink>
             <div className="flex flex-col gap-4.5">
-              <HiddenTextReveal verticalOrigin="top" startViewport="78%">
+              <HiddenTextReveal verticalOrigin="top" startViewport="75%">
                 <h3 className="mt-4 text-[length:var(--fluid-h3)] font-semibold font-primary text-secondary uppercase leading-[0.9] tracking-[-0.01em]">
                   {project.title}
                 </h3>
               </HiddenTextReveal>
-              <HiddenTextReveal verticalOrigin="bottom" startViewport="78%">
+              <HiddenTextReveal verticalOrigin="bottom" startViewport="75%">
                 <p className="text-[length:var(--fluid-paragraph)] font-light font-primary text-secondary uppercase leading-[1.3] tracking-normal">
                   {project.description}
                 </p>
