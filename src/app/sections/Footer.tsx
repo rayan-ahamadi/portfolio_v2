@@ -82,7 +82,7 @@ export default function Hero() {
           ref={FleurFooterRef}
         />
 
-        <h2 className="text-[42px] lg:col-span-12 py-12">
+        <h2 className="text-[42px] col-span-12 py-12">
           <LineBlockReveal>
             <span className="text-[length:var(--fluid-footer-h1)]">
               Let's build something that moves.
@@ -90,7 +90,7 @@ export default function Hero() {
           </LineBlockReveal>
         </h2>
 
-        <div className="col-span-12 grid grid-cols-12">
+        <div className="col-span-12 flex flex-col gap-14 md:gap-0 md:grid grid-cols-12">
           <div className="md:col-start-1">
             <Label className="white font-bold text-[length:var(--fluid-footer-label)] mb-5">
               Navigation
@@ -161,18 +161,18 @@ export default function Hero() {
                 </Link>
               </li>
               <li>
-                <p className="underlined-text-white text-[length:var(--fluid-footer-link)]">
+                <p className="w-max text-[length:var(--fluid-footer-link)]">
                   Aix-en-Provence, France
                 </p>
               </li>
             </ul>
           </div>
         </div>
-        <div className="col-start-1 lg:col-span-12 relative top-32">
+        <div className="col-start-1 col-span-12 relative top-32">
           <h2 className="text-[length:var(--fluid-footer-h2)] font-black uppercase leading-[0.8] tracking-[-0.01em] relative -left-[9px] ">
             Rayan.dev
           </h2>
-          <p className="text-[length:var(--fluid-footer-copyright)] mt-4  tracking-[0.01em]">
+          <p className="text-[length:var(--fluid-footer-copyright)] mt-4 tracking-[0.01em]">
             ©2026 Rayan Ahamadi all rights reserved
           </p>
         </div>

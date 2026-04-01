@@ -62,7 +62,7 @@ export default function About() {
           </HiddenTextReveal>
         </div>
 
-        <div className="col-span-4 lg:col-start-3 lg:col-span-7 py-6 md:py-14 lg:py-28 z-50">
+        <div className="col-start-1 col-span-12 md:col-start-3 md:col-span-7 py-6 md:py-14 lg:py-28 z-50">
           <LineBlockReveal>
             <p className="font-primary text-primary leading-[1.3] text-[length:var(--fluid-manifesto)] z-[55] uppercase">
               I'm Rayan Ahamadi, a{" "}
@@ -77,7 +77,7 @@ export default function About() {
             </p>
           </LineBlockReveal>
         </div>
-        <div className="col-start-3 col-span-2 lg:col-start-8 lg:col-span-2 relative bottom-20 md:bottom-42 lg:bottom-60 z-0">
+        <div className="col-start-6 col-span-6 md:col-start-8 md:col-span-2 relative bottom-20 md:bottom-42 lg:bottom-60 z-0">
           <ImageReveal verticalOrigin="top" startViewport="75%">
             <div className="absolute inset-0 bg-accent mix-blend-multiply z-10"></div>
             <img

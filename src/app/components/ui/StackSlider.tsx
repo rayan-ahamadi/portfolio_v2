@@ -46,7 +46,7 @@ export default function StackSlider({
         {stacks.map((stack, index) => (
           <div
             key={index}
-            className="text-[length:var(--fluid-stackslider)] font-extrabold tracking-tight select-none flex-0 uppercase"
+            className="text-[length:var(--fluid-stackslider)] font-extrabold leading-[0.8] tracking-tight select-none flex-0 uppercase"
             style={{ color: textColor }}
           >
             {stack}
@@ -65,7 +65,7 @@ export default function StackSlider({
         {stacks.map((stack, index) => (
           <div
             key={index}
-            className="text-[length:var(--fluid-stackslider)] font-extrabold tracking-tight select-none flex-0 uppercase"
+            className="text-[length:var(--fluid-stackslider)] font-extrabold leading-[0.8] tracking-tight select-none flex-0 uppercase"
             style={{ color: textColor }}
           >
             {stack}

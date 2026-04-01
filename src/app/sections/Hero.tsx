@@ -106,7 +106,7 @@ export default function Hero() {
           className="col-span-12 min-h-[98vh] tracking-tight z-11 flex flex-col justify-end"
           ref={heroRef}
         >
-          <div className="flex flex-col-reverse md:flex-row items-end gap-12">
+          <div className="flex flex-col-reverse md:flex-row md:items-end md:gap-12">
             <HiddenTextReveal
               animateOnScroll={false}
               splitType="lines"
@@ -128,13 +128,9 @@ export default function Hero() {
             >
               <h2 className="text-[length:var(--fluid-h2-display)] font-primary leading-[1.1] tracking-[-0.01em] z-11">
                 Creative developer focused on&nbsp;
-                <span className="font-accent text-accent mix-blend-darken">
-                  motion
-                </span>
+                <span className="font-accent text-accent">motion</span>
                 &nbsp; and&nbsp;
-                <span className="font-accent text-accent mix-blend-darken">
-                  structure
-                </span>
+                <span className="font-accent text-accent">structure</span>
               </h2>
             </HiddenTextReveal>
           </div>

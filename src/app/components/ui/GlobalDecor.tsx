@@ -166,7 +166,7 @@ export default function GlobalDecor() {
     <div>
       <FleurHero
         className="absolute
-                        left-1/2 top-[50%]
+                        left-1/2 top-[40%] md:top-[47%]
                         -translate-x-1/2 -translate-y-1/2
                         w-84 md:w-128.25 h-auto
                         select-none pointer-events-auto
@@ -181,7 +181,7 @@ export default function GlobalDecor() {
             <LeafPath
               className="absolute
                         pointer-events-none select-none
-                        translate-y-[9%]    md:translate-y-[38%]
+                        translate-y-[4%]    md:translate-y-[38%]
                         z-40
                         w-full
                         "

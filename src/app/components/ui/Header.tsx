@@ -12,12 +12,12 @@ export default function Header() {
   return (
     <header className="fixed top-0 w-full z-[60]">
       <Container className="grid grid-cols-12 gap-4 md:gap-7.5 ">
-        <div className="col-span-12 flex flex-col md:flex-row justify-between items-center py-4 uppercase">
+        <div className="col-span-12 flex flex-col md:flex-row justify-between items-center gap-1 md:gap-0 py-5 uppercase">
           <NewLink
             href="/"
-            className="flex flex-col md:flex-row items-center md:items-baseline  md:gap-4"
+            className="flex flex-col md:flex-row items-center md:items-baseline md:gap-4"
           >
-            <span className="font-black font-primary text-accent text-[length:var(--fluid-header-h2)] select-none mix-blend-difference">
+            <span className="font-black font-primary text-accent leading-[0.8] text-[length:var(--fluid-header-h2)] select-none mix-blend-difference">
               Rayan.dev
             </span>
             <span

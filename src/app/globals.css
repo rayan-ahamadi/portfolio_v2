@@ -15,8 +15,8 @@
   --fluid-header-h2: clamp(1.75rem, 1.5643rem + 0.7619vw, 2.25rem);
   --fluid-header-occupation: clamp(1.125rem, 0.9857rem + 0.5714vw, 1.5rem);
   --fluid-h1-display: clamp(5.0844rem, 1.2881rem + 15.5743vw, 15.305rem);
-  --fluid-h2-display: clamp(0.9969rem, 0.2529rem + 3.0524vw, 3rem);
-  --fluid-manifesto: clamp(1rem, 0.3964rem + 2.4762vw, 2.625rem);
+  --fluid-h2-display: clamp(1.5rem, 0.9429rem + 2.2857vw, 3rem);
+  --fluid-manifesto: clamp(1.5rem, 0.9429rem + 2.2857vw, 3rem);
   --fluid-h2: clamp(1.5rem, 0.5018rem + 4.0952vw, 4.1875rem);
   --fluid-h3: clamp(1.125rem, 0.6607rem + 1.9048vw, 2.375rem);
   --fluid-paragraph: clamp(0.875rem, 0.8286rem + 0.1905vw, 1rem);
@@ -45,9 +45,6 @@ body {
   overflow-x: hidden;
 }
 
-@theme {
-  
-}
 
 @layer utilities {
   .text-primary {
