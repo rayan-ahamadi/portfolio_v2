@@ -64,7 +64,9 @@ ProjectLayout.Description = function Description({
         duration: 0.1,
         scrollTrigger: {
           trigger: paragraph,
-          start: "top bottom",
+          start: "top 90%",
+          end: "bottom 80%",
+          scrub: true,
           invalidateOnRefresh: true,
           once: true,
         },

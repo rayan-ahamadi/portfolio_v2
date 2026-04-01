@@ -29,7 +29,9 @@ export function BentoGrid({ children }: { children: React.ReactNode }) {
       },
       scrollTrigger: {
         trigger: gridElement,
-        start: "top 60%",
+        start: "top 90%",
+        end: "bottom 80%",
+        scrub: true,
         invalidateOnRefresh: true,
         once: true,
       },

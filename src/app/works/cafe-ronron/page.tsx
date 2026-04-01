@@ -41,7 +41,7 @@ export default function ProjectRonronPage() {
           <ProjectLayout.Hero>
             {/* Hero content for CaféRonron project */}
             <div className="mb-15">
-              <h1 className="text-7xl md:text-8xl lg:text-9xl  font-bold uppercase mb-4 md:mb-6 lg:mb-9">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold uppercase mb-4 md:mb-6 lg:mb-9">
                 Café Ronron
               </h1>
             </div>

@@ -25,19 +25,17 @@ export default function ProjectBloopPage() {
           <ProjectLayout.Hero>
             {/* Hero content for Bloop project */}
             <div className="mb-15">
-              <h1 className="text-7xl md:text-8xl lg:text-9xl font-bold uppercase mb-4 md:mb-6 lg:mb-9">
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold uppercase mb-4 md:mb-5 lg:mb-9">
                 Bloop
               </h1>
               <div className="">
-                <h2 className="text-xl md:text-2xl lg:text-3xl font-light uppercase mb-3">
+                <h2 className="text-sm md:text-base font-light uppercase">
                   In collaboration with :
                 </h2>
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold uppercase">
                   <Link href="https://fr.linkedin.com/in/lucie-cottrelle">
                     Lucie Cottrelle
                   </Link>
-                  {/* <Link href="https://github.com/AdlenSouci">Adlen Souci • </Link>
-                                    <Link href="https://github.com/charefs13">Mohamed saadi</Link> */}
                 </h2>
               </div>
             </div>
@@ -69,9 +67,7 @@ export default function ProjectBloopPage() {
               designed around a bold neo-brutalist visual language. Developed as
               a collaborative project with three other creatives, it explores
               interface structure, typography, and interaction patterns within a
-              contemporary social network context. The project is still
-              evolving, with ongoing experimentation around usability, visual
-              identity, and front-end implementation.
+              contemporary social network context.
             </p>
           </ProjectLayout.Description>
           <ProjectLayout.Bento>
