@@ -9,7 +9,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Header from "@/components/ui/Header";
 import useScrollRefresh from "@/hooks/useScrollRefresh";
-import Footer from "@/components/sections/Footer";
+import Footer from "@/sections/Footer";
 
 import { proximaNova } from "@/../lib/fonts";
 
