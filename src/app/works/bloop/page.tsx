@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Header from "@/components/ui/Header";
 import useScrollRefresh from "@/hooks/useScrollRefresh";
+import Footer from "@/components/sections/Footer";
 
 import { proximaNova } from "@/../lib/fonts";
 
@@ -159,6 +160,7 @@ export default function ProjectBloopPage() {
             </BentoGrid>
           </ProjectLayout.Bento>
         </ProjectLayout>
+        <Footer />
       </main>
     </div>
   );

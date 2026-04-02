@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useRouter } from "next/navigation";
 import Header from "@/components/ui/Header";
 import useScrollRefresh from "@/hooks/useScrollRefresh";
+import Footer from "@/components/sections/Footer";
 
 import { Playfair_Display, Poppins } from "next/font/google";
 import { claytonia } from "@/../lib/fonts";
@@ -160,6 +161,7 @@ export default function ProjectRonronPage() {
             </BentoGrid>
           </ProjectLayout.Bento>
         </ProjectLayout>
+        <Footer />
       </main>
     </div>
   );

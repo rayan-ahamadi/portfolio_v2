@@ -22,7 +22,7 @@
   --fluid-paragraph: clamp(0.875rem, 0.8286rem + 0.1905vw, 1rem);
   --fluid-stackslider: clamp(2.5731rem, 0.9289rem + 6.7457vw, 7rem);
   --fluid-footer-h1: clamp(2rem, 1.7679rem + 0.9524vw, 2.625rem);
-  --fluid-footer-h2: clamp(5.0538rem, -1.0525rem + 25.0514vw, 21.4938rem);
+  --fluid-footer-h2: clamp(5.0538rem, -1.0525rem + 25.0514vw, 22.4938rem);
   --fluid-footer-link: clamp(1rem, 0.9536rem + 0.1905vw, 1.125rem);
   --fluid-footer-label: clamp(0.75rem, 0.75rem + 0vw, 0.75rem);
   --fluid-footer-copyright: clamp(0.5rem, 0.6714rem + -0.1905vw, 0.625rem);
