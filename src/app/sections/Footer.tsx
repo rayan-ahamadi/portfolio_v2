@@ -2,11 +2,13 @@
 
 import Container from "@/components/layout/Container";
 import Link from "next/link";
+import NewLink from "@/components/ui/NewLink";
 import FleurFooter from "@/assets/vector/Fleur_Footer.svg";
 import HiddenTextReveal from "@/components/animations/HiddenTextReveal";
 
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { usePathname } from "next/navigation";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useRef } from "react";
 import Label from "@/components/layout/Label";
@@ -16,6 +18,7 @@ import { LineBlockReveal } from "@/components/animations/LineBlockReveal";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
+  const pathname = usePathname();
   const FleurFooterRef = useRef<SVGSVGElement>(null);
   const footerRef = useRef<HTMLElement>(null);
 
@@ -112,30 +115,63 @@ export default function Hero() {
               Navigation
             </Label>
             <ul className="leading-[1.1]">
-              <li>
-                <Link
-                  href="/#"
-                  className="underlined-text-white text-[length:var(--fluid-footer-link)]"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#works"
-                  className="underlined-text-white text-[length:var(--fluid-footer-link)]"
-                >
-                  Selected Work
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/#about"
-                  className="underlined-text-white text-[length:var(--fluid-footer-link)]"
-                >
-                  About
-                </Link>
-              </li>
+              {pathname === "/" ? (
+                <>
+                  {/* Lien Landing Page (sans transition) */}
+                  <li>
+                    <Link
+                      href="/#hero"
+                      className="underlined-text-white text-[length:var(--fluid-footer-link)]"
+                    >
+                      Home
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/#works"
+                      className="underlined-text-white text-[length:var(--fluid-footer-link)]"
+                    >
+                      Selected Work
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      href="/#about"
+                      className="underlined-text-white text-[length:var(--fluid-footer-link)]"
+                    >
+                      About
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  {/* Lien Pages Projets et autres */}
+                  <li>
+                    <NewLink
+                      href="/#hero"
+                      className="underlined-text-white text-[length:var(--fluid-footer-link)]"
+                    >
+                      Home
+                    </NewLink>
+                  </li>
+                  <li>
+                    <NewLink
+                      href="/#works"
+                      className="underlined-text-white text-[length:var(--fluid-footer-link)]"
+                    >
+                      Selected Work
+                    </NewLink>
+                  </li>
+                  <li>
+                    <NewLink
+                      href="/#about"
+                      className="underlined-text-white text-[length:var(--fluid-footer-link)]"
+                    >
+                      About
+                    </NewLink>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
           <div className="md:col-start-7">
