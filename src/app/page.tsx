@@ -14,7 +14,6 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { useRef, useEffect } from "react";
 
-
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
@@ -72,16 +71,15 @@ export default function Home() {
   return (
     <div>
       <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
+      <Header />
       <main className="relative z-10 overflow-x-hidden">
-
-        <Header />
         <Hero />
         <SelectedWorks />
         <div id="black-overlay" className=" z-[12]">
           <About />
-          <Footer />
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

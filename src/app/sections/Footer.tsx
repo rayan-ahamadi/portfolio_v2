@@ -17,7 +17,7 @@ import { LineBlockReveal } from "@/components/animations/LineBlockReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Hero() {
+export default function Footer() {
   const pathname = usePathname();
   const FleurFooterRef = useRef<SVGSVGElement>(null);
   const footerRef = useRef<HTMLElement>(null);
@@ -33,55 +33,51 @@ export default function Hero() {
     // Disparition du header
     const headerTl = gsap.timeline({
       scrollTrigger: {
-        trigger: footerRef.current,
-        start: "top-=10 top",
-        end: "top top",
+        trigger: "main",
+        start: "bottom 80%",
+        end: "+=20%",
         scrub: true,
         invalidateOnRefresh: true,
       },
     });
 
-    headerTl.to("header", {
-      display: "none",
-      opacity: 0,
-      ease: "power4.out",
-    });
+    headerTl
+      .to("header", {
+        display: "none",
+        opacity: 0,
+        ease: "power4.out",
+      })
+      .to(
+        "#LeftArrow",
+        {
+          display: "none",
+          opacity: 0,
+          ease: "power4.out",
+        },
+        0,
+      );
 
-    // Animation footer parallaxe
-    const footerContent = footerSelector(".footer-section");
+    // Animation footer
+    // const footerContent = footerSelector(".footer-section");
 
     const footerTl = gsap.timeline({
       scrollTrigger: {
-        trigger: footerRef.current,
-        start: "top bottom",
-        end: "top top",
+        trigger: "main",
+        start: "bottom 80%",
+        end: "bottom 20%",
         // markers: true,
-        scrub: 1.5,
+        scrub: true,
         invalidateOnRefresh: true,
       },
     });
 
-    footerTl.set(footerContent, { yPercent: -80 });
-
-    footerTl
-      .fromTo(
-        footerContent,
-        {
-          yPercent: -80,
-          ease: "none",
-        },
-        {
-          yPercent: 0,
-          ease: "none",
-        },
-      )
-      .to(
-        footerRef.current,
-        {
-          backgroundColor: "#1d133a",
-        },
-        "<0.2",
-      );
+    footerTl.to(
+      footerRef.current,
+      {
+        backgroundColor: "#1d133a",
+      },
+      "<0.2",
+    );
 
     return () => {
       headerTl.kill();
@@ -92,10 +88,10 @@ export default function Hero() {
   return (
     <footer
       id="contact"
-      className="bg-secondary min-h-screen h-auto relative z-12 overflow-hidden"
+      className="bg-secondary min-h-screen h-auto sticky bottom-0 overflow-hidden "
       ref={footerRef}
     >
-      <Container className="footer-section grid grid-cols-12 gap-4 md:gap-7.5 md:static text-primary">
+      <Container className="footer-section w-full grid grid-cols-12 gap-4 md:gap-7.5 md:static text-primary">
         <FleurFooter
           className="absolute top-[20vh] pointer-events-none select-none z-0 left-[35vw] opacity-25"
           ref={FleurFooterRef}

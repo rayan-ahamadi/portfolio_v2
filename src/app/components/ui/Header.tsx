@@ -10,7 +10,7 @@ export default function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="fixed top-0 w-full z-[60]">
+    <header className="fixed top-0 w-full z-[48]">
       <Container className="grid grid-cols-12 gap-4 md:gap-7.5 ">
         <div className="col-span-12 flex flex-col md:flex-row justify-between items-center gap-1 md:gap-0 py-5 uppercase">
           <NewLink

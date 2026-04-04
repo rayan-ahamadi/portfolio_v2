@@ -16,7 +16,7 @@ export function ProjectLayout({
   className?: string;
 }) {
   return (
-    <div className={`mt-32 px-6 md:px-12 lg:px-20 ` + ` ${className}`}>
+    <div className={`pt-32 px-6 md:px-12 lg:px-20 ` + ` ${className}`}>
       {children}
     </div>
   );
